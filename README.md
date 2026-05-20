@@ -5,9 +5,7 @@
 - **Autor:** Marcos Antonio Barbosa Stingher
 - **Curso:** Sistemas de Informação
 - **Instituição:** Universidade do Oeste de Santa Catarina (UNOESC) — Campus Chapecó
-- **Orientador:** Prof. Jean Carlos Hennrichs
-- **Ano:** 2025
-
+  
 ---
 
 ## Sobre este repositório
