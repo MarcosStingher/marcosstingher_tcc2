@@ -10,19 +10,19 @@
 
 ## Sobre este repositório
 
-Este repositório contém os **artefatos digitais** do TCC2: três dashboards HTML interativos com os resultados da análise bibliométrica e o pipeline Python que os gerou. O objetivo é dar à banca avaliadora acesso direto às visualizações e, ao mesmo tempo, oferecer transparência metodológica completa — todo o código de processamento e o corpus consolidado de 207 artigos estão versionados aqui.
+Este repositório contém os **artefatos digitais** do TCC2: três dashboards HTML interativos com os resultados da análise bibliométrica e o pipeline Python que os gerou. O objetivo é dar à banca avaliadora acesso direto às visualizações e, ao mesmo tempo, oferecer transparência metodológica completa, sendo que todo o código de processamento e o corpus de 207 artigos estão versionados aqui.
 
-O documento textual do TCC (PDF/DOCX) foi entregue pelo canal oficial da UNOESC e **não** está duplicado aqui.
+O documento textual do TCC (PDF/DOCX) foi entregue pelo canal oficial da UNOESC, mas também está duplicado aqui.
 
 ## Como visualizar
 
 Os HTMLs são **autocontidos** — bastam um navegador moderno (Chrome, Firefox, Safari ou Edge) e clique duplo. Não há servidor, build ou dependências.
 
-**Ordem de leitura recomendada:**
+**Lista de páginas HTML produzidas:**
 
-1. **[`resumo_executivo.html`](resumo_executivo.html)** — Painel-síntese da defesa. KPIs, timeline das três fases, questões de pesquisa respondidas, Top 10 autores e venues, principais achados. Bom ponto de partida.
-2. **[`dashboard_uml.html`](dashboard_uml.html)** — Dashboard analítico com tabela filtrável dos 207 artigos, gráficos interativos (publicações por fase, tipo, base, Top 20 autores, Top 15 periódicos, palavras-chave, evolução temática).
-3. **[`insights_uml.html`](insights_uml.html)** — Análise aprofundada com rede de co-ocorrência em D3.js, achados e padrões por fase, bigramas e análise idiomática.
+1. **[`resumo_executivo.html`](resumo_executivo.html)**: Painel-síntese da defesa. KPIs, timeline das três fases, questões de pesquisa respondidas, Top 10 autores e venues, principais achados. Bom ponto de partida.
+2. **[`dashboard_uml.html`](dashboard_uml.html)**: Dashboard analítico com tabela filtrável dos 207 artigos, gráficos interativos (publicações por fase, tipo, base, Top 20 autores, Top 15 periódicos, palavras-chave, evolução temática).
+3. **[`insights_uml.html`](insights_uml.html)**: Análise aprofundada com rede de co-ocorrência em D3.js, achados e padrões por fase, bigramas e análise idiomática.
 
 Todos os HTMLs suportam alternância entre modo claro e escuro.
 
@@ -72,7 +72,7 @@ python3 gerar_insights.py          # regera insights_uml.html a partir do JSON
 - **D3.js v7** — rede force-directed de co-ocorrência terminológica
 - HTML autocontido — sem framework web, sem build pipeline
 
-A escolha por essa stack (em substituição a ferramentas tradicionais como VOSviewer/Bibliometrix/Excel) é justificada na Seção 3.5 do TCC, atendendo a recomendação da banca do TCC1.
+A escolha por essa stack (em substituição a ferramentas tradicionais como VOSviewer/Bibliometrix/Excel) é justificada na Seção 3.5 do TCC, atendendo a recomendação da banca.
 
 ## Licença
 
