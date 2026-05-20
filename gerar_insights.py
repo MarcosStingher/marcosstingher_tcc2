@@ -1,0 +1,1191 @@
+#!/usr/bin/env python3
+"""gerar_insights.py — Página de insights aprofundados da análise bibliométrica UML"""
+import json, re
+from pathlib import Path
+from collections import Counter, defaultdict
+
+BASE   = Path(__file__).parent
+INPUT  = BASE / "dados_processados.json"
+OUTPUT = BASE / "insights_uml.html"
+
+STOPWORDS = {
+    "a","an","and","are","as","at","be","been","being","but","by","do","does",
+    "for","from","has","have","he","her","his","how","i","if","in","into","is",
+    "it","its","not","of","on","or","our","out","s","she","so","than","that",
+    "the","their","them","then","there","these","they","this","those","through",
+    "to","under","up","use","used","using","via","was","we","were","what","when",
+    "where","which","while","who","with","you","your","based","new","two",
+    "approach","method","framework","study","analysis","survey","review","work",
+    "paper","research","case","results","system","systems","data","tool","tools",
+    "applied","application","applications","approaches","methods","techniques",
+    "technique","towards","within","toward","across","between","among","over",
+    "um","uma","de","do","da","dos","das","em","para","com","por","se","ao",
+    "na","no","nos","nas","e","o","a","os","as","ou","seu","sua","seus","suas",
+    "como","mais","ser",
+}
+
+PHASE_SHORT = {
+    "Fase 1 — Consolidação (2010–2014)":   "Fase 1",
+    "Fase 2 — Expansão MDE (2015–2019)":   "Fase 2",
+    "Fase 3 — Especialização (2020–2024)": "Fase 3",
+}
+PHASE_ORDER = list(PHASE_SHORT.keys())
+
+
+def compute_insights(raw: dict) -> dict:
+    papers  = raw["papers"]
+    by_year = raw["by_year"]
+
+    yrs = sorted(by_year.keys())
+    yoy = {yrs[i]: by_year[yrs[i]] - by_year[yrs[i-1]] for i in range(1, len(yrs))}
+
+    auth_map = defaultdict(list)
+    for p in papers:
+        for a in p["authors"].replace(" et al.", "").split(";"):
+            a = a.strip()
+            if a and a not in ("-", "–"):
+                auth_map[a].append(p["year"])
+
+    total_auth_id = len(auth_map)
+    once         = sum(1 for v in auth_map.values() if len(v) == 1)
+    twice        = sum(1 for v in auth_map.values() if len(v) == 2)
+    triple_plus  = sum(1 for v in auth_map.values() if len(v) >= 3)
+    solo_count   = sum(1 for p in papers
+                       if p["authors"] and
+                       len([x for x in p["authors"].split(";") if x.strip()]) == 1)
+    collab_count = sum(1 for p in papers
+                       if p["authors"] and
+                       len([x for x in p["authors"].split(";") if x.strip()]) >= 2)
+
+    top_author_profiles = []
+    for a, years in sorted(auth_map.items(), key=lambda x: -len(x[1]))[:10]:
+        s = sorted(years)
+        top_author_profiles.append({
+            "name": a, "count": len(years),
+            "first": s[0], "last": s[-1], "span": s[-1] - s[0]
+        })
+
+    main_types = ["Journal Article","Proceedings Article","Book Chapter","Dissertation","Outros"]
+    tbp = {"labels": ["Fase 1","Fase 2","Fase 3"]}
+    for t in main_types:
+        tbp[t] = []
+    for ph in PHASE_ORDER:
+        pp = [p for p in papers if p["phase"] == ph]
+        tc = Counter(p["type"] for p in pp)
+        tbp["Journal Article"].append(tc.get("Journal Article", 0))
+        tbp["Proceedings Article"].append(tc.get("Proceedings Article", 0))
+        tbp["Book Chapter"].append(tc.get("Book Chapter", 0))
+        tbp["Dissertation"].append(tc.get("Dissertation", 0))
+        tbp["Outros"].append(
+            sum(v for k, v in tc.items()
+                if k not in ("Journal Article","Proceedings Article","Book Chapter","Dissertation"))
+        )
+
+    jp_ratio = []
+    for i in range(3):
+        j  = tbp["Journal Article"][i]
+        pr = tbp["Proceedings Article"][i]
+        jp_ratio.append(round(j / pr, 2) if pr else 0)
+
+    lang_patterns = [
+        ("Português", r"\b(análise|desenvolvimento|sistema|uma|para|dos|das|não|também|sobre|esse|pela|gerenciamento|informação|baseado|desenvolvido|aplicativo)\b"),
+        ("Espanhol",  r"\b(análisis|desarrollo|sistema|para|con|los|las|del|una|también|gestor|diseño|implementación)\b"),
+        ("Francês",   r"\b(analyse|développement|système|pour|avec|les|des|méthodes|ordonnancement)\b"),
+        ("Alemão",    r"\b(analyse|entwicklung|über|für|mit|die|der|das|wissensbasierten|ordnungsmechanismen)\b"),
+        ("Croata",    r"\b(suvremeni|trendovi|informacijskih)\b"),
+        ("Russo",     r"\b(наук|образован)\b"),
+    ]
+    lang_c = Counter()
+    for p in papers:
+        title = (p["title"] or "").lower()
+        detected = "Inglês"
+        for lang, pat in lang_patterns:
+            if re.search(pat, title, re.IGNORECASE):
+                detected = lang
+                break
+        lang_c[detected] += 1
+    by_language = [[k, v] for k, v in lang_c.most_common()]
+
+    bigrams = Counter()
+    for p in papers:
+        words = [w for w in re.findall(r"[a-z]+", (p["title"] or "").lower())
+                 if w not in STOPWORDS and len(w) > 3]
+        for i in range(len(words) - 1):
+            bigrams[(words[i], words[i+1])] += 1
+    top_bigrams = [[f"{w1} {w2}", c] for (w1, w2), c in bigrams.most_common(15)]
+
+    # Per-phase bigrams (top 15 per phase)
+    bigrams_by_phase = {}
+    for i, ph in enumerate(PHASE_ORDER):
+        bg = Counter()
+        for p in [x for x in papers if x["phase"] == ph]:
+            words = [w for w in re.findall(r"[a-z]+", (p["title"] or "").lower())
+                     if w not in STOPWORDS and len(w) > 3]
+            for j in range(len(words) - 1):
+                bg[(words[j], words[j+1])] += 1
+        bigrams_by_phase[f"ph{i+1}"] = [[f"{w1} {w2}", c] for (w1, w2), c in bg.most_common(15)]
+
+    # Per-phase language breakdown
+    lang_by_phase = {}
+    for i, ph in enumerate(PHASE_ORDER):
+        lc = Counter()
+        for p in [x for x in papers if x["phase"] == ph]:
+            title = (p["title"] or "").lower()
+            det = "Inglês"
+            for lang, pat in lang_patterns:
+                if re.search(pat, title, re.IGNORECASE):
+                    det = lang
+                    break
+            lc[det] += 1
+        lang_by_phase[f"ph{i+1}"] = [[k, v] for k, v in lc.most_common()]
+
+    # Normalize British/American spelling variants before counting
+    _NORM = {
+        "modelling": "modeling", "modelling": "modeling",
+        "behaviour": "behavior", "behaviours": "behaviors",
+        "colour": "color", "colours": "colors",
+        "labelling": "labeling", "labelled": "labeled",
+        "analyse": "analyze", "analysed": "analyzed", "analyses": "analyzes",
+        "generalisation": "generalization", "generalise": "generalize",
+        "visualisation": "visualization", "visualise": "visualize",
+        "optimisation": "optimization", "optimise": "optimize",
+        "formalisation": "formalization", "formalise": "formalize",
+    }
+
+    kw_by_phase = defaultdict(Counter)
+    for p in papers:
+        for w in re.findall(r"[a-z]+", (p["title"] or "").lower()):
+            w = _NORM.get(w, w)
+            if len(w) > 3 and w not in STOPWORDS:
+                kw_by_phase[p["phase"]][w] += 1
+
+    # Top keywords (global)
+    all_kw = Counter()
+    for ph in PHASE_ORDER:
+        all_kw.update(kw_by_phase[ph])
+    top_keywords = all_kw.most_common(25)
+
+    ph1 = set(kw_by_phase[PHASE_ORDER[0]])
+    ph2 = set(kw_by_phase[PHASE_ORDER[1]])
+    ph3 = set(kw_by_phase[PHASE_ORDER[2]])
+    new_in_ph3 = {
+        w: kw_by_phase[PHASE_ORDER[2]][w]
+        for w in ph3 - ph1 - ph2
+        if kw_by_phase[PHASE_ORDER[2]][w] > 1
+    }
+    emerging_kws = sorted(new_in_ph3.items(), key=lambda x: -x[1])[:16]
+
+    # Co-occurrence network: top 15 per phase + global top 25 (deduped)
+    # Using top 15 per phase guarantees multiple Phase 3-specific terms appear
+    network_kws: dict[str, int] = {}
+    for ph in PHASE_ORDER:
+        for w, c in kw_by_phase[ph].most_common(15):
+            if w not in network_kws:
+                network_kws[w] = int(all_kw[w])
+    for w, c in top_keywords[:25]:
+        if w not in network_kws:
+            network_kws[w] = int(c)
+    # sort by global frequency descending so layout prioritises high-freq nodes
+    network_kws_sorted = sorted(network_kws.items(), key=lambda x: -x[1])
+
+    top_kws_set = set(w for w, _ in network_kws_sorted)
+    cooc_counter = Counter()
+    for p in papers:
+        words_in = {w for w in re.findall(r"[a-z]+", (p["title"] or "").lower())
+                    if w in top_kws_set and w not in STOPWORDS}
+        words_list = sorted(words_in)
+        for i in range(len(words_list)):
+            for j in range(i + 1, len(words_list)):
+                cooc_counter[(words_list[i], words_list[j])] += 1
+
+    # Phase affinity for each keyword (which phase it appears most in)
+    kw_phase = {}
+    for w, _ in network_kws_sorted:
+        counts = [kw_by_phase[PHASE_ORDER[i]][w] for i in range(3)]
+        kw_phase[w] = counts.index(max(counts)) if max(counts) > 0 else 0
+
+    cooc_network = {
+        "nodes": [{"id": w, "freq": freq, "group": kw_phase.get(w, 0)}
+                  for w, freq in network_kws_sorted],
+        "links": [{"source": w1, "target": w2, "weight": c}
+                  for (w1, w2), c in cooc_counter.items() if c >= 1]
+    }
+
+    diagram_re = [
+        ("Use Case",         r"use.case"),
+        ("Class Diagram",    r"class diagram"),
+        ("Activity Diagram", r"activity diagram"),
+        ("Sequence Diagram", r"sequence diagram"),
+        ("State Machine",    r"state.?(machine|chart|diagram)"),
+        ("Component",        r"component diagram"),
+        ("UML Profile",      r"\buml.{0,20}profile|profile.{0,20}uml"),
+        ("Object Diagram",   r"object diagram"),
+    ]
+    diagram_counts = [
+        [dtype, sum(1 for p in papers if re.search(pat, (p["title"] or "").lower()))]
+        for dtype, pat in diagram_re
+    ]
+    diagram_counts = sorted([x for x in diagram_counts if x[1] > 0], key=lambda x: -x[1])
+
+    venue_c = Counter(p["venue"] for p in papers if p["venue"] and p["venue"] not in ("–","-",""))
+    total_v = sum(venue_c.values())
+    top10_pct = round(sum(c for _, c in venue_c.most_common(10)) / total_v * 100, 1)
+
+    yr_ranked    = sorted(by_year.items(), key=lambda x: -x[1])
+    peak_years   = [y for y, _ in yr_ranked[:3]]
+    valley_years = [y for y, _ in yr_ranked[-3:]]
+
+    with_doi = sum(1 for p in papers if p["doi"] and p["doi"].startswith("https://"))
+
+    return {
+        "total":               raw["total"],
+        "authors_unique":      raw["authors_unique"],
+        "total_auth_id":       total_auth_id,
+        "venues_unique":       raw["venues_unique"],
+        "with_doi":            with_doi,
+        "doi_pct":             round(with_doi / raw["total"] * 100, 1),
+        "by_year":             by_year,
+        "yoy_change":          yoy,
+        "solo_count":          solo_count,
+        "collab_count":        collab_count,
+        "unknown_auth":        len(papers) - solo_count - collab_count,
+        "once":                once,
+        "twice":               twice,
+        "triple_plus":         triple_plus,
+        "top_author_profiles": top_author_profiles,
+        "types_by_phase":      tbp,
+        "jp_ratio":            jp_ratio,
+        "phase_labels":        ["Fase 1","Fase 2","Fase 3"],
+        "by_language":         by_language,
+        "top_bigrams":         top_bigrams,
+        "bigrams_by_phase":    bigrams_by_phase,
+        "lang_by_phase":       lang_by_phase,
+        "emerging_kws":        [[w, c] for w, c in emerging_kws],
+        "kw_evolution":        raw["kw_evolution"],
+        "diagram_counts":      diagram_counts,
+        "top_venues":          raw["top_venues"][:15],
+        "top10_venues_pct":    top10_pct,
+        "peak_years":          peak_years,
+        "valley_years":        valley_years,
+        "cooc_network":        cooc_network,
+    }
+
+
+TEMPLATE = r"""<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>UML — Insights Bibliométricos</title>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.2/dist/chart.umd.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/d3@7/dist/d3.min.js"></script>
+<style>
+:root{
+  --bg:#f0f4f9;--surface:#fff;--surface-2:#f8fafc;
+  --border:#e2e8f0;--shadow:0 1px 4px rgba(0,0,0,.07);
+  --text:#0f172a;--text-2:#475569;--muted:#94a3b8;
+  --brand:#6366f1;--brand-h:#4f46e5;--brand-bg:rgba(99,102,241,.09);
+  --p1:#f59e0b;--p2:#6366f1;--p3:#0ea5e9;
+  --p1-bg:rgba(245,158,11,.1);--p2-bg:rgba(99,102,241,.1);--p3-bg:rgba(14,165,233,.1);
+  --pos:#059669;--neg:#ef4444;
+  --font:'Segoe UI',system-ui,sans-serif;
+}
+[data-theme=dark]{
+  --bg:#0f172a;--surface:#1e293b;--surface-2:#162032;
+  --border:#334155;--shadow:0 2px 8px rgba(0,0,0,.3);
+  --text:#f1f5f9;--text-2:#94a3b8;--muted:#475569;
+  --brand:#818cf8;--brand-h:#a5b4fc;--brand-bg:rgba(129,140,248,.12);
+  --p1:#fbbf24;--p2:#818cf8;--p3:#38bdf8;
+  --p1-bg:rgba(251,191,36,.12);--p2-bg:rgba(129,140,248,.12);--p3-bg:rgba(56,189,248,.12);
+  --pos:#34d399;--neg:#f87171;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:var(--font);background:var(--bg);color:var(--text);font-size:14px;transition:background .2s,color .2s}
+a{color:var(--brand);text-decoration:none}
+a:hover{text-decoration:underline}
+
+/* Topbar */
+.topbar{background:var(--surface);border-bottom:1px solid var(--border);padding:.8rem 2rem;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:200;box-shadow:var(--shadow);min-height:62px}
+.topbar-brand .topbar-title{font-size:.95rem;font-weight:700;color:var(--brand)}
+.topbar-brand .topbar-sub{font-size:.73rem;color:var(--text-2);margin-top:2px}
+.topbar-right{display:flex;gap:.6rem;align-items:center;flex-wrap:wrap}
+.btn{display:inline-flex;align-items:center;gap:.35rem;padding:.42rem .85rem;border-radius:8px;font-size:.78rem;font-weight:600;text-decoration:none;border:1px solid var(--border);background:var(--surface);color:var(--text);cursor:pointer;transition:.15s;white-space:nowrap}
+.btn:hover{background:var(--surface-2);border-color:var(--brand);text-decoration:none;color:var(--brand)}
+.btn-primary{background:var(--brand);color:#fff;border-color:var(--brand)}
+.btn-primary:hover{opacity:.88}
+#theme-btn{background:none;border:none;cursor:pointer;font-size:1.05rem;padding:.3rem .5rem;color:var(--text-2)}
+#theme-btn:hover{color:var(--brand)}
+/* Hero */
+.hero{background:linear-gradient(135deg,#0f2447,#1e3a5f,#4338ca);color:#fff;padding:22px 32px 20px}
+.hero h1{font-size:1.4rem;font-weight:700;margin-bottom:4px}
+.hero .sub{font-size:.83rem;opacity:.8;margin-bottom:14px}
+.hero-kpis{display:flex;flex-wrap:wrap;gap:10px}
+.hkpi{background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.2);
+  border-radius:10px;padding:10px 18px;min-width:140px}
+.hkpi-v{font-size:1.6rem;font-weight:700;line-height:1.1}
+.hkpi-l{font-size:.7rem;opacity:.8;margin-top:2px}
+
+/* Section jump nav */
+.jump-nav{position:sticky;top:62px;z-index:100;background:var(--surface);
+  border-bottom:1px solid var(--border);padding:0 20px;
+  display:flex;gap:4px;overflow-x:auto;
+  scrollbar-width:none}
+.jump-nav::-webkit-scrollbar{display:none}
+.jump-btn{border:none;background:none;color:var(--text-2);font-size:.76rem;
+  padding:10px 12px;cursor:pointer;white-space:nowrap;border-bottom:2px solid transparent}
+.jump-btn:hover{color:var(--brand);background:var(--brand-bg)}
+.jump-btn.active{color:var(--brand);border-bottom-color:var(--brand);font-weight:600}
+
+/* Phase filter tabs */
+.phase-tabs{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:14px}
+.ptab{border:1px solid var(--border);background:var(--surface-2);color:var(--text-2);
+  padding:5px 14px;border-radius:20px;font-size:.76rem;cursor:pointer;font-weight:500}
+.ptab:hover{border-color:var(--brand);color:var(--brand)}
+.ptab.active{background:var(--brand);border-color:var(--brand);color:#fff;font-weight:600}
+
+/* Layout */
+main{max-width:1380px;margin:0 auto;padding:24px 20px 60px}
+section{margin-bottom:28px;scroll-margin-top:106px}
+.sec-title{font-size:1rem;font-weight:700;color:var(--text);margin-bottom:14px;
+  padding-left:12px;border-left:3px solid var(--brand)}
+.sec-sub{font-size:.78rem;font-weight:400;color:var(--muted);margin-left:8px}
+.grid-2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.grid-3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px}
+.card{background:var(--surface);border-radius:12px;padding:18px;
+  border:1px solid var(--border);box-shadow:var(--shadow)}
+.card h3{font-size:.83rem;font-weight:600;color:var(--text-2);margin-bottom:12px;
+  padding-bottom:8px;border-bottom:1px solid var(--border)}
+
+/* Chart containers */
+.ch{position:relative;width:100%}
+.ch-xs{height:160px}.ch-sm{height:205px}.ch-md{height:260px}.ch-lg{height:330px}.ch-xl{height:400px}
+
+/* Notes */
+.note{font-size:.71rem;color:var(--muted);margin-top:8px;font-style:italic}
+
+/* Findings */
+.findings-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.finding{border-radius:12px;padding:20px;position:relative}
+.finding-bar{height:3px;border-radius:2px;margin-bottom:14px}
+.finding-title{font-size:.88rem;font-weight:700;margin-bottom:8px;display:flex;align-items:center;gap:8px}
+.finding-num{width:26px;height:26px;border-radius:50%;font-size:.74rem;font-weight:700;
+  color:#fff;text-align:center;line-height:26px;flex-shrink:0}
+.finding p{font-size:.8rem;color:var(--text-2);line-height:1.65}
+.f1{background:rgba(79,134,198,.09);border:1px solid rgba(79,134,198,.25)}
+.f2{background:rgba(224,120,85,.09);border:1px solid rgba(224,120,85,.25)}
+.f3{background:rgba(91,172,158,.09);border:1px solid rgba(91,172,158,.25)}
+.f4{background:rgba(157,99,199,.09);border:1px solid rgba(157,99,199,.25)}
+.f5{background:rgba(232,184,75,.09);border:1px solid rgba(232,184,75,.25)}
+.f6{background:rgba(76,170,114,.09);border:1px solid rgba(76,170,114,.25)}
+.f7{background:rgba(224,76,142,.09);border:1px solid rgba(224,76,142,.25)}
+.f8{background:rgba(176,107,60,.09);border:1px solid rgba(176,107,60,.25)}
+
+/* Badges */
+.badge-cloud{display:flex;flex-wrap:wrap;gap:8px;padding:4px 0}
+.badge-kw{padding:6px 14px;border-radius:20px;color:#fff;display:inline-flex;
+  align-items:center;gap:5px;font-weight:600}
+.badge-cnt{background:rgba(0,0,0,.2);border-radius:10px;padding:1px 6px;font-size:.68rem}
+
+/* Stat rows */
+.stat-row{display:flex;align-items:center;gap:10px;padding:6px 0;
+  border-bottom:1px solid var(--border);font-size:.79rem}
+.stat-row:last-child{border-bottom:none}
+.sr-label{flex:1;color:var(--text)}.sr-bar{flex:2;height:8px;background:var(--surface-2);border-radius:4px;overflow:hidden}
+.sr-fill{height:100%;border-radius:4px}
+.sr-val{font-weight:700;color:var(--brand);min-width:28px;text-align:right}
+
+/* Author cards */
+.author-card{display:flex;align-items:center;gap:10px;padding:7px 0;
+  border-bottom:1px solid var(--border);font-size:.79rem}
+.author-card:last-child{border-bottom:none}
+.author-av{width:32px;height:32px;border-radius:50%;
+  background:linear-gradient(135deg,var(--p2),var(--p3));
+  color:#fff;font-weight:700;font-size:.74rem;display:flex;align-items:center;
+  justify-content:center;flex-shrink:0}
+.author-name{flex:1;font-weight:600;color:var(--text)}
+.author-meta{font-size:.71rem;color:var(--muted)}
+.author-cnt{font-weight:700;color:var(--brand);font-size:.88rem}
+
+/* Phase tags */
+.ratio-row{display:flex;align-items:center;gap:8px;margin-bottom:5px;font-size:.76rem}
+.phase-tag{padding:3px 9px;border-radius:12px;font-size:.71rem;font-weight:600;color:#fff}
+.pt1{background:var(--p1)}.pt2{background:var(--p2)}.pt3{background:var(--p3)}
+
+/* Legend */
+.leg-item{display:flex;align-items:center;gap:6px;margin-bottom:4px;font-size:.76rem;color:var(--text)}
+.leg-dot{width:10px;height:10px;border-radius:50%;flex-shrink:0}
+
+/* D3 Network */
+#cooc-net svg{width:100%;height:100%}
+#cooc-net .node circle{cursor:grab;stroke-width:1.5}
+#cooc-net .node circle:active{cursor:grabbing}
+#cooc-net .node text{font-size:10px;font-family:var(--font);pointer-events:none}
+#cooc-net .link{stroke-opacity:.5}
+.net-legend{display:flex;gap:14px;flex-wrap:wrap;margin-top:10px;font-size:.73rem;color:var(--text-2)}
+.net-leg-item{display:flex;align-items:center;gap:5px}
+.net-leg-dot{width:10px;height:10px;border-radius:50%}
+
+@media(max-width:900px){.grid-2,.grid-3,.findings-grid{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<div class="topbar">
+  <div class="topbar-brand">
+    <div class="topbar-title">UML em Modelagem de Software</div>
+    <div class="topbar-sub">Marcos Antonio Barbosa Stingher · UNOESC Sistemas de Informação · 2025</div>
+  </div>
+  <div class="topbar-right">
+    <a href="resumo_executivo.html" class="btn">&#128197; Resumo Executivo</a>
+    <a href="dashboard_uml.html" class="btn btn-primary">&#8592; Dashboard Principal</a>
+    <button id="theme-btn" onclick="toggleTheme()">&#9790; Modo Escuro</button>
+  </div>
+</div>
+<div class="hero">
+  <h1>Insights &amp; Análise Aprofundada</h1>
+  <p class="sub">Corpus bibliométrico 2010–2024 · 207 artigos</p>
+  <div class="hero-kpis" id="hero-kpis"></div>
+</div>
+
+<nav class="jump-nav" id="jump-nav">
+  <button class="jump-btn" onclick="jumpTo('s-temporal')">Evolução Temporal</button>
+  <button class="jump-btn" onclick="jumpTo('s-autoria')">Autoria &amp; Colaboração</button>
+  <button class="jump-btn" onclick="jumpTo('s-tipos')">Tipologia &amp; Idioma</button>
+  <button class="jump-btn" onclick="jumpTo('s-topicos')">Tópicos &amp; Vocabulário</button>
+  <button class="jump-btn" onclick="jumpTo('s-emergentes')">Palavras Emergentes</button>
+  <button class="jump-btn" onclick="jumpTo('s-cooc')">Rede de Co-ocorrência</button>
+  <button class="jump-btn" onclick="jumpTo('s-editorial')">Paisagem Editorial</button>
+  <button class="jump-btn" onclick="jumpTo('s-achados')">Principais Achados</button>
+</nav>
+
+<main>
+
+<section id="s-temporal">
+  <div class="sec-title">Evolução Temporal Detalhada <span class="sec-sub">15 anos de produção acadêmica</span></div>
+  <div class="grid-2">
+    <div class="card">
+      <h3>Produção Anual (2010–2024)</h3>
+      <div class="ch ch-lg"><canvas id="c-timeline"></canvas></div>
+      <p class="note" id="timeline-note"></p>
+    </div>
+    <div class="card">
+      <h3>Variação Anual (Year-over-Year)</h3>
+      <div class="ch ch-lg"><canvas id="c-yoy"></canvas></div>
+      <p class="note">Verde = crescimento | Vermelho = queda | Maior alta: 2021 (+160%)</p>
+    </div>
+  </div>
+</section>
+
+<section id="s-autoria">
+  <div class="sec-title">Autoria e Colaboração <span class="sec-sub">Perfil dos pesquisadores</span></div>
+  <div class="grid-3">
+    <div class="card">
+      <h3>Solo vs. Colaborativo</h3>
+      <div class="ch ch-sm"><canvas id="c-solo"></canvas></div>
+      <div id="solo-legend" style="margin-top:10px"></div>
+    </div>
+    <div class="card">
+      <h3>Concentração de Autoria (Lei de Lotka)</h3>
+      <div class="ch ch-sm"><canvas id="c-authfreq"></canvas></div>
+      <p class="note">Escala logarítmica. A grande maioria publicou apenas uma vez.</p>
+    </div>
+    <div class="card">
+      <h3>Pesquisadores mais Prolíficos</h3>
+      <div id="author-list"></div>
+    </div>
+  </div>
+</section>
+
+<section id="s-tipos">
+  <div class="sec-title">Tipologia de Documentos &amp; Diversidade Linguística</div>
+  <div class="phase-tabs" id="tabs-lang">
+    <button class="ptab active" data-ph="all">Todas as Fases</button>
+    <button class="ptab" data-ph="ph1">Fase 1</button>
+    <button class="ptab" data-ph="ph2">Fase 2</button>
+    <button class="ptab" data-ph="ph3">Fase 3</button>
+  </div>
+  <div class="grid-2">
+    <div class="card">
+      <h3>Tipos de Documento por Fase</h3>
+      <div class="ch ch-md"><canvas id="c-types"></canvas></div>
+      <div id="jp-ratios" style="margin-top:12px"></div>
+    </div>
+    <div class="card">
+      <h3>Idioma dos Títulos</h3>
+      <div class="ch ch-md"><canvas id="c-lang"></canvas></div>
+      <p class="note">11,6% dos artigos têm títulos em Português — 2ª maior comunidade linguística</p>
+    </div>
+  </div>
+</section>
+
+<section id="s-topicos">
+  <div class="sec-title">Tópicos e Vocabulário de Pesquisa</div>
+  <div class="phase-tabs" id="tabs-topics">
+    <button class="ptab active" data-ph="all">Todas as Fases</button>
+    <button class="ptab" data-ph="ph1">Fase 1</button>
+    <button class="ptab" data-ph="ph2">Fase 2</button>
+    <button class="ptab" data-ph="ph3">Fase 3</button>
+  </div>
+  <div class="grid-2">
+    <div class="card">
+      <h3>Bigramas mais Frequentes nos Títulos</h3>
+      <div class="ch ch-xl"><canvas id="c-bigrams"></canvas></div>
+    </div>
+    <div class="card">
+      <h3>Evolução das Palavras-Chave por Fase</h3>
+      <div class="ch ch-xl"><canvas id="c-kwevo"></canvas></div>
+      <p class="note">Frequência de ocorrência nos títulos por fase</p>
+    </div>
+  </div>
+</section>
+
+<section id="s-emergentes">
+  <div class="sec-title">Palavras-Chave Emergentes na Fase 3 (2020–2024) <span class="sec-sub">termos ausentes nas Fases 1 e 2</span></div>
+  <div class="card">
+    <h3>Termos que apareceram pela 1ª vez no corpus na Fase 3 (freq. &gt; 1)</h3>
+    <div class="badge-cloud" id="emerging-cloud"></div>
+    <p class="note" style="margin-top:12px">Tamanho proporcional à frequência. Revela expansão do UML para domínios modernos: APIs REST, tecnologias web, realidade virtual e machine learning.</p>
+  </div>
+</section>
+
+<section id="s-cooc">
+  <div class="sec-title">Rede de Co-ocorrência de Palavras-Chave <span class="sec-sub">Top termos por fase — layout force-directed</span></div>
+  <div class="card">
+    <h3>Mapa interativo de co-ocorrência (D3.js) — arraste os nós · scroll ou botões para zoom</h3>
+    <div id="cooc-net" style="height:460px;border-radius:8px;overflow:hidden;background:var(--surface-2);position:relative"></div>
+    <div class="net-legend" id="net-legend"></div>
+    <p class="note" style="margin-top:10px">Nós coloridos por fase predominante: amarelo = Fase 1 | índigo = Fase 2 | azul-ciano = Fase 3. Tamanho proporcional à frequência. Espessura das arestas proporcional à co-ocorrência.</p>
+  </div>
+</section>
+
+<section id="s-editorial">
+  <div class="sec-title">Paisagem Editorial &amp; Diagramas UML Estudados</div>
+  <div class="grid-2">
+    <div class="card">
+      <h3>Top 15 Venues (periódicos e conferências)</h3>
+      <div class="ch ch-xl"><canvas id="c-venues"></canvas></div>
+      <p class="note" id="venue-note"></p>
+    </div>
+    <div class="card">
+      <h3>Tipos de Diagrama UML Explicitamente Estudados</h3>
+      <div class="ch ch-sm"><canvas id="c-diagrams"></canvas></div>
+      <p class="note" style="margin-top:10px">Artigos que mencionam explicitamente o tipo de diagrama no título.</p>
+      <h3 style="margin-top:18px">Cobertura por Base de Dados</h3>
+      <div id="source-list" style="margin-top:8px"></div>
+    </div>
+  </div>
+</section>
+
+<section id="s-achados">
+  <div class="sec-title">8 Principais Achados &amp; Padrões Identificados</div>
+  <div class="findings-grid" id="findings-grid"></div>
+</section>
+
+</main>
+<footer style="text-align:center;color:var(--muted);font-size:.7rem;padding:18px;border-top:1px solid var(--border)">
+  Análise bibliométrica — UML em Modelagem de Software (2010–2024) |
+  Marcos Antonio Barbosa Stingher | UNOESC Chapecó, 2025
+</footer>
+<script>
+Chart.defaults.animation = false;
+const I = __INSIGHTS_DATA__;
+
+// ── Safe DOM helpers ───────────────────────────────────────────────────────────
+function el(tag, attrs){
+  var e = document.createElement(tag);
+  if(attrs) Object.keys(attrs).forEach(function(k){ e[k]=attrs[k]; });
+  return e;
+}
+function txt(s){ return document.createTextNode(String(s)); }
+
+// ── CSS variable reader ────────────────────────────────────────────────────────
+function C(v){ return getComputedStyle(document.documentElement).getPropertyValue(v).trim(); }
+
+// ── Theme ─────────────────────────────────────────────────────────────────────
+(function(){
+  var saved = localStorage.getItem('theme') || 'light';
+  if(saved === 'dark') document.documentElement.setAttribute('data-theme','dark');
+  updateThemeBtn();
+})();
+function updateThemeBtn(){
+  var btn = document.getElementById('theme-btn');
+  if(!btn) return;
+  var isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+  btn.textContent = isDark ? '☀ Modo Claro' : '☾ Modo Escuro';
+}
+function toggleTheme(){
+  var isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+  if(isDark){
+    document.documentElement.removeAttribute('data-theme');
+    localStorage.setItem('theme','light');
+  } else {
+    document.documentElement.setAttribute('data-theme','dark');
+    localStorage.setItem('theme','dark');
+  }
+  updateThemeBtn();
+  rebuildCharts();
+}
+
+// ── Phase filter state ─────────────────────────────────────────────────────────
+var currentPhase = 'all';
+
+function phBigrams(){
+  var m = {all:I.top_bigrams, ph1:I.bigrams_by_phase.ph1, ph2:I.bigrams_by_phase.ph2, ph3:I.bigrams_by_phase.ph3};
+  return m[currentPhase] || m.all;
+}
+function phLang(){
+  var m = {all:I.by_language, ph1:I.lang_by_phase.ph1, ph2:I.lang_by_phase.ph2, ph3:I.lang_by_phase.ph3};
+  return m[currentPhase] || m.all;
+}
+
+// ── Section jump nav ───────────────────────────────────────────────────────────
+function jumpTo(id){
+  var el = document.getElementById(id);
+  if(el) el.scrollIntoView({behavior:'smooth'});
+}
+(function(){
+  var sections = ['s-temporal','s-autoria','s-tipos','s-topicos','s-emergentes','s-cooc','s-editorial','s-achados'];
+  var io = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if(e.isIntersecting){
+        var id = e.target.id;
+        document.querySelectorAll('.jump-btn').forEach(function(b,i){
+          b.classList.toggle('active', sections[i] === id);
+        });
+      }
+    });
+  },{threshold:0.3});
+  sections.forEach(function(id){ var s=document.getElementById(id); if(s)io.observe(s); });
+})();
+
+// ── Phase tabs wiring ──────────────────────────────────────────────────────────
+document.querySelectorAll('#tabs-lang .ptab, #tabs-topics .ptab').forEach(function(btn){
+  btn.addEventListener('click', function(){
+    // sync both tab groups
+    var ph = this.getAttribute('data-ph');
+    currentPhase = ph;
+    document.querySelectorAll('#tabs-lang .ptab, #tabs-topics .ptab').forEach(function(b){
+      b.classList.toggle('active', b.getAttribute('data-ph') === ph);
+    });
+    rebuildCharts();
+  });
+});
+
+// ── Chart registry ─────────────────────────────────────────────────────────────
+var charts = [];
+function rebuildCharts(){
+  charts.forEach(function(c){ c.destroy(); });
+  charts = [];
+  Chart.defaults.animation = false;
+  Chart.defaults.color = C('--text-2');
+  Chart.defaults.borderColor = C('--border');
+  initTimeline();
+  initYoY();
+  initSolo();
+  initAuthFreq();
+  initTypes();
+  initLang();
+  initBigrams();
+  initKwEvo();
+  initVenues();
+  initDiagrams();
+  initCoocNetwork();
+}
+
+// ── Colors ────────────────────────────────────────────────────────────────────
+var EMERGE_COL = ['#2563eb','#7c3aed','#0891b2','#059669','#d97706',
+                  '#dc2626','#4f46e5','#0d9488','#b45309','#6d28d9',
+                  '#047857','#be185d','#1d4ed8','#7e22ce','#065f46','#92400e'];
+
+// ── Hero KPIs ──────────────────────────────────────────────────────────────────
+var pctCollab = Math.round(I.collab_count/I.total*100);
+var heroData = [
+  {v: I.total,                  l: 'artigos no corpus'},
+  {v: I.total_auth_id,          l: 'autores identificados'},
+  {v: I.venues_unique,          l: 'venues distintos'},
+  {v: I.doi_pct + '%',          l: 'com DOI verificável'},
+  {v: pctCollab + '%',          l: 'artigos colaborativos'},
+  {v: I.top10_venues_pct + '%', l: 'top-10 venues'},
+];
+var heroEl = document.getElementById('hero-kpis');
+heroData.forEach(function(d){
+  var div = el('div',{className:'hkpi'});
+  var vEl = el('div',{className:'hkpi-v'}); vEl.appendChild(txt(d.v));
+  var lEl = el('div',{className:'hkpi-l'}); lEl.appendChild(txt(d.l));
+  div.appendChild(vEl); div.appendChild(lEl);
+  heroEl.appendChild(div);
+});
+
+// ── 1. Timeline ────────────────────────────────────────────────────────────────
+function initTimeline(){
+  var yrs  = Object.keys(I.by_year);
+  var vals = Object.values(I.by_year);
+  var p1c = C('--p1'), negc = C('--neg');
+  var ptColors = yrs.map(function(y){
+    if(I.peak_years.indexOf(y)>=0) return p1c;
+    if(I.valley_years.indexOf(y)>=0) return negc;
+    return C('--brand');
+  });
+  var ptR = yrs.map(function(y){
+    return (I.peak_years.indexOf(y)>=0||I.valley_years.indexOf(y)>=0)?7:4;
+  });
+  var ch = new Chart(document.getElementById('c-timeline'),{
+    type:'line',
+    data:{labels:yrs,datasets:[{label:'Publicações',data:vals,fill:true,
+      backgroundColor:C('--brand-bg'),borderColor:C('--brand'),borderWidth:2,
+      pointBackgroundColor:ptColors,pointRadius:ptR,pointHoverRadius:8,tension:.3}]},
+    options:{responsive:true,maintainAspectRatio:false,
+      plugins:{legend:{display:false},tooltip:{callbacks:{afterLabel:function(c){
+        var y=c.label;
+        if(I.peak_years.indexOf(y)>=0) return 'Pico histórico';
+        if(I.valley_years.indexOf(y)>=0) return 'Mínimo local';
+        return '';
+      }}}},
+      scales:{x:{grid:{display:false},ticks:{font:{size:10}}},
+              y:{beginAtZero:true,ticks:{font:{size:10},maxTicksLimit:7}}}}
+  });
+  charts.push(ch);
+  var noteEl = document.getElementById('timeline-note');
+  noteEl.textContent = 'Picos (' + I.peak_years.join(', ') + ') | Vales (' + I.valley_years.join(', ') + ')';
+}
+
+// ── 2. YoY ─────────────────────────────────────────────────────────────────────
+function initYoY(){
+  var yrs  = Object.keys(I.yoy_change);
+  var vals = Object.values(I.yoy_change);
+  var posc = C('--pos'), negc = C('--neg');
+  var ch = new Chart(document.getElementById('c-yoy'),{
+    type:'bar',
+    data:{labels:yrs,datasets:[{label:'Variação',data:vals,borderRadius:3,
+      backgroundColor:vals.map(function(v){return v>=0?posc+'bb':negc+'bb'}),
+      borderColor:vals.map(function(v){return v>=0?posc:negc}),borderWidth:1}]},
+    options:{responsive:true,maintainAspectRatio:false,
+      plugins:{legend:{display:false}},
+      scales:{x:{grid:{display:false},ticks:{font:{size:10}}},
+              y:{ticks:{font:{size:10},maxTicksLimit:7}}}}
+  });
+  charts.push(ch);
+}
+
+// ── 3. Solo vs Collab ──────────────────────────────────────────────────────────
+function initSolo(){
+  var ch = new Chart(document.getElementById('c-solo'),{
+    type:'doughnut',
+    data:{labels:['Colaborativo (2+)','Solo (1)','Desconhecido'],
+      datasets:[{data:[I.collab_count,I.solo_count,I.unknown_auth],
+        backgroundColor:[C('--p3'),C('--p1'),C('--muted')],borderWidth:2,borderColor:C('--surface')}]},
+    options:{responsive:true,maintainAspectRatio:false,cutout:'62%',
+      plugins:{legend:{display:false},tooltip:{callbacks:{label:function(c){
+        return c.label+': '+c.raw+' ('+Math.round(c.raw/I.total*100)+'%)';
+      }}}}}
+  });
+  charts.push(ch);
+  var legEl = document.getElementById('solo-legend');
+  legEl.innerHTML = '';
+  [{c:C('--p3'),l:'Colaborativo',v:I.collab_count},
+   {c:C('--p1'),l:'Solo',v:I.solo_count},
+   {c:C('--muted'),l:'Desconhecido',v:I.unknown_auth}].forEach(function(d){
+    var row=el('div',{className:'leg-item'});
+    var dot=el('span',{className:'leg-dot'}); dot.style.background=d.c;
+    var span=el('span');
+    span.appendChild(txt(d.l+': '));
+    var b=el('strong'); b.appendChild(txt(d.v)); span.appendChild(b);
+    span.appendChild(txt(' ('+Math.round(d.v/I.total*100)+'%)'));
+    row.appendChild(dot); row.appendChild(span); legEl.appendChild(row);
+  });
+}
+
+// ── 4. Author Frequency ────────────────────────────────────────────────────────
+function initAuthFreq(){
+  var ch = new Chart(document.getElementById('c-authfreq'),{
+    type:'bar',
+    data:{labels:['1 artigo','2 artigos','3+ artigos'],
+      datasets:[{data:[I.once,I.twice,I.triple_plus],
+        backgroundColor:[C('--p3'),C('--p2'),C('--p1')],borderRadius:4}]},
+    options:{responsive:true,maintainAspectRatio:false,
+      plugins:{legend:{display:false},tooltip:{callbacks:{label:function(c){
+        return c.raw+' autores ('+Math.round(c.raw/I.total_auth_id*100)+'%)';
+      }}}},
+      scales:{x:{grid:{display:false},ticks:{font:{size:10}}},
+              y:{type:'logarithmic',ticks:{font:{size:10},maxTicksLimit:5,
+                callback:function(v){var n=Number(v);return [1,5,10,50,100,500].includes(n)?n:null;}}}}}
+  });
+  charts.push(ch);
+}
+
+// ── 5. Author Profiles ─────────────────────────────────────────────────────────
+(function(){
+  var listEl = document.getElementById('author-list');
+  I.top_author_profiles.slice(0,8).forEach(function(a){
+    var card=el('div',{className:'author-card'});
+    var initials=a.name.split(' ').slice(0,2).map(function(w){return w[0]||'';}).join('');
+    var av=el('div',{className:'author-av'}); av.appendChild(txt(initials));
+    var info=el('div',{style:'flex:1'});
+    var nameEl=el('div',{className:'author-name'}); nameEl.appendChild(txt(a.name));
+    var metaEl=el('div',{className:'author-meta'});
+    metaEl.appendChild(txt(a.first+(a.span>0?'–'+a.last:'')+' | span: '+a.span+'a'));
+    info.appendChild(nameEl); info.appendChild(metaEl);
+    var cntEl=el('div',{className:'author-cnt'}); cntEl.appendChild(txt(a.count+'×'));
+    card.appendChild(av); card.appendChild(info); card.appendChild(cntEl);
+    listEl.appendChild(card);
+  });
+})();
+
+// ── 6. Types by Phase ──────────────────────────────────────────────────────────
+function initTypes(){
+  var types=['Journal Article','Proceedings Article','Book Chapter','Dissertation','Outros'];
+  var TYPE_C={'Journal Article':'#4f86c6','Proceedings Article':'#e07855',
+              'Book Chapter':C('--p3'),'Dissertation':C('--p1'),'Outros':C('--muted')};
+  var ch = new Chart(document.getElementById('c-types'),{
+    type:'bar',
+    data:{labels:I.phase_labels,datasets:types.map(function(t){return{
+      label:t,data:I.types_by_phase[t],backgroundColor:TYPE_C[t],borderRadius:3};})},
+    options:{responsive:true,maintainAspectRatio:false,
+      plugins:{legend:{position:'bottom',labels:{font:{size:10},boxWidth:10,padding:10}}},
+      scales:{x:{grid:{display:false},ticks:{font:{size:10}}},
+              y:{ticks:{font:{size:10},maxTicksLimit:7}}}}
+  });
+  charts.push(ch);
+  var jpEl=document.getElementById('jp-ratios');
+  jpEl.innerHTML='';
+  var label=el('div',{style:'font-size:.73rem;font-weight:600;color:var(--muted);margin-bottom:6px'});
+  label.appendChild(txt('Razão Journals / Proceedings por fase:'));
+  jpEl.appendChild(label);
+  ['pt1','pt2','pt3'].forEach(function(cls,i){
+    var row=el('div',{className:'ratio-row'});
+    var tag=el('span',{className:'phase-tag '+cls});
+    tag.appendChild(txt(I.phase_labels[i]));
+    var num=el('strong'); num.appendChild(txt(I.jp_ratio[i].toFixed(1)));
+    var desc=el('span',{style:'color:var(--muted)'}); desc.appendChild(txt(' journals por conferência'));
+    row.appendChild(tag); row.appendChild(num); row.appendChild(desc);
+    jpEl.appendChild(row);
+  });
+}
+
+// ── 7. Language ────────────────────────────────────────────────────────────────
+function initLang(){
+  var langData = phLang();
+  var LANG_C=[C('--brand'),C('--p3'),C('--p2'),C('--p1'),C('--pos'),C('--neg')];
+  var labels=langData.map(function(x){return x[0];});
+  var vals  =langData.map(function(x){return x[1];});
+  var ch = new Chart(document.getElementById('c-lang'),{
+    type:'bar',
+    data:{labels:labels,datasets:[{data:vals,
+      backgroundColor:LANG_C.slice(0,labels.length),borderRadius:4}]},
+    options:{indexAxis:'y',responsive:true,maintainAspectRatio:false,
+      plugins:{legend:{display:false},tooltip:{callbacks:{label:function(c){
+        return c.raw+' artigos ('+Math.round(c.raw/I.total*100)+'%)';
+      }}}},
+      scales:{x:{ticks:{font:{size:10}}},
+              y:{grid:{display:false},ticks:{font:{size:11}}}}}
+  });
+  charts.push(ch);
+}
+
+// ── 8. Bigrams ─────────────────────────────────────────────────────────────────
+function initBigrams(){
+  var bigramData = phBigrams();
+  var labels=bigramData.map(function(x){return x[0];});
+  var vals  =bigramData.map(function(x){return x[1];});
+  var mx=Math.max.apply(null,vals)||1;
+  var brand = C('--brand');
+  var ch = new Chart(document.getElementById('c-bigrams'),{
+    type:'bar',
+    data:{labels:labels,datasets:[{data:vals,borderRadius:3,
+      backgroundColor:vals.map(function(v){
+        var t=v/mx;
+        return brand + Math.round(t*200+30).toString(16).padStart(2,'0');
+      })}]},
+    options:{indexAxis:'y',responsive:true,maintainAspectRatio:false,
+      plugins:{legend:{display:false}},
+      scales:{x:{ticks:{font:{size:10}}},
+              y:{grid:{display:false},ticks:{font:{size:10}}}}}
+  });
+  charts.push(ch);
+}
+
+// ── 9. KW Evolution ────────────────────────────────────────────────────────────
+function initKwEvo(){
+  var KW_C=[C('--brand'),C('--p2'),C('--p3'),C('--p1'),C('--neg'),C('--pos'),'#06b6d4','#6d28d9'];
+  var kws=Object.keys(I.kw_evolution);
+  var ch = new Chart(document.getElementById('c-kwevo'),{
+    type:'line',
+    data:{labels:I.phase_labels,datasets:kws.map(function(kw,i){return{
+      label:kw,data:I.kw_evolution[kw],borderColor:KW_C[i%KW_C.length],
+      backgroundColor:'transparent',borderWidth:2,pointRadius:5,tension:.2};})},
+    options:{responsive:true,maintainAspectRatio:false,
+      plugins:{legend:{position:'bottom',labels:{font:{size:10},boxWidth:10,padding:8}}},
+      scales:{x:{grid:{display:false},ticks:{font:{size:10}}},
+              y:{beginAtZero:true,ticks:{font:{size:10},maxTicksLimit:7}}}}
+  });
+  charts.push(ch);
+}
+
+// ── 10. Emerging Keywords ──────────────────────────────────────────────────────
+(function(){
+  var cloud=document.getElementById('emerging-cloud');
+  if(!I.emerging_kws.length){ cloud.appendChild(txt('Nenhum dado.')); return; }
+  var maxC=I.emerging_kws[0][1];
+  I.emerging_kws.forEach(function(item,i){
+    var w=item[0], c=item[1];
+    var size=12+Math.round((c/maxC)*10);
+    var span=el('span',{className:'badge-kw'});
+    span.style.background=EMERGE_COL[i%EMERGE_COL.length];
+    span.style.fontSize=size+'px';
+    span.appendChild(txt(w));
+    var cnt=el('span',{className:'badge-cnt'});
+    cnt.appendChild(txt(c));
+    span.appendChild(cnt);
+    cloud.appendChild(span);
+  });
+})();
+
+// ── 11. Venues ─────────────────────────────────────────────────────────────────
+function initVenues(){
+  var labels=I.top_venues.map(function(x){var s=x[0];return s.length>42?s.slice(0,40)+'...':s;});
+  var vals  =I.top_venues.map(function(x){return x[1];});
+  var ch = new Chart(document.getElementById('c-venues'),{
+    type:'bar',
+    data:{labels:labels,datasets:[{data:vals,borderRadius:3,
+      backgroundColor:C('--brand')+'aa',hoverBackgroundColor:C('--brand')}]},
+    options:{indexAxis:'y',responsive:true,maintainAspectRatio:false,
+      plugins:{legend:{display:false}},
+      scales:{x:{ticks:{font:{size:10}}},
+              y:{grid:{display:false},ticks:{font:{size:9}}}}}
+  });
+  charts.push(ch);
+  var noteEl=document.getElementById('venue-note');
+  noteEl.textContent='Top 10 venues = '+I.top10_venues_pct+'% das publicações. '+
+    'Campo fragmentado: '+I.venues_unique+' venues distintos no corpus.';
+}
+
+// ── 12. Diagram Types ──────────────────────────────────────────────────────────
+function initDiagrams(){
+  if(!I.diagram_counts.length) return;
+  var labels=I.diagram_counts.map(function(x){return x[0];});
+  var vals  =I.diagram_counts.map(function(x){return x[1];});
+  var DCOLS=['#4f86c6','#e07855','#5bac9e','#9d63c7','#e8b84b','#4caa72','#e04c8e'];
+  var ch = new Chart(document.getElementById('c-diagrams'),{
+    type:'bar',
+    data:{labels:labels,datasets:[{data:vals,borderRadius:4,
+      backgroundColor:DCOLS.slice(0,labels.length)}]},
+    options:{indexAxis:'y',responsive:true,maintainAspectRatio:false,
+      plugins:{legend:{display:false}},
+      scales:{x:{ticks:{font:{size:10}}},
+              y:{grid:{display:false},ticks:{font:{size:10}}}}}
+  });
+  charts.push(ch);
+}
+
+// ── 13. Source Coverage ────────────────────────────────────────────────────────
+(function(){
+  var sources=[
+    {l:'SciSpace Full-Text',v:96, c:'#4f86c6'},
+    {l:'SciSpace',          v:83, c:'#5bac9e'},
+    {l:'PubMed',            v:15, c:'#9d63c7'},
+    {l:'Google Scholar',    v:13, c:'#e8b84b'},
+  ];
+  var srcEl=document.getElementById('source-list');
+  sources.forEach(function(s){
+    var row=el('div',{className:'stat-row'});
+    var lbl=el('span',{className:'sr-label'}); lbl.appendChild(txt(s.l));
+    var bg=el('div',{className:'sr-bar'});
+    var fill=el('div',{className:'sr-fill'}); fill.style.width=Math.round(s.v/207*100)+'%'; fill.style.background=s.c;
+    bg.appendChild(fill);
+    var val=el('span',{className:'sr-val'}); val.appendChild(txt(s.v));
+    row.appendChild(lbl); row.appendChild(bg); row.appendChild(val);
+    srcEl.appendChild(row);
+  });
+})();
+
+// ── 14. D3 Co-occurrence Network ───────────────────────────────────────────────
+function initCoocNetwork(){
+  var container = document.getElementById('cooc-net');
+  container.innerHTML = '';
+  if(!I.cooc_network || !I.cooc_network.nodes.length) return;
+
+  var nodes = I.cooc_network.nodes.map(function(n){return Object.assign({},n);});
+  var links = I.cooc_network.links.map(function(l){return Object.assign({},l);});
+
+  var w = container.clientWidth || 700;
+  var h = 460;
+
+  var groupColors = [C('--p1'), C('--p2'), C('--p3')];
+  var groupNames = ['Fase 1 predominante','Fase 2 predominante','Fase 3 predominante'];
+
+  var svg = d3.select(container).append('svg')
+    .attr('width', w).attr('height', h)
+    .style('cursor','grab');
+
+  // All content lives in this group — zoom transforms it
+  var g = svg.append('g');
+
+  var wMax = d3.max(links, function(l){return l.weight;}) || 1;
+  var fMax = d3.max(nodes, function(n){return n.freq;}) || 1;
+
+  var linkSel = g.append('g').selectAll('line')
+    .data(links).enter().append('line')
+    .attr('class','link')
+    .attr('stroke', C('--muted'))
+    .attr('stroke-width', function(l){ return Math.sqrt(l.weight/wMax)*3+0.5; });
+
+  var nodeSel = g.append('g').selectAll('g')
+    .data(nodes).enter().append('g')
+    .attr('class','node')
+    .call(d3.drag()
+      .on('start', function(event,d){
+        if(!event.active) sim.alphaTarget(0.3).restart();
+        d.fx=d.x; d.fy=d.y;
+      })
+      .on('drag', function(event,d){ d.fx=event.x; d.fy=event.y; })
+      .on('end', function(event,d){
+        if(!event.active) sim.alphaTarget(0);
+        d.fx=null; d.fy=null;
+      })
+    );
+
+  nodeSel.append('circle')
+    .attr('r', function(n){ return Math.sqrt(n.freq/fMax)*22+8; })
+    .attr('fill', function(n){ return groupColors[n.group]||groupColors[0]; })
+    .attr('stroke', C('--surface'))
+    .attr('fill-opacity', 0.85);
+
+  nodeSel.append('text')
+    .attr('dy','0.35em')
+    .attr('text-anchor','middle')
+    .attr('fill', C('--text'))
+    .attr('font-size', function(n){ return Math.max(9, Math.min(12, Math.sqrt(n.freq/fMax)*6+9))+'px'; })
+    .text(function(n){ return n.id; });
+
+  var sim = d3.forceSimulation(nodes)
+    .force('link', d3.forceLink(links).id(function(d){return d.id;}).distance(90))
+    .force('charge', d3.forceManyBody().strength(-200))
+    .force('center', d3.forceCenter(w/2, h/2))
+    .force('collision', d3.forceCollide().radius(function(n){ return Math.sqrt(n.freq/fMax)*22+16; }))
+    .on('tick', function(){
+      linkSel
+        .attr('x1',function(l){return l.source.x;})
+        .attr('y1',function(l){return l.source.y;})
+        .attr('x2',function(l){return l.target.x;})
+        .attr('y2',function(l){return l.target.y;});
+      nodeSel.attr('transform',function(n){return 'translate('+n.x+','+n.y+')';});
+    });
+
+  // ── Zoom behavior ────────────────────────────────────────────────────────
+  var zoomBeh = d3.zoom()
+    .scaleExtent([0.25, 6])
+    .on('zoom', function(event){
+      g.attr('transform', event.transform);
+      svg.style('cursor', event.transform.k !== 1 ? 'grab' : 'grab');
+    });
+  svg.call(zoomBeh).on('dblclick.zoom', null);
+
+  // Zoom control buttons
+  var btnWrap = document.createElement('div');
+  btnWrap.style.cssText = 'position:absolute;top:8px;right:8px;display:flex;flex-direction:column;gap:4px;z-index:10';
+  function mkBtn(label, title, fn){
+    var b = document.createElement('button');
+    b.title = title;
+    b.style.cssText = 'width:30px;height:30px;border:1px solid var(--border);background:var(--surface);'
+      + 'color:var(--text);border-radius:6px;cursor:pointer;font-size:15px;font-weight:600;'
+      + 'display:flex;align-items:center;justify-content:center;opacity:.8;transition:opacity .15s';
+    b.textContent = label;
+    b.addEventListener('mouseenter', function(){ b.style.opacity='1'; });
+    b.addEventListener('mouseleave', function(){ b.style.opacity='.8'; });
+    b.addEventListener('click', fn);
+    return b;
+  }
+  btnWrap.appendChild(mkBtn('+','Zoom in',  function(){ svg.transition().duration(220).call(zoomBeh.scaleBy, 1.5); }));
+  btnWrap.appendChild(mkBtn('−','Zoom out', function(){ svg.transition().duration(220).call(zoomBeh.scaleBy, 1/1.5); }));
+  btnWrap.appendChild(mkBtn('⊙','Resetar',  function(){ svg.transition().duration(350).call(zoomBeh.transform, d3.zoomIdentity); }));
+  container.appendChild(btnWrap);
+
+  // Network legend
+  var legEl = document.getElementById('net-legend');
+  legEl.innerHTML = '';
+  groupNames.forEach(function(name, i){
+    var item = el('div',{className:'net-leg-item'});
+    var dot = el('span',{className:'net-leg-dot'}); dot.style.background = groupColors[i];
+    var span = el('span'); span.appendChild(txt(name));
+    item.appendChild(dot); item.appendChild(span);
+    legEl.appendChild(item);
+  });
+}
+
+// ── 15. Findings ───────────────────────────────────────────────────────────────
+(function(){
+  var pctOnce = Math.round(I.once/I.total_auth_id*100);
+  var pctTrip = Math.round(I.triple_plus/I.total_auth_id*100);
+  var findings=[
+    {cls:'f1',n:1,nc:'#4f86c6',title:'Produção Resiliente — Três Picos em 15 Anos',
+     parts:['Apesar de quedas acentuadas em 2015 (',{b:'7 artigos, -59%'},') e 2020 (',{b:'5 artigos, mínimo histórico'},
+       ' impactado pela pandemia), a produção sempre se recuperou. Três picos bem definidos — 2011 (23), 2018 (21) e 2023 (19) — sugerem um ciclo de renovação de interesse a cada ~6 anos, demonstrando a vitalidade contínua do UML como tema de pesquisa.']},
+    {cls:'f2',n:2,nc:'#e07855',title:'Lei de Lotka Verificada no Corpus',
+     parts:[{b:pctOnce+'% dos '+I.total_auth_id+' autores identificados publicaram apenas uma vez'},
+       '. Somente ',{b:I.triple_plus+' autores ('+pctTrip+'%)'}, ' publicaram 3 ou mais vezes. Essa distribuição de cauda longa confirma empiricamente a Lei de Lotka: em qualquer campo científico, a produção se concentra em poucos pesquisadores prolíficos enquanto a maioria contribui pontualmente.']},
+    {cls:'f3',n:3,nc:'#5bac9e',title:'Colaboração é a Norma, não a Exceção',
+     parts:[{b:pctCollab+'% dos artigos ('+I.collab_count+'/'+I.total+')'},
+       ' foram escritos por dois ou mais autores, com média de 2,11 autores por publicação. UML atrai trabalhos interdisciplinares e inter-institucionais por natureza — o maior pesquisador individual ainda colaborou com múltiplos grupos ao longo de 7 anos.']},
+    {cls:'f4',n:4,nc:'#9d63c7',title:'Comunidade Lusófona: 2ª Maior Presença Linguística',
+     parts:['Surpreendentemente, ',{b:'11,6% dos artigos (24 publicações) têm títulos em Português'},
+       ' — posicionando Brasil e Portugal à frente de países como Alemanha (5,3%), França e Espanha. Um dado que indica forte comunidade lusófona ativa em pesquisa de modelagem UML, com produção acadêmica relevante nas últimas duas décadas.']},
+    {cls:'f5',n:5,nc:'#e8b84b',title:'Campo Extremamente Fragmentado: '+I.venues_unique+' Venues',
+     parts:['Com ',{b:I.venues_unique+' venues distintos'},' e os 10 principais respondendo por apenas ',
+       {b:I.top10_venues_pct+'% das publicações'},', não existe periódico ou conferência dominante em UML. O conhecimento está disperso em Engenharia de Software, Sistemas de Informação, Computação Geral e áreas-alvo específicas — refletindo a transversalidade da UML como linguagem de modelagem.']},
+    {cls:'f6',n:6,nc:'#4caa72',title:'Fase 2 foi o Boom das Conferências',
+     parts:['A razão Journals/Proceedings caiu de ',{b:'3,0 na Fase 1'},' para ',{b:'1,8 na Fase 2'},
+       ' (2015–2019), indicando maior atividade em conferências no período de expansão MDE. Na Fase 3, o índice voltou a ',{b:'3,2 — o maior do corpus'},', sinalizando maturação e consolidação em periódicos revisados por pares.']},
+    {cls:'f7',n:7,nc:'#e04c8e',title:'UML Encontra REST, IA e Realidade Virtual',
+     parts:['Na Fase 3 (2020–2024), emergiram termos exclusivos: ',{b:'REST (5x)'},', ',{b:'Spring Boot (3x)'},', ',
+       {b:'Virtual Reality (3x)'},', ',{b:'Machine Learning (3x)'},'. Isso evidencia que o UML está sendo adotado em domínios modernos — design de APIs, sistemas com IA, ambientes imersivos — expandindo seu escopo muito além da modelagem orientada a objetos tradicional.']},
+    {cls:'f8',n:8,nc:'#b06b3c',title:'Três Paradigmas Coexistem no Campo',
+     parts:['A análise de bigramas revela três paradigmas simultâneos: ',{b:'(1) Modelagem Unificada'},' ("modeling language": 14×, "unified modeling": 13×), ',
+       {b:'(2) Engenharia Dirigida por Modelos'},' ("model driven": 11×) e ',{b:'(3) Herança OO'},' ("object oriented": 8×). O campo não convergiu para um único paradigma — a coexistência dessas correntes explica parte da fragmentação editorial observada.']},
+  ];
+
+  var grid=document.getElementById('findings-grid');
+  findings.forEach(function(f){
+    var card=el('div',{className:'finding '+f.cls});
+    var bar=el('div',{className:'finding-bar'}); bar.style.background=f.nc;
+    var title=el('div',{className:'finding-title'});
+    var num=el('span',{className:'finding-num'}); num.style.background=f.nc; num.appendChild(txt(f.n));
+    var tspan=el('span'); tspan.appendChild(txt(f.title));
+    title.appendChild(num); title.appendChild(tspan);
+    var para=el('p');
+    f.parts.forEach(function(part){
+      if(typeof part==='string'){
+        para.appendChild(txt(part));
+      } else if(part.b){
+        var b=el('strong'); b.appendChild(txt(part.b)); para.appendChild(b);
+      }
+    });
+    card.appendChild(bar); card.appendChild(title); card.appendChild(para);
+    grid.appendChild(card);
+  });
+})();
+
+// ── Initial render ─────────────────────────────────────────────────────────────
+rebuildCharts();
+</script>
+</body>
+</html>
+"""
+
+
+def main():
+    if not INPUT.exists():
+        print(f"ERRO: {INPUT} não encontrado. Execute analise_bibliometrica.py primeiro.")
+        return
+    raw      = json.loads(INPUT.read_text(encoding="utf-8"))
+    insights = compute_insights(raw)
+    html = TEMPLATE.replace(
+        "__INSIGHTS_DATA__",
+        json.dumps(insights, ensure_ascii=False, separators=(",", ":"))
+    )
+    OUTPUT.write_text(html, encoding="utf-8")
+    kb = OUTPUT.stat().st_size // 1024
+    print(f"\n  Insights: {OUTPUT}  ({kb} KB)")
+    print("  Abra no navegador para visualizar.\n")
+
+
+if __name__ == "__main__":
+    main()

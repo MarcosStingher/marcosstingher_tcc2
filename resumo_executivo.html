@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Resumo Executivo — UML Bibliometria 2010–2024</title>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.2/dist/chart.umd.min.js"></script>
+<style>
+:root {
+  --bg:#f0f4f9; --surface:#fff; --surface-2:#f8fafc;
+  --border:#e2e8f0; --text:#0f172a; --text-2:#475569; --muted:#94a3b8;
+  --brand:#6366f1; --p1:#f59e0b; --p2:#6366f1; --p3:#0ea5e9;
+  --pos:#059669; --neg:#ef4444;
+  --radius:12px; --shadow:0 2px 12px rgba(15,23,42,.08);
+}
+[data-theme=dark] {
+  --bg:#0f172a; --surface:#1e293b; --surface-2:#162032;
+  --border:#334155; --text:#f1f5f9; --text-2:#94a3b8; --muted:#64748b;
+  --brand:#818cf8; --p1:#fbbf24; --p2:#818cf8; --p3:#38bdf8;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background:var(--bg);color:var(--text);min-height:100vh;transition:background .3s,color .3s}
+.topbar{background:var(--surface);border-bottom:1px solid var(--border);padding:1rem 2rem;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:10;box-shadow:var(--shadow)}
+.topbar-title{font-size:1rem;font-weight:700;color:var(--brand)}
+.topbar-sub{font-size:.8rem;color:var(--text-2);margin-top:2px}
+.topbar-right{display:flex;gap:.75rem;align-items:center}
+.btn{display:inline-flex;align-items:center;gap:.4rem;padding:.45rem .9rem;border-radius:8px;font-size:.8rem;font-weight:600;text-decoration:none;border:1px solid var(--border);background:var(--surface);color:var(--text);cursor:pointer;transition:.2s}
+.btn:hover{background:var(--surface-2);border-color:var(--brand)}
+.btn-primary{background:var(--brand);color:#fff;border-color:var(--brand)}
+.btn-primary:hover{opacity:.9}
+.theme-btn{background:none;border:none;cursor:pointer;font-size:.8rem;font-weight:600;padding:.3rem .5rem;color:var(--text-2)}
+.wrap{max-width:1100px;margin:0 auto;padding:2rem 1.5rem}
+.hero{text-align:center;padding:2.5rem 1rem 2rem;margin-bottom:2rem}
+.hero h2{font-size:1.7rem;font-weight:800;color:var(--text);line-height:1.2;margin-bottom:.6rem}
+.hero p{color:var(--text-2);font-size:.95rem;max-width:660px;margin:0 auto}
+.badge{display:inline-block;background:var(--brand);color:#fff;border-radius:99px;padding:.25rem .8rem;font-size:.75rem;font-weight:700;margin-bottom:1rem}
+.kpi-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin-bottom:2rem}
+@media(max-width:600px){.kpi-grid{grid-template-columns:1fr 1fr}}
+.kpi{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:1.25rem 1.5rem;box-shadow:var(--shadow);text-align:center;position:relative;overflow:hidden}
+.kpi::before{content:'';position:absolute;top:0;left:0;right:0;height:3px}
+.kpi.k1::before{background:var(--p1)}
+.kpi.k2::before{background:var(--brand)}
+.kpi.k3::before{background:var(--p3)}
+.kpi.k4::before{background:var(--pos)}
+.kpi.k5::before{background:#e07855}
+.kpi.k6::before{background:#9d63c7}
+.kpi-value{font-size:2.2rem;font-weight:900;color:var(--text);line-height:1}
+.kpi-label{font-size:.78rem;color:var(--text-2);margin-top:.4rem;font-weight:500}
+.kpi-sub{font-size:.72rem;color:var(--muted);margin-top:.2rem}
+.charts-grid{display:grid;grid-template-columns:2fr 1fr;gap:1.5rem;margin-bottom:2rem}
+@media(max-width:700px){.charts-grid{grid-template-columns:1fr}}
+.card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:1.5rem;box-shadow:var(--shadow)}
+.card h3{font-size:.85rem;font-weight:700;color:var(--text-2);text-transform:uppercase;letter-spacing:.06em;margin-bottom:1rem}
+.chart-wrap{position:relative;height:220px}
+.phase-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin-bottom:2rem}
+@media(max-width:600px){.phase-grid{grid-template-columns:1fr}}
+.phase-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:1.25rem;box-shadow:var(--shadow);border-left:4px solid}
+.phase-card.f1{border-left-color:var(--p1)}
+.phase-card.f2{border-left-color:var(--p2)}
+.phase-card.f3{border-left-color:var(--p3)}
+.phase-lbl{font-size:.7rem;font-weight:700;text-transform:uppercase;letter-spacing:.07em;margin-bottom:.4rem}
+.f1 .phase-lbl{color:var(--p1)}
+.f2 .phase-lbl{color:var(--p2)}
+.f3 .phase-lbl{color:var(--p3)}
+.phase-card h4{font-size:1rem;font-weight:700;color:var(--text);margin-bottom:.3rem}
+.phase-count{font-size:1.8rem;font-weight:900;line-height:1}
+.f1 .phase-count{color:var(--p1)}
+.f2 .phase-count{color:var(--p2)}
+.f3 .phase-count{color:var(--p3)}
+.phase-card p{font-size:.78rem;color:var(--text-2);margin-top:.5rem;line-height:1.4}
+.tables-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;margin-bottom:2rem}
+@media(max-width:700px){.tables-grid{grid-template-columns:1fr}}
+table{width:100%;border-collapse:collapse;font-size:.8rem}
+th{text-align:left;padding:.5rem .75rem;background:var(--surface-2);color:var(--text-2);font-weight:600;font-size:.72rem;text-transform:uppercase;letter-spacing:.04em;border-bottom:2px solid var(--border)}
+td{padding:.5rem .75rem;border-bottom:1px solid var(--border);color:var(--text)}
+tr:last-child td{border-bottom:none}
+tr:hover td{background:var(--surface-2)}
+td.rank{color:var(--muted);font-size:.7rem;width:24px}
+td.num{text-align:right;font-weight:700;color:var(--brand)}
+.qp-grid{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-top:1rem}
+@media(max-width:600px){.qp-grid{grid-template-columns:1fr}}
+.qp{background:var(--surface-2);border:1px solid var(--border);border-radius:8px;padding:1rem}
+.qp-lbl{display:inline-block;font-size:.7rem;font-weight:700;background:var(--brand);color:#fff;border-radius:4px;padding:.2rem .5rem;margin-bottom:.5rem}
+.qp h4{font-size:.83rem;font-weight:700;color:var(--text);margin-bottom:.4rem}
+.qp p{font-size:.78rem;color:var(--text-2);line-height:1.5}
+.findings-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin-bottom:2rem}
+@media(max-width:700px){.findings-grid{grid-template-columns:1fr 1fr}}
+@media(max-width:480px){.findings-grid{grid-template-columns:1fr}}
+.finding{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:1.25rem;box-shadow:var(--shadow)}
+.finding-icon{font-size:1.4rem;margin-bottom:.5rem}
+.finding h4{font-size:.9rem;font-weight:700;color:var(--text);margin-bottom:.4rem}
+.finding p{font-size:.79rem;color:var(--text-2);line-height:1.5}
+.links{display:flex;gap:1rem;flex-wrap:wrap;margin-bottom:2rem}
+.link-card{flex:1;min-width:200px;background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:1.25rem;box-shadow:var(--shadow);text-decoration:none;color:var(--text);display:flex;flex-direction:column;gap:.4rem;transition:.2s}
+.link-card:hover{border-color:var(--brand);transform:translateY(-2px)}
+.lc-lbl{font-size:.7rem;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--brand)}
+.link-card h4{font-size:.95rem;font-weight:700}
+.link-card p{font-size:.78rem;color:var(--text-2);line-height:1.4}
+.section-title{font-size:.85rem;font-weight:700;text-transform:uppercase;letter-spacing:.05em;color:var(--text-2);margin-bottom:.75rem}
+.footer{text-align:center;padding:2rem 1rem;color:var(--muted);font-size:.78rem;border-top:1px solid var(--border);margin-top:1rem}
+</style>
+</head>
+<body>
+<div class="topbar">
+  <div>
+    <div class="topbar-title">UML em Modelagem de Software — Resumo Executivo</div>
+    <div class="topbar-sub">Marcos Antonio Barbosa Stingher · UNOESC Sistemas de Informação · 2025</div>
+  </div>
+  <div class="topbar-right">
+    <a href="dashboard_uml.html" class="btn btn-primary">Dashboard Principal</a>
+    <a href="insights_uml.html" class="btn">Insights Aprofundados</a>
+    <button class="theme-btn" id="themeBtn" onclick="toggleTheme()">☾ Modo Escuro</button>
+  </div>
+</div>
+
+<div class="wrap">
+  <div class="hero">
+    <div class="badge">Análise Bibliométrica · 2010–2024</div>
+    <h2>UML em Modelagem de Software:<br>O que 15 anos de pesquisa revelam?</h2>
+    <p>Mapeamento bibliométrico de 207 artigos coletados em 4 bases de dados, analisando tendências temporais, autores, periódicos e evolução temática da UML na literatura científica.</p>
+  </div>
+
+  <!-- KPI Cards -->
+  <div class="kpi-grid">
+    <div class="kpi k1">
+      <div class="kpi-value">207</div>
+      <div class="kpi-label">Artigos no Corpus</div>
+      <div class="kpi-sub">após deduplicação de 235 coletados</div>
+    </div>
+    <div class="kpi k2">
+      <div class="kpi-value">15</div>
+      <div class="kpi-label">Anos de Análise</div>
+      <div class="kpi-sub">2010 a 2024</div>
+    </div>
+    <div class="kpi k3">
+      <div class="kpi-value">513</div>
+      <div class="kpi-label">Autores Únicos</div>
+      <div class="kpi-sub">alta diversidade autoral</div>
+    </div>
+    <div class="kpi k4">
+      <div class="kpi-value">86</div>
+      <div class="kpi-label">Venues Distintos</div>
+      <div class="kpi-sub">periódicos e conferências</div>
+    </div>
+    <div class="kpi k5">
+      <div class="kpi-value">13,8</div>
+      <div class="kpi-label">Artigos / Ano</div>
+      <div class="kpi-sub">pico: 23 artigos em 2011</div>
+    </div>
+    <div class="kpi k6">
+      <div class="kpi-value">4</div>
+      <div class="kpi-label">Bases de Dados</div>
+      <div class="kpi-sub">SciSpace · SciSpace Full-Text · Google Scholar · PubMed</div>
+    </div>
+  </div>
+
+  <!-- Charts -->
+  <div class="charts-grid">
+    <div class="card">
+      <h3>Publicações por Ano (2010–2024)</h3>
+      <div class="chart-wrap">
+        <canvas id="timelineChart"></canvas>
+      </div>
+    </div>
+    <div class="card">
+      <h3>Tipo de Publicação</h3>
+      <div class="chart-wrap">
+        <canvas id="typeChart"></canvas>
+      </div>
+    </div>
+  </div>
+
+  <!-- Phase Cards -->
+  <div class="phase-grid">
+    <div class="phase-card f1">
+      <div class="phase-lbl">Fase 1</div>
+      <h4>Consolidação</h4>
+      <div class="phase-count">80</div>
+      <p>2010–2014 · 38,6% do corpus<br>Obras de referência, estudos empíricos e ferramentas CASE.</p>
+    </div>
+    <div class="phase-card f2">
+      <div class="phase-lbl">Fase 2</div>
+      <h4>Expansão MDE</h4>
+      <div class="phase-count">73</div>
+      <p>2015–2019 · 35,3% do corpus<br>Engenharia Dirigida por Modelos e transformações automáticas.</p>
+    </div>
+    <div class="phase-card f3">
+      <div class="phase-lbl">Fase 3</div>
+      <h4>Especialização</h4>
+      <div class="phase-count">54</div>
+      <p>2020–2024 · 26,1% do corpus<br>Domínios regulamentados, formalização e aplicações interdisciplinares.</p>
+    </div>
+  </div>
+
+  <!-- QPs: question + answer in single card -->
+  <div class="card" style="margin-bottom:2rem">
+    <h3>Questões de Pesquisa e Respostas Consolidadas</h3>
+    <div class="qp-grid">
+      <div class="qp">
+        <div class="qp-lbl">QS1</div>
+        <h4>Como evoluiu o volume anual de publicações sobre UML e quais fases de produção científica podem ser identificadas?</h4>
+        <hr style="border:none;border-top:1px solid var(--border);margin:.6rem 0">
+        <p>Pico em 2011 (23 art.) reflete maturidade pós-UML 2.x. Segundo pico em 2018 (21 art.) coincide com consolidação do MDE. Terceiro pico em 2023 (19 art.) marca especialização. Média: 13,8 art./ano.</p>
+      </div>
+      <div class="qp">
+        <div class="qp-lbl">QS2</div>
+        <h4>Quais autores e veículos de publicação concentraram a produção sobre UML de maior expressão no corpus?</h4>
+        <hr style="border:none;border-top:1px solid var(--border);margin:.6rem 0">
+        <p>Chaudron (5 publ.) lidera produtividade. Gomaa (387 cit.) e Petre (276 cit.) lideram impacto. Software and Systems Modeling (5 art.) e ICSE (4 art.) são os principais venues.</p>
+      </div>
+      <div class="qp">
+        <div class="qp-lbl">QS3</div>
+        <h4>Que transformações temáticas são identificáveis na pesquisa sobre UML ao longo do período analisado?</h4>
+        <hr style="border:none;border-top:1px solid var(--border);margin:.6rem 0">
+        <p>3 clusters: modelagem estrutural OO, MDE e transformações, aplicações especializadas. "Driven" cresce na Fase 2; "security" e "GDPR" emergem na Fase 3.</p>
+      </div>
+      <div class="qp">
+        <div class="qp-lbl">QS4</div>
+        <h4>Como a UML tem sido posicionada em relação ao paradigma MDE e às práticas de desenvolvimento ágil?</h4>
+        <hr style="border:none;border-top:1px solid var(--border);margin:.6rem 0">
+        <p>UML ressignificada: de blueprint prescritivo para linguagem visual informal (ágil) e ponto de partida de pipelines de transformação (MDE). Diagramas de classes e sequência dominam o uso seletivo.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Tables -->
+  <div class="tables-grid">
+    <div class="card">
+      <h3>Top 10 Autores Mais Produtivos</h3>
+      <table>
+        <thead><tr><th class="rank">#</th><th>Autor</th><th style="text-align:right">Publ.</th></tr></thead>
+        <tbody id="authorsTable"></tbody>
+      </table>
+    </div>
+    <div class="card">
+      <h3>Top 10 Periódicos / Conferências</h3>
+      <table>
+        <thead><tr><th class="rank">#</th><th>Venue</th><th style="text-align:right">Art.</th></tr></thead>
+        <tbody id="venuesTable"></tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- Findings -->
+  <div class="section-title">Achados e Padrões Principais</div>
+  <div class="findings-grid">
+    <div class="finding">
+      <div class="finding-icon">📈</div>
+      <h4>Produção sustentada, não decrescente</h4>
+      <p>Ao contrário da percepção de "declínio da UML", a produção científica sobre o tema é estável e diversificada. O corpus evidencia crescimento temático, não retração volumétrica.</p>
+    </div>
+    <div class="finding">
+      <div class="finding-icon">🔄</div>
+      <h4>UML como plataforma de extensão</h4>
+      <p>A Fase 3 demonstra que a UML é usada como base para perfis de domínio (GDPR, automotivo, educação). Isso amplia seu escopo, não reduz sua relevância.</p>
+    </div>
+    <div class="finding">
+      <div class="finding-icon">⚡</div>
+      <h4>Tensão ágil-formal resolvida pragmaticamente</h4>
+      <p>Profissionais em contextos ágeis usam UML seletivamente — diagramas de classes e sequência como comunicação informal. O "agile modeling" concilia formalismo e agilidade.</p>
+    </div>
+    <div class="finding">
+      <div class="finding-icon">🌐</div>
+      <h4>Alta diversidade de publicação</h4>
+      <p>86 venues para 207 artigos indica que a pesquisa em UML não está concentrada em poucos periódicos, mas distribuída por ecossistema amplo e interdisciplinar.</p>
+    </div>
+    <div class="finding">
+      <div class="finding-icon">🤖</div>
+      <h4>MDE eleva o papel dos modelos</h4>
+      <p>O paradigma MDE transforma modelos UML de documentação em artefatos primários geradores de código, ampliando a relevância industrial da linguagem.</p>
+    </div>
+    <div class="finding">
+      <div class="finding-icon">🔬</div>
+      <h4>Lacuna de pesquisa preenchida</h4>
+      <p>Nenhum estudo anterior combinava perspectiva bibliométrica, cobertura 2010–2024 e análise das três fases. Este trabalho preenche essa lacuna com corpus validado.</p>
+    </div>
+  </div>
+
+  <!-- Links to dashboards -->
+  <div class="section-title">Explore os Entregáveis da Pesquisa</div>
+  <div class="links">
+    <a href="dashboard_uml.html" class="link-card">
+      <div class="lc-lbl">Entregável 1</div>
+      <h4>Dashboard Principal</h4>
+      <p>207 artigos filtráveis por fase, fonte e tipo. Timeline, Top 20 autores, Top 15 venues, tabela completa com paginação e dark mode.</p>
+    </a>
+    <a href="insights_uml.html" class="link-card">
+      <div class="lc-lbl">Entregável 2</div>
+      <h4>Insights Aprofundados</h4>
+      <p>Rede de co-ocorrência D3.js com 32 nós, 8 cards interpretativos, análise de bigramas por fase e análise de idioma.</p>
+    </a>
+    <div class="link-card" style="cursor:default;opacity:.75">
+      <div class="lc-lbl">Este documento</div>
+      <h4>Resumo Executivo</h4>
+      <p>Visão panorâmica com KPIs, gráficos-chave, achados consolidados e respostas às questões de pesquisa.</p>
+    </div>
+  </div>
+</div>
+
+<div class="footer">
+  Marcos Antonio Barbosa Stingher · TCC — Sistemas de Informação · UNOESC Chapecó · 2025<br>
+  Corpus: 207 artigos · Período: 2010–2024 · Ferramentas: Python, Chart.js, D3.js
+</div>
+
+<script>
+const YEARS = [2010,2011,2012,2013,2014,2015,2016,2017,2018,2019,2020,2021,2022,2023,2024];
+const COUNTS = [12,23,13,15,17,7,16,17,21,12,5,13,8,19,9];
+const YEAR_COLORS = [
+  '#f59e0b','#f59e0b','#f59e0b','#f59e0b','#f59e0b',
+  '#6366f1','#6366f1','#6366f1','#6366f1','#6366f1',
+  '#0ea5e9','#0ea5e9','#0ea5e9','#0ea5e9','#0ea5e9'
+];
+const AUTHORS = [
+  ['Michel R. V. Chaudron', 5],
+  ['Bernhard Rumpe', 4],
+  ['Mert Ozkaya', 3],
+  ['Vahid Garousi', 3],
+  ['Onur Demirörs', 3],
+  ['Gianna Reggio', 3],
+  ['Filippo Ricca', 3],
+  ['Manuel Wimmer', 2],
+  ['Omar Badreddin', 2],
+  ['Kleinner Farias', 2]
+];
+const VENUES = [
+  ['Software and Systems Modeling', 5],
+  ['ICSE', 4],
+  ['Journal of Systems and Software', 3],
+  ['PeerJ Computer Science', 3],
+  ['IEEE Access', 2],
+  ['Journal of Object Technology', 2],
+  ['Applied Computer Systems', 2],
+  ['IET Software', 2],
+  ['MODELS (ACM/IEEE)', 2],
+  ['ACM Computing Surveys', 2]
+];
+const TYPE_LABELS = ['Artigo de Periódico','Artigo de Conferência','Capítulo de Livro','Dissertação','Livro','Outros'];
+const TYPE_DATA = [83, 33, 29, 17, 9, 36];
+const CAT = ['#4f86c6','#e07855','#5bac9e','#9d63c7','#e8b84b','#94a3b8'];
+
+function C(v) {
+  return getComputedStyle(document.documentElement).getPropertyValue(v).trim();
+}
+
+let tlChart, typeChart;
+
+function buildCharts() {
+  const c1 = document.getElementById('timelineChart');
+  if (tlChart) tlChart.destroy();
+  tlChart = new Chart(c1.getContext('2d'), {
+    type: 'bar',
+    data: {
+      labels: YEARS,
+      datasets: [{
+        label: 'Publicações',
+        data: COUNTS,
+        backgroundColor: YEAR_COLORS,
+        borderRadius: 4,
+        borderSkipped: false
+      }]
+    },
+    options: {
+      responsive: true, maintainAspectRatio: false,
+      plugins: {
+        legend: { display: false },
+        tooltip: { callbacks: {
+          title: function(c) { return String(c[0].label); },
+          label: function(c) { return c.parsed.y + ' artigos'; }
+        }}
+      },
+      scales: {
+        x: { grid: { color: C('--border') + '44' }, ticks: { color: C('--text-2'), font: { size: 10 } } },
+        y: { grid: { color: C('--border') + '44' }, ticks: { color: C('--text-2'), font: { size: 10 } }, beginAtZero: true }
+      }
+    }
+  });
+
+  const c2 = document.getElementById('typeChart');
+  if (typeChart) typeChart.destroy();
+  typeChart = new Chart(c2.getContext('2d'), {
+    type: 'doughnut',
+    data: {
+      labels: TYPE_LABELS,
+      datasets: [{
+        data: TYPE_DATA,
+        backgroundColor: CAT,
+        borderColor: C('--surface'),
+        borderWidth: 2,
+        hoverOffset: 6
+      }]
+    },
+    options: {
+      responsive: true, maintainAspectRatio: false,
+      plugins: {
+        legend: { position: 'right', labels: { color: C('--text'), font: { size: 11 }, padding: 10, boxWidth: 12 } },
+        tooltip: { callbacks: {
+          label: function(c) { return c.label + ': ' + c.parsed + ' (' + Math.round(c.parsed / 207 * 100) + '%)'; }
+        }}
+      }
+    }
+  });
+}
+
+function buildTable(tbodyId, rows) {
+  const tbody = document.getElementById(tbodyId);
+  while (tbody.firstChild) tbody.removeChild(tbody.firstChild);
+  rows.forEach(function(row, i) {
+    const tr = document.createElement('tr');
+    const tdRank = document.createElement('td');
+    tdRank.className = 'rank';
+    tdRank.textContent = String(i + 1);
+    const tdName = document.createElement('td');
+    tdName.textContent = row[0];
+    const tdNum = document.createElement('td');
+    tdNum.className = 'num';
+    tdNum.textContent = String(row[1]);
+    tr.appendChild(tdRank);
+    tr.appendChild(tdName);
+    tr.appendChild(tdNum);
+    tbody.appendChild(tr);
+  });
+}
+
+function updateThemeBtn() {
+  var isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+  document.getElementById('themeBtn').textContent = isDark ? '☀ Modo Claro' : '☾ Modo Escuro';
+}
+function toggleTheme() {
+  const d = document.documentElement;
+  const isDark = d.getAttribute('data-theme') === 'dark';
+  d.setAttribute('data-theme', isDark ? 'light' : 'dark');
+  localStorage.setItem('theme', isDark ? 'light' : 'dark');
+  updateThemeBtn();
+  setTimeout(buildCharts, 60);
+}
+
+document.addEventListener('DOMContentLoaded', function() {
+  var saved = localStorage.getItem('theme');
+  if (saved === 'dark') document.documentElement.setAttribute('data-theme', 'dark');
+  updateThemeBtn();
+  buildCharts();
+  buildTable('authorsTable', AUTHORS);
+  buildTable('venuesTable', VENUES);
+});
+</script>
+</body>
+</html>

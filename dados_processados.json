@@ -1,0 +1,2677 @@
+{
+  "total": 207,
+  "authors_unique": 513,
+  "venues_unique": 86,
+  "year_min": 2010,
+  "year_max": 2024,
+  "by_year": {
+    "2010": 12,
+    "2011": 23,
+    "2012": 13,
+    "2013": 15,
+    "2014": 17,
+    "2015": 7,
+    "2016": 16,
+    "2017": 17,
+    "2018": 21,
+    "2019": 12,
+    "2020": 5,
+    "2021": 13,
+    "2022": 8,
+    "2023": 19,
+    "2024": 9
+  },
+  "by_type": {
+    "Journal Article": 83,
+    "Proceedings Article": 33,
+    "Unknown": 31,
+    "Book Chapter": 29,
+    "Dissertation": 17,
+    "Book": 9,
+    "Posted Content": 3,
+    "Report": 2
+  },
+  "by_source": {
+    "SciSpace Full-Text": 96,
+    "SciSpace": 83,
+    "PubMed": 15,
+    "Google Scholar": 13
+  },
+  "by_phase": {
+    "Fase 1 — Consolidação (2010–2014)": 80,
+    "Fase 2 — Expansão MDE (2015–2019)": 73,
+    "Fase 3 — Especialização (2020–2024)": 54
+  },
+  "top_authors": [
+    [
+      "Michel R. V. Chaudron",
+      5
+    ],
+    [
+      "Bernhard Rumpe",
+      4
+    ],
+    [
+      "Mert Ozkaya",
+      3
+    ],
+    [
+      "Vahid Garousi",
+      3
+    ],
+    [
+      "Onur Demirörs",
+      3
+    ],
+    [
+      "Gianna Reggio",
+      3
+    ],
+    [
+      "Filippo Ricca",
+      3
+    ],
+    [
+      "Manuel Wimmer",
+      2
+    ],
+    [
+      "Gerti Kappel",
+      2
+    ],
+    [
+      "Hugues Bersini",
+      2
+    ],
+    [
+      "Janis Osis",
+      2
+    ],
+    [
+      "Uldis Donins",
+      2
+    ],
+    [
+      "Kleinner Farias",
+      2
+    ],
+    [
+      "Bruno Silva",
+      2
+    ],
+    [
+      "Ariadi Nugroho",
+      2
+    ],
+    [
+      "Edson OliveiraJr",
+      2
+    ],
+    [
+      "Rebecca Platt",
+      2
+    ],
+    [
+      "Nik Thompson",
+      2
+    ],
+    [
+      "Mohammad Alshayeb",
+      2
+    ],
+    [
+      "Brian Dobing",
+      2
+    ],
+    [
+      "Jeffrey Parsons",
+      2
+    ],
+    [
+      "Omar Badreddin",
+      2
+    ],
+    [
+      "Timo Vepsäläinen",
+      2
+    ],
+    [
+      "Seppo Kuikka",
+      2
+    ],
+    [
+      "Deniz Akdur",
+      2
+    ]
+  ],
+  "top_venues": [
+    [
+      "Software and Systems Modeling",
+      5
+    ],
+    [
+      "International Conference on Software Engineering",
+      4
+    ],
+    [
+      "Journal of Systems and Software",
+      3
+    ],
+    [
+      "PeerJ. Computer science",
+      3
+    ],
+    [
+      "Tecnura",
+      2
+    ],
+    [
+      "The Journal of Object Technology",
+      2
+    ],
+    [
+      "Applied Computer Systems",
+      2
+    ],
+    [
+      "IET Software",
+      2
+    ],
+    [
+      "Model Driven Engineering Languages and Systems",
+      2
+    ],
+    [
+      "International Conference on Model-Driven Engineering and Software Development",
+      2
+    ],
+    [
+      "ACM Computing Surveys",
+      2
+    ],
+    [
+      "IEEE Access",
+      2
+    ],
+    [
+      "Conference on Current Trends in Theory and Practice of Informatics",
+      2
+    ],
+    [
+      "Encyclopedia of Information Science and Technology",
+      2
+    ],
+    [
+      "European Conference on Modelling Foundations and Applications",
+      1
+    ],
+    [
+      "Empirical Software Engineering and Measurement",
+      1
+    ],
+    [
+      "Business Modeling and Software Design",
+      1
+    ],
+    [
+      "arXiv: Software Engineering",
+      1
+    ],
+    [
+      "International journal of computer assisted radiology and surgery",
+      1
+    ],
+    [
+      "Social Science Research Network",
+      1
+    ]
+  ],
+  "top_keywords": [
+    [
+      "uml",
+      105
+    ],
+    [
+      "modeling",
+      60
+    ],
+    [
+      "software",
+      57
+    ],
+    [
+      "design",
+      27
+    ],
+    [
+      "model",
+      27
+    ],
+    [
+      "development",
+      20
+    ],
+    [
+      "language",
+      17
+    ],
+    [
+      "unified",
+      17
+    ],
+    [
+      "models",
+      16
+    ],
+    [
+      "engineering",
+      16
+    ],
+    [
+      "driven",
+      14
+    ],
+    [
+      "diagrams",
+      12
+    ],
+    [
+      "modelling",
+      10
+    ],
+    [
+      "process",
+      10
+    ],
+    [
+      "object",
+      10
+    ],
+    [
+      "oriented",
+      9
+    ],
+    [
+      "requirements",
+      7
+    ],
+    [
+      "literature",
+      7
+    ],
+    [
+      "practices",
+      7
+    ],
+    [
+      "source",
+      7
+    ],
+    [
+      "systematic",
+      6
+    ],
+    [
+      "information",
+      6
+    ],
+    [
+      "patterns",
+      6
+    ],
+    [
+      "desenvolvimento",
+      6
+    ],
+    [
+      "web",
+      6
+    ],
+    [
+      "api",
+      6
+    ],
+    [
+      "open",
+      6
+    ],
+    [
+      "sistema",
+      5
+    ],
+    [
+      "architecture",
+      5
+    ],
+    [
+      "business",
+      5
+    ]
+  ],
+  "kw_evolution": {
+    "uml": [
+      42,
+      40,
+      23
+    ],
+    "modeling": [
+      25,
+      22,
+      13
+    ],
+    "software": [
+      29,
+      17,
+      11
+    ],
+    "design": [
+      11,
+      7,
+      9
+    ],
+    "model": [
+      14,
+      8,
+      5
+    ],
+    "development": [
+      9,
+      4,
+      7
+    ],
+    "language": [
+      6,
+      8,
+      3
+    ],
+    "unified": [
+      7,
+      7,
+      3
+    ]
+  },
+  "phase_labels": [
+    "Fase 1 — Consolidação (2010–2014)",
+    "Fase 2 — Expansão MDE (2015–2019)",
+    "Fase 3 — Especialização (2020–2024)"
+  ],
+  "papers": [
+    {
+      "title": "Models as the subject of research",
+      "year": 2019,
+      "type": "Journal Article",
+      "venue": "Software and Systems Modeling",
+      "authors": "Jeff Gray; Bernhard Rumpe",
+      "source": "SciSpace Full-Text",
+      "phase": "Fase 2 — Expansão MDE (2015–2019)",
+      "doi": "https://doi.org/10.1007/S10270-019-00751-Y",
+      "abstract": "It is said that in the times before Plato, mathematics was only a vehicle to solve practical problem…"
+    },
+    {
+      "title": "Initial training in design of computer programs using UML",
+      "year": 2023,
+      "type": "Journal Article",
+      "venue": "Perspektivy nauki i obrazovaniâ",
+      "authors": "Nikita S. Andreyanov; Andrej P. Gagarin",
+      "source": "SciSpace Full-Text",
+      "phase": "Fase 3 — Especialização (2020–2024)",
+      "doi": "https://doi.org/10.32744/pse.2023.5.39",
+      "abstract": "Introduction. Design is commonly acknowledged as a key process in the life cycle of computer program…"
+    },
+    {
+      "title": "Classifying Research on UML model Inconsistencies with Systematic Mapping",
+      "year": 2013,
+      "type": "Unknown",
+      "venue": "",
+      "authors": "Pavan Kumar Thalanki; Vinay Kiran Maddukuri",
+      "source": "SciSpace Full-Text",
+      "phase": "Fase 1 — Consolidação (2010–2014)",
+      "doi": "",
+      "abstract": "Context: Unified Modeling Language (UML) is a universal and standard modeling language that has been…"
+    },
+    {
+      "title": "Definition and validation of consistency rules between uml diagrams",
+      "year": 2018,
+      "type": "Dissertation",
+      "venue": "",
+      "authors": "Damiano Torre",
+      "source": "SciSpace Full-Text",
+      "phase": "Fase 2 — Expansão MDE (2015–2019)",
+      "doi": "",
+      "abstract": "UML diagrams describe different views of one piece of software. These diagrams strongly depend on ea…"
+    },
+    {
+      "title": "Improving processes using static analysis techniques",
+      "year": 2011,
+      "type": "Unknown",
+      "venue": "",
+      "authors": "Lori A. Clarke; George S. Avrunin; Bin Chen",
+      "source": "SciSpace Full-Text",
+      "phase": "Fase 1 — Consolidação (2010–2014)",
+      "doi": "",
+      "abstract": "Real-world processes often undergo improvements to meet certain goals, such as coping with changed r…"
+    },
+    {
+      "title": "What are the Commonly Used UML Modelling Tools in Health Informatics? A survey",
+      "year": 2017,
+      "type": "Journal Article",
+      "venue": "",
+      "authors": "M. Rajoo; N.M. Mohamad Noor; S. Subramanian",
+      "source": "SciSpace",
+      "phase": "Fase 2 — Expansão MDE (2015–2019)",
+      "doi": "https://doi.org/10.22359/CSWHI_8_2_09",
+      "abstract": "There are literally many UML Modelling Tools (open-source and commercial) available. While the prima…"
+    },
+    {
+      "title": "Insights from a dataset on behavioral intentions in learning information flow diagram capability for software design.",
+      "year": 2023,
+      "type": "Journal Article",
+      "venue": "Data in brief",
+      "authors": "Rukhiran; Chomngern; Netinant",
+      "source": "PubMed",
+      "phase": "Fase 3 — Especialização (2020–2024)",
+      "doi": "https://doi.org/10.1016/j.dib.2023.109307",
+      "abstract": "Developing complex software may be difficult for students or those with less technical expertise in …"
+    },
+    {
+      "title": "Amélioration des processus de vérification de programmes par combinaison des méthodes formelles avec l'ingénierie dirigée par les modèles",
+      "year": 2014,
+      "type": "Dissertation",
+      "venue": "",
+      "authors": "A. Fernandes Pires",
+      "source": "SciSpace Full-Text",
+      "phase": "Fase 1 — Consolidação (2010–2014)",
+      "doi": "",
+      "abstract": "Lors d'un developpement logiciel, et plus particulierement d'un developpement d'applications embarqu…"
+    },
+    {
+      "title": "A Model Driven Approach for Service Based System Design Using Interaction Templates",
+      "year": 2011,
+      "type": "Unknown",
+      "venue": "",
+      "authors": "Toni Reichelt",
+      "source": "SciSpace Full-Text",
+      "phase": "Fase 1 — Consolidação (2010–2014)",
+      "doi": "",
+      "abstract": "Based on the increasing complexity of modern avionics, the associated system design processes moved …"
+    },
+    {
+      "title": "Software modeling & design: UML, use cases, patterns, & software architectures by Hassan Gomaa",
+      "year": 2011,
+      "type": "Journal Article",
+      "venue": "ACM Sigsoft Software Engineering Notes",
+      "authors": "M. Rahmani",
+      "source": "SciSpace",
+      "phase": "Fase 1 — Consolidação (2010–2014)",
+      "doi": "https://doi.org/10.1145/1988997.1989008",
+      "abstract": "The primary intent of this book is to describe a UML-based method for analysis and design of softwar…"
+    },
+    {
+      "title": "Modelling Foundations and Applications",
+      "year": 2013,
+      "type": "Book",
+      "venue": "",
+      "authors": "Pieter Van Gorp; Tom Ritter; Louis M. Rose",
+      "source": "SciSpace",
+      "phase": "Fase 1 — Consolidação (2010–2014)",
+      "doi": "https://doi.org/10.1007/978-3-642-39013-5",
+      "abstract": "MBE (Model-Based Engineering) proposes to develop software by taking advantage of models, in contras…"
+    },
+    {
+      "title": "Análisis de alternativas metodológicas para el desarrollo de software educativo",
+      "year": 2014,
+      "type": "Unknown",
+      "venue": "",
+      "authors": "Ingrith Marcano; Gladys Benigni",
+      "source": "SciSpace Full-Text",
+      "phase": "Fase 1 — Consolidação (2010–2014)",
+      "doi": "",
+      "abstract": "De forma notoria la tecnologia se ha expandido en amplitud y profundidad a lo largo de todas las are…"
+    },
+    {
+      "title": "A Framework for Cybersecurity Requirements Management in the Automotive Domain.",
+      "year": 2023,
+      "type": "Journal Article",
+      "venue": "Sensors (Basel, Switzerland)",
+      "authors": "Luo; Jiang; Wang et al.",
+      "source": "PubMed",
+      "phase": "Fase 3 — Especialização (2020–2024)",
+      "doi": "https://doi.org/10.3390/s23104979",
+      "abstract": "The rapid development of intelligent connected vehicles has increased the attack surface of vehicles…"
+    },
+    {
+      "title": "Análise, desenvolvimento e testes de usabilidade de um sistema de informação de banco de dados à Associação Carimbu.",
+      "year": 2023,
+      "type": "Dissertation",
+      "venue": "",
+      "authors": "Peter F. Gerhardt",
+      "source": "SciSpace Full-Text",
+      "phase": "Fase 3 — Especialização (2020–2024)",
+      "doi": "https://doi.org/10.52446/cursoengpoducaocdsa.2021.tccmon.souza",
+      "abstract": "A Engenharia de Produção é responsável por maximizar a lucratividade de instituições de qualquer ram…"
+    },
+    {
+      "title": "Semantics Preservation in Model-based Composition",
+      "year": 2010,
+      "type": "Dissertation",
+      "venue": "",
+      "authors": "Jon Oldevik",
+      "source": "SciSpace Full-Text",
+      "phase": "Fase 1 — Consolidação (2010–2014)",
+      "doi": "",
+      "abstract": "Separation of concerns is an important factor in the development of complex software systems. Being …"
+    },
+    {
+      "title": "Development of MBSE/UML Maturity Model",
+      "year": 2010,
+      "type": "Unknown",
+      "venue": "",
+      "authors": "özlem demirci",
+      "source": "SciSpace Full-Text",
+      "phase": "Fase 1 — Consolidação (2010–2014)",
+      "doi": "",
+      "abstract": "iii Abstract Model Based Software Engineering (MBSE) is becoming popular in the industry today. Many…"
+    },
+    {
+      "title": "Mineração e modelagem de conceitos como praxis de gestão do conhecimento para inteligência competitiva",
+      "year": 2015,
+      "type": "Journal Article",
+      "venue": "Revista Ibero-Americana de Ciência da Informação",
+      "authors": "Ethel Airton Capuano",
+      "source": "SciSpace Full-Text",
+      "phase": "Fase 2 — Expansão MDE (2015–2019)",
+      "doi": "",
+      "abstract": "Com o crescimento assintotico do volume de informacao textual digital disponivel sobre as organizaco…"
+    },
+    {
+      "title": "A user task design notation for improved software design.",
+      "year": 2021,
+      "type": "Journal Article",
+      "venue": "PeerJ. Computer science",
+      "authors": "Ozcan; Topalli; Tokdemir et al.",
+      "source": "PubMed",
+      "phase": "Fase 3 — Especialização (2020–2024)",
+      "doi": "https://doi.org/10.7717/peerj-cs.503",
+      "abstract": "System design is recognized as one of the most critical components of a software system that bridges…"
+    },
+    {
+      "title": "A survey on the practical use of UML for different software architecture viewpoints",
+      "year": 2020,
+      "type": "Journal Article",
+      "venue": "Information & Software Technology",
+      "authors": "Mert Ozkaya; Ferhat Erata",
+      "source": "SciSpace",
+      "phase": "Fase 3 — Especialização (2020–2024)",
+      "doi": "https://doi.org/10.1016/J.INFSOF.2020.106275",
+      "abstract": "Context Software architecture viewpoints modularize the software architectures in terms of different…"
+    },
+    {
+      "title": "Model UML Aplikasi Augmented Reality Pengenalan Desa Pertumbukan",
+      "year": 2024,
+      "type": "Journal Article",
+      "venue": "Jurnal Minfo Polgan",
+      "authors": "Ika Devi Perwitasari; Jodi Hendrawan; Fitri Yani Panggabean et al.",
+      "source": "SciSpace Full-Text",
+      "phase": "Fase 3 — Especialização (2020–2024)",
+      "doi": "https://doi.org/10.33395/jmp.v13i2.14301",
+      "abstract": "Desa Pertumbukan memiliki berbagai potensi budaya, sejarah, dan wisata yang belum dimanfaatkan secar…"
+    },
+    {
+      "title": "Design of Hospital Operation Management System Based on Business-Finance Integration",
+      "year": 2022,
+      "type": "Journal Article",
+      "venue": "Computational Intelligence and Neuroscience",
+      "authors": "Xi Luo; Chao Jiang",
+      "source": "SciSpace Full-Text",
+      "phase": "Fase 3 — Especialização (2020–2024)",
+      "doi": "https://doi.org/10.1155/2022/8426044",
+      "abstract": "In order to meet the requirements of the medical reform on the informatization construction of hospi…"
+    },
+    {
+      "title": "Застосування сучасних методів і технологій моделювання програмного забезпечення у підготовці іт-фахівців",
+      "year": 2024,
+      "type": "Journal Article",
+      "venue": "Vìsnik Hmelʹnicʹkogo nacìonalʹnogo unìversitetu",
+      "authors": "МАКСИМ КУНДОС; Л. Я. Соловей; АНДРІЙ ГРИСЮК",
+      "source": "SciSpace",
+      "phase": "Fase 3 — Especialização (2020–2024)",
+      "doi": "https://doi.org/10.31891/2307-5732-2024-343-6-19",
+      "abstract": "Methodological approaches to software modeling are considered in the article. Proposed modeling meth…"
+    },
+    {
+      "title": "Automatic code generation from uml diagrams: the state-of-the-art",
+      "year": 2018,
+      "type": "Journal Article",
+      "venue": "Science World Journal",
+      "authors": "Maryam Ibrahim Mukhtar; Bashir Shehu Galadanci",
+      "source": "SciSpace",
+      "phase": "Fase 2 — Expansão MDE (2015–2019)",
+      "doi": "https://doi.org/10.4314/SWJ.V13I4",
+      "abstract": "The emergence of the Unified Modeling Language (UML) as the de-facto standard for modeling software …"
+    },
+    {
+      "title": "Framework for automatic verification of UML design models : application to UML 2.0 interactions",
+      "year": 2010,
+      "type": "Dissertation",
+      "venue": "",
+      "authors": "De Lima; Vitor Nunes",
+      "source": "SciSpace Full-Text",
+      "phase": "Fase 1 — Consolidação (2010–2014)",
+      "doi": "",
+      "abstract": "Software-intensive systems have become extremely complex and susceptible to defects and vulnerabilit…"
+    },
+    {
+      "title": "The Relation Between Documentation and Internal Quality of Software",
+      "year": 2019,
+      "type": "Unknown",
+      "venue": "",
+      "authors": "Humberto Linero",
+      "source": "SciSpace Full-Text",
+      "phase": "Fase 2 — Expansão MDE (2015–2019)",
+      "doi": "",
+      "abstract": "Regardless of the software development process used, there are many factors that take place during s…"
+    },
+    {
+      "title": "Arquitectura de referencia para unidades de control de robots de servicio teleoperados",
+      "year": 2011,
+      "type": "Dissertation",
+      "venue": "",
+      "authors": "Ortiz Zaragoza; Francisco José",
+      "source": "SciSpace Full-Text",
+      "phase": "Fase 1 — Consolidação (2010–2014)",
+      "doi": "https://doi.org/10.31428/10317/844",
+      "abstract": "Las unidades de control de robots son sistemas intensivos en software, por lo que el diseno del mism…"
+    },
+    {
+      "title": "LPMSAEF: Lightweight process mining-based software architecture evaluation framework for security and performance analysis.",
+      "year": 2024,
+      "type": "Journal Article",
+      "venue": "Heliyon",
+      "authors": "Sahlabadi; Muniyandi; Shukur et al.",
+      "source": "PubMed",
+      "phase": "Fase 3 — Especialização (2020–2024)",
+      "doi": "https://doi.org/10.1016/j.heliyon.2024.e26969",
+      "abstract": "The article discusses the need for a lightweight software architecture evaluation framework that can…"
+    },
+    {
+      "title": "Empowering Empirical Research in Software Design: Construction and Studies on a Large-Scale Corpus of UML Models",
+      "year": 2019,
+      "type": "Unknown",
+      "venue": "",
+      "authors": "Ho-Quang Truong",
+      "source": "SciSpace",
+      "phase": "Fase 2 — Expansão MDE (2015–2019)",
+      "doi": "",
+      "abstract": "Context: In modern software development, software modeling is considered to be an essential part of …"
+    },
+    {
+      "title": "Model driven software engineering of power systems applications: literature review and trends",
+      "year": 2019,
+      "type": "Journal Article",
+      "venue": "IEEE Access",
+      "authors": "Paulo Neis; Marco Aurélio Wehrmeister; Marcos F. Mendes",
+      "source": "Google Scholar",
+      "phase": "Fase 2 — Expansão MDE (2015–2019)",
+      "doi": "https://doi.org/10.1109/ACCESS.2019.2958275",
+      "abstract": "This paper presents a survey on Software Engineering techniques for the power systems area. Our goal…"
+    },
+    {
+      "title": "A survey on UML-based aspect-oriented design modeling",
+      "year": 2011,
+      "type": "Journal Article",
+      "venue": "ACM Computing Surveys",
+      "authors": "Manuel Wimmer; Andrea Schauerhuber; Gerti Kappel et al.",
+      "source": "Google Scholar",
+      "phase": "Fase 1 — Consolidação (2010–2014)",
+      "doi": "https://doi.org/10.1145/1978802.1978807",
+      "abstract": "Aspect-orientation provides a new way of modularization by clearly separating crosscutting concerns …"
+    },
+    {
+      "title": "Semi-Formal Modeling of Multi-technological Systems I: UML",
+      "year": 2021,
+      "type": "Book Chapter",
+      "venue": "",
+      "authors": "Ivo Häring",
+      "source": "SciSpace",
+      "phase": "Fase 3 — Especialização (2020–2024)",
+      "doi": "https://doi.org/10.1007/978-981-33-4272-9_13",
+      "abstract": "Unified Modeling Language (UML) is a semi-formal graphical language which is used in the software de…"
+    },
+    {
+      "title": "Méthodes d’ordonnancement et d’orchestration dynamique des tâches de soins pour optimiser la prise en charge des patients dans les urgences hospitalières",
+      "year": 2019,
+      "type": "Dissertation",
+      "venue": "",
+      "authors": "Faten Ajmi",
+      "source": "SciSpace Full-Text",
+      "phase": "Fase 2 — Expansão MDE (2015–2019)",
+      "doi": "",
+      "abstract": "Le service des urgences est un important service de soins qui represente le goulot d'etranglement de…"
+    },
+    {
+      "title": "State-transition diagrams for biologists.",
+      "year": 2012,
+      "type": "Journal Article",
+      "venue": "PLOS ONE",
+      "authors": "Hugues Bersini; David Klatzmann; Adrien Six et al.",
+      "source": "SciSpace Full-Text",
+      "phase": "Fase 1 — Consolidação (2010–2014)",
+      "doi": "https://doi.org/10.1371/JOURNAL.PONE.0041165",
+      "abstract": "It is clearly in the tradition of biologists to conceptualize the dynamical evolution of biological …"
+    },
+    {
+      "title": "The impact of design and UML modeling on codebase quality and sustainability",
+      "year": 2018,
+      "type": "Proceedings Article",
+      "venue": "Computer Science and Software Engineering",
+      "authors": "Omar Baddreddin; Khandoker Rahad",
+      "source": "SciSpace",
+      "phase": "Fase 2 — Expansão MDE (2015–2019)",
+      "doi": "",
+      "abstract": "The general consensus of researchers and practitioners is that up-front and continuous software desi…"
+    },
+    {
+      "title": "Selection of UML Models for Test Case Generation: A Discussion on Techniques to Generate Test Cases",
+      "year": 2018,
+      "type": "Unknown",
+      "venue": "",
+      "authors": "Raj Kumar Rapolu",
+      "source": "SciSpace Full-Text",
+      "phase": "Fase 2 — Expansão MDE (2015–2019)",
+      "doi": "",
+      "abstract": "Software development life cycle (SDLC) depicts the distinct phases a software needs to go through, s…"
+    },
+    {
+      "title": "Desenvolvimento de um app e o uso de IoT com RFiD para demanda em escola de tempo integral com baixo custo",
+      "year": 2023,
+      "type": "Book Chapter",
+      "venue": "",
+      "authors": "",
+      "source": "SciSpace Full-Text",
+      "phase": "Fase 3 — Especialização (2020–2024)",
+      "doi": "https://doi.org/10.29327/5192626.1-2",
+      "abstract": "O uso de radiofrequência para automatizar processos está presente em nossa vida. Na conexão Wi-Fi, c…"
+    },
+    {
+      "title": "Towards a GDPR-compliant cloud architecture with data privacy controlled through sticky policies.",
+      "year": 2024,
+      "type": "Journal Article",
+      "venue": "PeerJ. Computer science",
+      "authors": "Cambronero; Martínez; Llana et al.",
+      "source": "PubMed",
+      "phase": "Fase 3 — Especialização (2020–2024)",
+      "doi": "https://doi.org/10.7717/peerj-cs.1898",
+      "abstract": "Data privacy is one of the biggest challenges facing system architects at the system design stage. E…"
+    },
+    {
+      "title": "Test Case Generation from Activity Diagram Using Multiobjective Evolutionary Algorithm",
+      "year": 2016,
+      "type": "Journal Article",
+      "venue": "International Journal of Innovative Research in Computer and Communication Engineering",
+      "authors": "Sukhjinder Kaur",
+      "source": "SciSpace Full-Text",
+      "phase": "Fase 2 — Expansão MDE (2015–2019)",
+      "doi": "https://doi.org/10.15680/IJIRCCE.2016.",
+      "abstract": "The software industry has become one of the world's key industries in recent decades. The tremendous…"
+    },
+    {
+      "title": "Topological UML Modeling: An Improved Approach for Domain Modeling and Software Development",
+      "year": 2017,
+      "type": "Book",
+      "venue": "",
+      "authors": "Janis Osis; Uldis Donins",
+      "source": "SciSpace",
+      "phase": "Fase 2 — Expansão MDE (2015–2019)",
+      "doi": "",
+      "abstract": "Topological UML Modeling: An Improved Approach for Domain Modeling and Software Development presents…"
+    },
+    {
+      "title": "Las causas de las deficiencias de la Ingeniería de Software",
+      "year": 2016,
+      "type": "Journal Article",
+      "venue": "Ciencia y Tecnología",
+      "authors": "Juan F. Giró; Judith Disderi; Belén Zarazaga",
+      "source": "SciSpace Full-Text",
+      "phase": "Fase 2 — Expansão MDE (2015–2019)",
+      "doi": "https://doi.org/10.18682/CYT.V1I16.586",
+      "abstract": "Desde el nacimiento de la Ingenieria de Software se ha instaurado un interrogante que no parece enco…"
+    },
+    {
+      "title": "On the UML use in the Brazilian industry: A state of the practice survey (S).",
+      "year": 2018,
+      "type": "Proceedings Article",
+      "venue": "Software Engineering and Knowledge Engineering",
+      "authors": "Kleinner Farias; Lucian José Gonçales; Vinicius Bischoff et al.",
+      "source": "SciSpace Full-Text",
+      "phase": "Fase 2 — Expansão MDE (2015–2019)",
+      "doi": "https://doi.org/10.18293/SEKE2018-183",
+      "abstract": "Context: The Unified Modeling Language (UML) has become the standard for modeling software. Several …"
+    },
+    {
+      "title": "The SMS Gateway-Based Information System Design of Students Value at SMK Negeri 2 Palopo",
+      "year": 2017,
+      "type": "Unknown",
+      "venue": "",
+      "authors": "Rusmala Dewi; Muh Nasir; Syafriadi Syafriadi",
+      "source": "SciSpace Full-Text",
+      "phase": "Fase 2 — Expansão MDE (2015–2019)",
+      "doi": "",
+      "abstract": "These days, all aspects of life have been growing rapidly. Due to the fact that these improvements h…"
+    },
+    {
+      "title": "Suvremeni trendovi razvoja informacijskih sustava",
+      "year": 2015,
+      "type": "Dissertation",
+      "venue": "",
+      "authors": "Albert Farkaš",
+      "source": "SciSpace",
+      "phase": "Fase 2 — Expansão MDE (2015–2019)",
+      "doi": "",
+      "abstract": "Because of today’s rapid lifestyle, it is hard to imagine life without information systems in any se…"
+    },
+    {
+      "title": "A otimização de um Back End com Web Service Rest API desenvolvido com Spring Boot",
+      "year": 2023,
+      "type": "Book Chapter",
+      "venue": "",
+      "authors": "",
+      "source": "SciSpace Full-Text",
+      "phase": "Fase 3 — Especialização (2020–2024)",
+      "doi": "https://doi.org/10.29327/5192626.1-6",
+      "abstract": "Hoje em dia, a pessoas estão se preocupando mais com sua saúde e das pessoas que amam e sempre busca…"
+    },
+    {
+      "title": "Mining human factors general trends from +100k UML class diagrams",
+      "year": 2022,
+      "type": "Proceedings Article",
+      "venue": "ACM/IEEE International Conference on Model Driven Engineering Languages and Systems",
+      "authors": "Maxime Savary-Leblanc; Xavier Le Pallec; Philippe Palanque et al.",
+      "source": "SciSpace",
+      "phase": "Fase 3 — Especialização (2020–2024)",
+      "doi": "https://doi.org/10.1145/3550356.3559098",
+      "abstract": "Models are primary artifacts for Model-Based Software Engineering. An important share of the activit…"
+    },
+    {
+      "title": "API REST em Java Web para Hotéis: consulta, reserva e cadastro de Hotéis no aplicativo web da Matrip",
+      "year": 2023,
+      "type": "Book Chapter",
+      "venue": "",
+      "authors": "",
+      "source": "SciSpace Full-Text",
+      "phase": "Fase 3 — Especialização (2020–2024)",
+      "doi": "https://doi.org/10.29327/5192626.1-1",
+      "abstract": "O turismo é uma das principais formas de movimentar o mercado, gerar emprego e aumentar a renda. O M…"
+    },
+    {
+      "title": "A review method for UML requirements analysis model employing system-side prototyping.",
+      "year": 2013,
+      "type": "Journal Article",
+      "venue": "SpringerPlus",
+      "authors": "Ogata; Matsuura",
+      "source": "PubMed",
+      "phase": "Fase 1 — Consolidação (2010–2014)",
+      "doi": "https://doi.org/10.1186/2193-1801-2-134",
+      "abstract": "User interface prototyping is an effective method for users to validate the requirements defined by …"
+    },
+    {
+      "title": "Seamless transformation from use case to sequence diagrams.",
+      "year": 2023,
+      "type": "Journal Article",
+      "venue": "PeerJ. Computer science",
+      "authors": "Alyami; Pileggi; Sohaib et al.",
+      "source": "PubMed",
+      "phase": "Fase 3 — Especialização (2020–2024)",
+      "doi": "https://doi.org/10.7717/peerj-cs.1444",
+      "abstract": "System design is an essential subject taught in information systems and has become a core course in …"
+    },
+    {
+      "title": "Design and evaluation of a collaborative UML modeling environment in virtual reality.",
+      "year": 2022,
+      "type": "Journal Article",
+      "venue": "Software and systems modeling",
+      "authors": "Yigitbas; Gorissen; Weidmann et al.",
+      "source": "PubMed",
+      "phase": "Fase 3 — Especialização (2020–2024)",
+      "doi": "https://doi.org/10.1007/s10270-022-01065-2",
+      "abstract": "Modeling is a key activity in conceptual design and system design. Through collaborative modeling, e…"
+    },
+    {
+      "title": "Are the UML modelling tools powerful enough for practitioners? A literature review",
+      "year": 2019,
+      "type": "Journal Article",
+      "venue": "IET Software",
+      "authors": "Mert Ozkaya",
+      "source": "SciSpace",
+      "phase": "Fase 2 — Expansão MDE (2015–2019)",
+      "doi": "https://doi.org/10.1049/IET-SEN.2018.5409",
+      "abstract": "Unified Modelling Language (UML) is essentially a de-facto standard for software modeling and suppor…"
+    },
+    {
+      "title": "Análisis, diseño, desarrollo e implementación de un gestor de transporte automotriz para la Superintendencia de Control del Poder de Mercado",
+      "year": 2016,
+      "type": "Dissertation",
+      "venue": "",
+      "authors": "Fabricio Xavier Pilicita Garrido; Jorge Alexis Zúñiga Villamar",
+      "source": "SciSpace Full-Text",
+      "phase": "Fase 2 — Expansão MDE (2015–2019)",
+      "doi": "",
+      "abstract": "The web application that was developed to meet the need arises automation processes search the Super…"
+    },
+    {
+      "title": "Sharing Research Models: Using Software Engineering Practices for Facilitation.",
+      "year": 2011,
+      "type": "Journal Article",
+      "venue": "Methods report (RTI Press)",
+      "authors": "Bryant; Solano; Cantor et al.",
+      "source": "PubMed",
+      "phase": "Fase 1 — Consolidação (2010–2014)",
+      "doi": "https://doi.org/10.3768/rtipress.2011.mr.0022.1103",
+      "abstract": "Increasingly, researchers are turning to computational models to understand the interplay of importa…"
+    },
+    {
+      "title": "Mobile Modeling with Real-Time Collaboration Support",
+      "year": 2022,
+      "type": "Journal Article",
+      "venue": "The Journal of Object Technology",
+      "authors": "Max Härtwig; Sebastian Götz",
+      "source": "SciSpace Full-Text",
+      "phase": "Fase 3 — Especialização (2020–2024)",
+      "doi": "https://doi.org/10.5381/jot.2022.21.3.a2",
+      "abstract": "Modeling is an essential discipline, especially in software engineering. Students and developers ali…"
+    },
+    {
+      "title": "The effects of UML modeling on the quality of software",
+      "year": 2010,
+      "type": "Unknown",
+      "venue": "",
+      "authors": "Ariadi Nugroho",
+      "source": "SciSpace",
+      "phase": "Fase 1 — Consolidação (2010–2014)",
+      "doi": "",
+      "abstract": "As the de facto industry standard for software modeling, the Unified Modeling Language (UML) is used…"
+    },
+    {
+      "title": "Are we teaching UML according to what IT companies need? A survey on the São Carlos-SP region",
+      "year": 2021,
+      "type": "Proceedings Article",
+      "venue": "",
+      "authors": "João Choma Neto; Luiz Henrique Ten Caten Bento; Edson OliveiraJr et al.",
+      "source": "SciSpace Full-Text",
+      "phase": "Fase 3 — Especialização (2020–2024)",
+      "doi": "https://doi.org/10.5753/EDUCOMP.2021.14469",
+      "abstract": "The Unified Modeling Language (UML) arisen intending to unify the many modeling languages and become…"
+    },
+    {
+      "title": "A Y-Design formal modeling framework for RESTful APIs-Based E-Learning system development",
+      "year": 2024,
+      "type": "Journal Article",
+      "venue": "Studies in Engineering and Exact Sciences",
+      "authors": "Belkacem Mostefai; Nabila Bousbia; Tarek Boutefara et al.",
+      "source": "SciSpace",
+      "phase": "Fase 3 — Especialização (2020–2024)",
+      "doi": "https://doi.org/10.54021/seesv5n3-016",
+      "abstract": "A current trend in software engineering is the model-driven software engineering approach, which emp…"
+    },
+    {
+      "title": "Modeling with UML: Language, Concepts, Methods",
+      "year": 2016,
+      "type": "Book",
+      "venue": "",
+      "authors": "Bernhard Rumpe",
+      "source": "SciSpace",
+      "phase": "Fase 2 — Expansão MDE (2015–2019)",
+      "doi": "",
+      "abstract": "This book presents a variant of UML that is especially suitable for agile development of high-qualit…"
+    },
+    {
+      "title": "Systems Modeling Usage in Project Management among Junior and Senior Business System Developers",
+      "year": 2018,
+      "type": "Journal Article",
+      "venue": "",
+      "authors": "Timothy Joshua Magno Ventayen; Randy Joy Magno Ventayen",
+      "source": "SciSpace",
+      "phase": "Fase 2 — Expansão MDE (2015–2019)",
+      "doi": "https://doi.org/10.30560/IJAS.V1N1P1",
+      "abstract": "Unified Modeling Language (UML) is accepted as the standard for modeling software designs and is com…"
+    },
+    {
+      "title": "The Evolution of UML",
+      "year": 2015,
+      "type": "Book Chapter",
+      "venue": "Encyclopedia of Information Science and Technology",
+      "authors": "Rebecca Platt; Nik Thompson",
+      "source": "SciSpace",
+      "phase": "Fase 2 — Expansão MDE (2015–2019)",
+      "doi": "https://doi.org/10.4018/978-1-4666-5888-2.CH186",
+      "abstract": "Since its inception, the Unified Modeling Language (UML) has risen to relative ubiquity in the IT co…"
+    },
+    {
+      "title": "Analysing uml-based software modelling languages",
+      "year": 2018,
+      "type": "Journal Article",
+      "venue": "Journal of Aeronautics and Space Technologies",
+      "authors": "Mert Ozkaya",
+      "source": "SciSpace",
+      "phase": "Fase 2 — Expansão MDE (2015–2019)",
+      "doi": "",
+      "abstract": "UML is considered as the top popular software modelling language among practitioners. Expectedly, UM…"
+    },
+    {
+      "title": "UML for ABM",
+      "year": 2012,
+      "type": "Posted Content",
+      "venue": "Journal of Artificial Societies and Social Simulation",
+      "authors": "Hugues Bersini",
+      "source": "SciSpace Full-Text",
+      "phase": "Fase 1 — Consolidação (2010–2014)",
+      "doi": "",
+      "abstract": "Although the majority of researchers interested in ABM increasingly agree that the most natural way …"
+    },
+    {
+      "title": "Role of unified modelling language in software development in Greece ¿ results from an exploratory study",
+      "year": 2014,
+      "type": "Journal Article",
+      "venue": "IET Software",
+      "authors": "Panos Fitsilis; Vassilis C. Gerogiannis; Leonidas Anthopoulos",
+      "source": "SciSpace Full-Text",
+      "phase": "Fase 1 — Consolidação (2010–2014)",
+      "doi": "https://doi.org/10.1049/IET-SEN.2013.0031",
+      "abstract": "The Unified Modelling Language (UML) is a language for specifying, visualising, constructing and doc…"
+    },
+    {
+      "title": "Unified Modeling Language for Requirements Engineering, Strategies and Best Practices for FinTech and Beyond",
+      "year": 2023,
+      "type": "Journal Article",
+      "venue": "Asian Journal of Research in Computer Science",
+      "authors": "",
+      "source": "SciSpace",
+      "phase": "Fase 3 — Especialização (2020–2024)",
+      "doi": "https://doi.org/10.9734/ajrcos/2023/v16i3348",
+      "abstract": "Effective requirements management is crucial in the rapidly evolving landscape of Financial Technolo…"
+    },
+    {
+      "title": "UML model refactoring: a systematic literature review",
+      "year": 2015,
+      "type": "Journal Article",
+      "venue": "Empirical Software Engineering",
+      "authors": "Mohammed Misbhauddin; Mohammad Alshayeb",
+      "source": "Google Scholar",
+      "phase": "Fase 2 — Expansão MDE (2015–2019)",
+      "doi": "https://doi.org/10.1007/S10664-013-9283-7",
+      "abstract": "Model-driven engineering, an emerging trend in software engineering, has enabled the use of refactor…"
+    },
+    {
+      "title": "Applying UML and Machine Learning to Enhance System Analysis and Design",
+      "year": 2023,
+      "type": "Journal Article",
+      "venue": "Int'l J. of Communications, Network and System Sciences",
+      "authors": "Aparna Gadhi; Ragha Madhavi Gondu; Chinna Manikanta Bandaru et al.",
+      "source": "SciSpace",
+      "phase": "Fase 3 — Especialização (2020–2024)",
+      "doi": "https://doi.org/10.4236/ijcns.2023.165005",
+      "abstract": "System analysis and design (SAD) is a crucial process in the development of software systems. The im…"
+    },
+    {
+      "title": "More than two decades of research on verification of UML class models: A systematic literature review",
+      "year": 2021,
+      "type": "Journal Article",
+      "venue": "IEEE Access",
+      "authors": "Asadullah Shaikh; Abdul Hafeez; Asif Ali Wagan et al.",
+      "source": "Google Scholar",
+      "phase": "Fase 3 — Especialização (2020–2024)",
+      "doi": "https://doi.org/10.1109/ACCESS.2021.3121222",
+      "abstract": "Error checking is easy and inexpensive in the initial stages as compared to later stages due to when…"
+    },
+    {
+      "title": "A comparison of six uml-based languages for software process modeling",
+      "year": 2010,
+      "type": "Journal Article",
+      "venue": "IEEE Transactions on Software Engineering",
+      "authors": "Reda Bendraou; Jean-Marc Jézéquel; Marie-Pierre Gervais et al.",
+      "source": "Google Scholar",
+      "phase": "Fase 1 — Consolidação (2010–2014)",
+      "doi": "https://doi.org/10.1109/TSE.2009.85",
+      "abstract": "Describing and managing activities, resources, and constraints of software development processes is …"
+    },
+    {
+      "title": "Logic-based model-level software development with F-OML",
+      "year": 2011,
+      "type": "Proceedings Article",
+      "venue": "Model Driven Engineering Languages and Systems",
+      "authors": "Mira Balaban; Michael Kifer",
+      "source": "SciSpace",
+      "phase": "Fase 1 — Consolidação (2010–2014)",
+      "doi": "https://doi.org/10.5555/2050655.2050708",
+      "abstract": "Models are at the heart of the emerging Model-driven Engineering (MDE) approach in which software is…"
+    },
+    {
+      "title": "Current Issues in UML Diagrams Coevolution and Consistency Techniques and Approaches",
+      "year": 2018,
+      "type": "Journal Article",
+      "venue": "International Journal of Computer and Electrical Engineering",
+      "authors": "Bassam Atieh Rajabi; Sai Peck Lee",
+      "source": "SciSpace",
+      "phase": "Fase 2 — Expansão MDE (2015–2019)",
+      "doi": "https://doi.org/10.17706/IJCEE.2018.10.2.158-173",
+      "abstract": "UML modelling language is widely adopted in software analysis and design. UML diagrams are divided i…"
+    },
+    {
+      "title": "Software Modeling and Design: UML, Use Cases, Patterns, and Software Architectures",
+      "year": 2011,
+      "type": "Book",
+      "venue": "",
+      "authors": "Hassan Gomaa",
+      "source": "SciSpace",
+      "phase": "Fase 1 — Consolidação (2010–2014)",
+      "doi": "",
+      "abstract": "This book covers all you need to know to model and design software applications from use cases to so…"
+    },
+    {
+      "title": "Model pengembangan aplikasi pembayaran angsuran pinjaman online menggunakan php-mysql dengan metode object oriented programming",
+      "year": 2017,
+      "type": "Journal Article",
+      "venue": "",
+      "authors": "Whisnumurti Adhiwibowo; April Firman Daru",
+      "source": "SciSpace Full-Text",
+      "phase": "Fase 2 — Expansão MDE (2015–2019)",
+      "doi": "https://doi.org/10.26877/JIU.V3I2.1802",
+      "abstract": "Sistem pembayaran angsuran berbasis web pada suatu koperasi merupakan sistem yang bersifat dinamis d…"
+    },
+    {
+      "title": "Classification and trend analysis of UML books (1997–2009)",
+      "year": 2012,
+      "type": "Journal Article",
+      "venue": "Software and Systems Modeling",
+      "authors": "Vahid Garousi",
+      "source": "Google Scholar",
+      "phase": "Fase 1 — Consolidação (2010–2014)",
+      "doi": "https://doi.org/10.1007/S10270-011-0189-9",
+      "abstract": "Technical books of each subject area denote the level of maturity and knowledge demand in that area.…"
+    },
+    {
+      "title": "A Generic Approach to Reuse Unified Modeling Language Components Following an Agile Process",
+      "year": 2016,
+      "type": "Journal Article",
+      "venue": "World Academy of Science, Engineering and Technology, International Journal of Computer and Information Engineering",
+      "authors": "Rim Bouhaouel; Naoufel Kraiem; Zuhoor Al Khanjari",
+      "source": "SciSpace",
+      "phase": "Fase 2 — Expansão MDE (2015–2019)",
+      "doi": "",
+      "abstract": "Unified Modeling Language (UML) is considered as one of the widespread modeling language standardize…"
+    },
+    {
+      "title": "What is the Further Evidence about UML? - A Systematic Literature Review",
+      "year": 2017,
+      "type": "Proceedings Article",
+      "venue": "Asia-Pacific Software Engineering Conference",
+      "authors": "Min Guo; Cheng Zhang; Futian Wang",
+      "source": "SciSpace",
+      "phase": "Fase 2 — Expansão MDE (2015–2019)",
+      "doi": "https://doi.org/10.1109/APSECW.2017.28",
+      "abstract": "Context: Unified Modeling Language (UML) is a modeling language in software engineering. It has beco…"
+    },
+    {
+      "title": "How are Conceptual Models used in Industrial Software Development?: A Descriptive Survey",
+      "year": 2017,
+      "type": "Proceedings Article",
+      "venue": "Evaluation and Assessment in Software Engineering",
+      "authors": "Harald Störrle",
+      "source": "SciSpace",
+      "phase": "Fase 2 — Expansão MDE (2015–2019)",
+      "doi": "https://doi.org/10.1145/3084226.3084256",
+      "abstract": "Background: There is a controversy about the relevance, role, and utility of models, modeling, and m…"
+    },
+    {
+      "title": "The era of Social Machines in the BPM-SOA and UML-SOA convergence",
+      "year": 2022,
+      "type": "Journal Article",
+      "venue": "Research, Society and Development",
+      "authors": "Brunno Wagner Lemos de Souza",
+      "source": "SciSpace Full-Text",
+      "phase": "Fase 3 — Especialização (2020–2024)",
+      "doi": "https://doi.org/10.33448/rsd-v11i2.25178",
+      "abstract": "In this work, we have explored and analyzed fundamental concepts of BPM (Business Process Modeling) …"
+    },
+    {
+      "title": "Achievements, Failures, and the Future of Model-Based Software Engineering",
+      "year": 2018,
+      "type": "Book Chapter",
+      "venue": "",
+      "authors": "Oliver Kautz; Alexander Roth; Bernhard Rumpe",
+      "source": "SciSpace Full-Text",
+      "phase": "Fase 2 — Expansão MDE (2015–2019)",
+      "doi": "https://doi.org/10.1007/978-3-319-73897-0_13",
+      "abstract": "Model-based software engineering (MBSE) is used in research and industry for quite a while. After th…"
+    },
+    {
+      "title": "A Survey on the Use of UML in the Brazilian Industry",
+      "year": 2021,
+      "type": "Proceedings Article",
+      "venue": "Brazilian Symposium on Software Engineering",
+      "authors": "Ed Júnior; Kleinner Farias; Bruno Silva",
+      "source": "SciSpace",
+      "phase": "Fase 3 — Especialização (2020–2024)",
+      "doi": "https://doi.org/10.1145/3474624.3474632",
+      "abstract": "Although UML modeling has been used in the Brazilian industry in the last decade, little is known ab…"
+    },
+    {
+      "title": "UML in der Hochschullehre: Eine kritische Reflexion (UML in Higher Education: A Critical Reflection).",
+      "year": 2019,
+      "type": "Unknown",
+      "venue": "",
+      "authors": "Jürgen Anke; Stefan Bente",
+      "source": "SciSpace Full-Text",
+      "phase": "Fase 2 — Expansão MDE (2015–2019)",
+      "doi": "",
+      "abstract": "Trotz ihrer hohen Bekanntheit und Verbreitung ist die Unified Modelling Language (UML) 20 Jahre nach…"
+    },
+    {
+      "title": "Introducing BIGUML: A Flexible Open-Source GLSP-Based Web Modeling Tool for UML",
+      "year": 2023,
+      "type": "Proceedings Article",
+      "venue": "",
+      "authors": "Haydar Metin; Dominik Bork",
+      "source": "SciSpace",
+      "phase": "Fase 3 — Especialização (2020–2024)",
+      "doi": "https://doi.org/10.1109/models-c59198.2023.00016",
+      "abstract": "—Unified Modeling Language (UML) plays a crucial role in software development by providing a standar…"
+    },
+    {
+      "title": "Desenvolvimento de um sistema de informação para o gerenciamento de redes de infraestrutura urbana",
+      "year": 2014,
+      "type": "Journal Article",
+      "venue": "",
+      "authors": "Rafael Marisco Bertei; Adalberto Pandolfo; Naira Elizabete Barbacovi et al.",
+      "source": "SciSpace Full-Text",
+      "phase": "Fase 1 — Consolidação (2010–2014)",
+      "doi": "https://doi.org/10.18256/2237-7956/RAIMED.V4N3P300-313",
+      "abstract": "Este estudo tem comoobjetivo geral o desenvolvimento de um sistema de informacao que possa seraplica…"
+    },
+    {
+      "title": "Empirical evidence about the UML: a systematic literature review",
+      "year": 2011,
+      "type": "Journal Article",
+      "venue": "Software - Practice and Experience",
+      "authors": "David Budgen; Andy Burn; O. P. Brereton et al.",
+      "source": "SciSpace",
+      "phase": "Fase 1 — Consolidação (2010–2014)",
+      "doi": "https://doi.org/10.1002/SPE.1009",
+      "abstract": "The Unified Modeling Language (UML) was created on the basis of expert opinion and has now become ac…"
+    },
+    {
+      "title": "Position Paper: Software Modeling Education",
+      "year": 2011,
+      "type": "Journal Article",
+      "venue": "Electronic Communication of The European Association of Software Science and Technology",
+      "authors": "Martina Seidl; Peter Clarke",
+      "source": "SciSpace Full-Text",
+      "phase": "Fase 1 — Consolidação (2010–2014)",
+      "doi": "https://doi.org/10.14279/TUJ.ECEASST.52.747.754",
+      "abstract": "Model-driven engineering (MDE) is a promising paradigm to deal with the ever increasing complexity o…"
+    },
+    {
+      "title": "The Usage of Models in Model-Driven Software Engineering",
+      "year": 2021,
+      "type": "Dissertation",
+      "venue": "",
+      "authors": "A.D. Donkers",
+      "source": "SciSpace",
+      "phase": "Fase 3 — Especialização (2020–2024)",
+      "doi": "",
+      "abstract": "During the Software Systems module of the Bachelor of Computer Science at the University of Twente, …"
+    },
+    {
+      "title": "xtUML: Current and Next State of a Modeling Dialect.",
+      "year": 2016,
+      "type": "Unknown",
+      "venue": "",
+      "authors": "Cortland Starrett",
+      "source": "SciSpace",
+      "phase": "Fase 2 — Expansão MDE (2015–2019)",
+      "doi": "",
+      "abstract": "xtUML and its Papyrus-xtUML (BridgePoint) tooling have advanced further in the last two years than i…"
+    },
+    {
+      "title": "Deconstructing UML, Part 1: Modeling Classes with Categories",
+      "year": 2021,
+      "type": "Report",
+      "venue": "",
+      "authors": "Spencer Breiner; Sarala Padi; Eswaran Subrahmanian et al.",
+      "source": "SciSpace Full-Text",
+      "phase": "Fase 3 — Especialização (2020–2024)",
+      "doi": "https://doi.org/10.6028/NIST.IR.8358",
+      "abstract": "This is the first series of papers critiquing the Unified Modeling Language (UML) and proposing an a…"
+    },
+    {
+      "title": "Dimensions of UML Diagram Use: Practitioner Survey and Research Agenda",
+      "year": 2010,
+      "type": "Book Chapter",
+      "venue": "",
+      "authors": "Brian Dobing; Jeffrey Parsons",
+      "source": "SciSpace",
+      "phase": "Fase 1 — Consolidação (2010–2014)",
+      "doi": "https://doi.org/10.4018/978-1-60566-904-5.CH013",
+      "abstract": "The Unified Modeling Language (UML) emerged in the mid-1990s through the combination of previously c…"
+    },
+    {
+      "title": "Towards a Unified View of Modeling and Programming",
+      "year": 2016,
+      "type": "Book Chapter",
+      "venue": "Leveraging Applications of Formal Methods",
+      "authors": "Manfred Broy; Klaus Havelund; Rajesh Kumar",
+      "source": "SciSpace",
+      "phase": "Fase 2 — Expansão MDE (2015–2019)",
+      "doi": "https://doi.org/10.1007/978-3-319-47169-3_17",
+      "abstract": "In this paper we argue that there is a value in providing a unified view of modeling and programming…"
+    },
+    {
+      "title": "Dependability modeling and assessment in UML-based software development.",
+      "year": 2012,
+      "type": "Journal Article",
+      "venue": "TheScientificWorldJournal",
+      "authors": "Bernardi; Merseguer; Petriu",
+      "source": "PubMed",
+      "phase": "Fase 1 — Consolidação (2010–2014)",
+      "doi": "https://doi.org/10.1100/2012/614635",
+      "abstract": "Assessment of software nonfunctional properties (NFP) is an important problem in software developmen…"
+    },
+    {
+      "title": "Software Testing and Development Techniques using UML (Unified Modeling Language)",
+      "year": 2018,
+      "type": "Journal Article",
+      "venue": "International Journal for Research in Applied Science and Engineering Technology",
+      "authors": "Vishal Pareek",
+      "source": "SciSpace Full-Text",
+      "phase": "Fase 2 — Expansão MDE (2015–2019)",
+      "doi": "https://doi.org/10.22214/IJRASET.2018.4728",
+      "abstract": "This paper presents the software testing and model based software development with the use of Unifie…"
+    },
+    {
+      "title": "Requirements Modeling with UML",
+      "year": 2010,
+      "type": "Book",
+      "venue": "",
+      "authors": "Cynthia Phillips",
+      "source": "SciSpace",
+      "phase": "Fase 1 — Consolidação (2010–2014)",
+      "doi": "",
+      "abstract": "The Unified Modeling Language (UML) provides an environment for modeling complex systems. It support…"
+    },
+    {
+      "title": "Portable Mapping of Uml Design Specifications into Object Oriented Code",
+      "year": 2012,
+      "type": "Unknown",
+      "venue": "",
+      "authors": "Swati Nair; Hemangini Mahajan; Mayur Sangtani et al.",
+      "source": "SciSpace Full-Text",
+      "phase": "Fase 1 — Consolidação (2010–2014)",
+      "doi": "",
+      "abstract": "This paper proposes a stand-alone software that accepts UML Design Specifications through a simple u…"
+    },
+    {
+      "title": "Towards promoting design and UML modeling practices in the open source community",
+      "year": 2016,
+      "type": "Proceedings Article",
+      "venue": "International Conference on Software Engineering",
+      "authors": "Abdullah Aldaeej; Omar Badreddin",
+      "source": "SciSpace",
+      "phase": "Fase 2 — Expansão MDE (2015–2019)",
+      "doi": "https://doi.org/10.1145/2889160.2892649",
+      "abstract": "Despite the emergence of UML as the defacto modeling and design tool for software engineering, its a…"
+    },
+    {
+      "title": "A utilização do Spring Boot para desenvolvimento de uma API REST para consumir serviço em uma aplicação",
+      "year": 2023,
+      "type": "Book Chapter",
+      "venue": "",
+      "authors": "",
+      "source": "SciSpace Full-Text",
+      "phase": "Fase 3 — Especialização (2020–2024)",
+      "doi": "https://doi.org/10.29327/5192626.1-7",
+      "abstract": "Com um dia a dia mais atarefado, as empresas e pessoas buscam agilizar suas tarefas, e quando esta t…"
+    },
+    {
+      "title": "Creating UML Class Diagrams with General-Purpose LLMs",
+      "year": 2024,
+      "type": "Journal Article",
+      "venue": "",
+      "authors": "Mohamed Shehata; Blaire Lepore; Hailey Cummings et al.",
+      "source": "SciSpace",
+      "phase": "Fase 3 — Especialização (2020–2024)",
+      "doi": "https://doi.org/10.1109/vissoft64034.2024.00031",
+      "abstract": "General-purpose large language models (LLMs) have become a versatile tool in software development an…"
+    },
+    {
+      "title": "Innovations in model-based software and systems engineering",
+      "year": 2019,
+      "type": "Journal Article",
+      "venue": "The Journal of Object Technology",
+      "authors": "Katrin Hölldobler; Judith Michael; Jan Oliver Ringert et al.",
+      "source": "SciSpace Full-Text",
+      "phase": "Fase 2 — Expansão MDE (2015–2019)",
+      "doi": "https://doi.org/10.5381/JOT.2019.18.1.R1",
+      "abstract": "Engineering software and software intensive systems has become increasingly complex over the last de…"
+    },
+    {
+      "title": "Derivation of Data-Driven Software Models from Business Process Representations",
+      "year": 2014,
+      "type": "Proceedings Article",
+      "venue": "Quality of Information and Communications Technology",
+      "authors": "Estrela Ferreira Cruz; Ricardo J. Machado; Maribel Yasmina Santos",
+      "source": "SciSpace Full-Text",
+      "phase": "Fase 1 — Consolidação (2010–2014)",
+      "doi": "https://doi.org/10.1109/QUATIC.2014.44",
+      "abstract": "Business process modelling and management approaches are increasingly used and disclosed between org…"
+    },
+    {
+      "title": "Hammering models: designing usable modeling tools",
+      "year": 2011,
+      "type": "Book Chapter",
+      "venue": "International Conference on Human-Computer Interaction",
+      "authors": "Ko-Hsun Huang; Nuno Jardim Nunes; Leonel Nóbrega et al.",
+      "source": "SciSpace Full-Text",
+      "phase": "Fase 1 — Consolidação (2010–2014)",
+      "doi": "https://doi.org/10.1007/978-3-642-23765-2_37",
+      "abstract": "A modeling tool not only helps users express their ideas and thoughts but also serves as a communica…"
+    },
+    {
+      "title": "Trends and Insights into the Use of Model-Driven Engineering: A Survey",
+      "year": 2023,
+      "type": "Proceedings Article",
+      "venue": "",
+      "authors": "Hessa Alfraihi; Kevin Lano",
+      "source": "SciSpace",
+      "phase": "Fase 3 — Especialização (2020–2024)",
+      "doi": "https://doi.org/10.1109/models-c59198.2023.00058",
+      "abstract": "Model-Driven Engineering (MDE) has gained popularity as a software engineering approach that promise…"
+    },
+    {
+      "title": "A decade of software design and modeling: A survey to uncover trends of the practice",
+      "year": 2018,
+      "type": "Proceedings Article",
+      "venue": "Model Driven Engineering Languages and Systems",
+      "authors": "Omar Badreddin; Rahad Khandoker; Andrew Forward et al.",
+      "source": "Google Scholar",
+      "phase": "Fase 2 — Expansão MDE (2015–2019)",
+      "doi": "https://doi.org/10.1145/3239372.3239389",
+      "abstract": "We present the results of a survey of 228 software practitioners conducted on two phases ten years a…"
+    },
+    {
+      "title": "Understanding the adoption of use case narratives in the unified modeling language",
+      "year": 2010,
+      "type": "Proceedings Article",
+      "venue": "International Conference on Information Systems",
+      "authors": "Brian Dobing; Joerg Evermann; Jeffrey Parsons",
+      "source": "SciSpace Full-Text",
+      "phase": "Fase 1 — Consolidação (2010–2014)",
+      "doi": "",
+      "abstract": "This research examines the adoption of Use Case Narratives within the Unified Modeling Language (UML…"
+    },
+    {
+      "title": "Perancangan Sistem Informasi Penilaian Raport Siswa Berbasis Web pada SMA Perintis 1 Sepatan",
+      "year": 2018,
+      "type": "Journal Article",
+      "venue": "",
+      "authors": "Harfizar Harfizar; Arief Saptono; Bayu Dwi Kurniawan",
+      "source": "SciSpace Full-Text",
+      "phase": "Fase 2 — Expansão MDE (2015–2019)",
+      "doi": "https://doi.org/10.33050/SENSI.V4I1.718",
+      "abstract": "Sistem penilaian raport pada SMA Perintis 1 Sepatan belum sepenuhnya terkomputerisasi. Permasalahan …"
+    },
+    {
+      "title": "Utilizando a metodologia Scrum para desenvolvimento de um Sistema modelado em UML empregando Design Patterns em Java com Hibernate",
+      "year": 2023,
+      "type": "Book Chapter",
+      "venue": "",
+      "authors": "",
+      "source": "SciSpace Full-Text",
+      "phase": "Fase 3 — Especialização (2020–2024)",
+      "doi": "https://doi.org/10.29327/5192626.1-10",
+      "abstract": "A falta de um gerenciamento em vendas e controle de um produto em um pequeno comércio pode implicar …"
+    },
+    {
+      "title": "Ensino, Aprendizagem e Uso Profissional da UML em Belo Horizonte e Região",
+      "year": 2023,
+      "type": "Proceedings Article",
+      "venue": "",
+      "authors": "Edson OliveiraJr; Laerte Xavier",
+      "source": "SciSpace",
+      "phase": "Fase 3 — Especialização (2020–2024)",
+      "doi": "https://doi.org/10.5753/educomp.2023.228173",
+      "abstract": "A modelagem representa uma parte essencial do processo de desenvolvimento de um software, para tal, …"
+    },
+    {
+      "title": "Challenges and opportunities in the integration of the Systems Engineering process and the AI/ML model lifecycle",
+      "year": 2019,
+      "type": "Journal Article",
+      "venue": "",
+      "authors": "Jose María Alvarez-Rodríguez; Roy Mendieta Zuñiga; Valentín Moreno Pelayo et al.",
+      "source": "SciSpace Full-Text",
+      "phase": "Fase 2 — Expansão MDE (2015–2019)",
+      "doi": "https://doi.org/10.1002/J.2334-5837.2019.00621.X",
+      "abstract": "The Digital Age, the “Society 5.0” or the “4th Industrial Revolution” has created a challenging and …"
+    },
+    {
+      "title": "A power consumption analysis technique using uml-based design models in embedded software development",
+      "year": 2011,
+      "type": "Book Chapter",
+      "venue": "Conference on Current Trends in Theory and Practice of Informatics",
+      "authors": "Doo-Hwan Kim; Jong-Phil Kim; Jang-Eui Hong",
+      "source": "Google Scholar",
+      "phase": "Fase 1 — Consolidação (2010–2014)",
+      "doi": "https://doi.org/10.1007/978-3-642-18381-2_27",
+      "abstract": "Although the power consumption of embedded system depends on the operation of hardware devices, soft…"
+    },
+    {
+      "title": "A framework for an integrated unified modeling language",
+      "year": 2016,
+      "type": "Journal Article",
+      "venue": "Journal of Zhejiang University Science C",
+      "authors": "Mohammad Alshayeb; Nasser Khashan; Sajjad Mahmood",
+      "source": "SciSpace",
+      "phase": "Fase 2 — Expansão MDE (2015–2019)",
+      "doi": "https://doi.org/10.1631/FITEE.1500094",
+      "abstract": "The unified modeling language (UML) is one of the most commonly used modeling languages in the softw…"
+    },
+    {
+      "title": "Design Patterns for Model-Driven Development",
+      "year": 2014,
+      "type": "Book Chapter",
+      "venue": "",
+      "authors": "Timo Vepsäläinen; Seppo Kuikka",
+      "source": "SciSpace",
+      "phase": "Fase 1 — Consolidação (2010–2014)",
+      "doi": "https://doi.org/10.1007/978-3-319-25579-8_2",
+      "abstract": "Design patterns document solutions to recurring design and development challenges. UML, which is the…"
+    },
+    {
+      "title": "Design pattern support for Model-Driven Development",
+      "year": 2014,
+      "type": "Proceedings Article",
+      "venue": "International Conference on Software Engineering",
+      "authors": "Timo Vepsäläinen; Seppo Kuikka",
+      "source": "SciSpace",
+      "phase": "Fase 1 — Consolidação (2010–2014)",
+      "doi": "https://doi.org/10.5220/0004990002770286",
+      "abstract": "Design patterns document solutions to recurring design and development challenges. UML, as the de-fa…"
+    },
+    {
+      "title": "Cross-factor analysis of software modeling practices versus practitioner demographics in the embedded software industry",
+      "year": 2017,
+      "type": "Proceedings Article",
+      "venue": "Mediterranean Conference on Embedded Computing",
+      "authors": "Deniz Akdur; Vahid Garousi; Onur Demirörs",
+      "source": "SciSpace Full-Text",
+      "phase": "Fase 2 — Expansão MDE (2015–2019)",
+      "doi": "https://doi.org/10.1109/MECO.2017.7977123",
+      "abstract": "Software-intensive embedded systems have evolved to be essential tools of our lives. To cope with gr…"
+    },
+    {
+      "title": "EESSMod 2011 First International Workshop on Experiences and Empirical Studies in Software Modelling",
+      "year": 2011,
+      "type": "Unknown",
+      "venue": "",
+      "authors": "Michel R. V. Chaudron; Marcela Genero; Silvia Abrahão et al.",
+      "source": "SciSpace Full-Text",
+      "phase": "Fase 1 — Consolidação (2010–2014)",
+      "doi": "",
+      "abstract": "This paper presents an experiment carried out as a pilot study to obtain a first insight into the in…"
+    },
+    {
+      "title": "Unified modeling language: the teen years and growing pains",
+      "year": 2013,
+      "type": "Book Chapter",
+      "venue": "International Conference on Human Interface and Management of Information",
+      "authors": "John S. Erickson; Keng Siau",
+      "source": "SciSpace",
+      "phase": "Fase 1 — Consolidação (2010–2014)",
+      "doi": "https://doi.org/10.1007/978-3-642-39209-2_34",
+      "abstract": "Unified Modeling Language (UML) is adopted by the Object Management Group as a standardized general-…"
+    },
+    {
+      "title": "Using UML to Describe the Development of Software Products Using an Object Approach",
+      "year": 2022,
+      "type": "Proceedings Article",
+      "venue": "2022 IEEE International IOT, Electronics and Mechatronics Conference (IEMTRONICS)",
+      "authors": "Evgeniya Semenova; Vadim Tynchenko; Sofya Chashchina et al.",
+      "source": "SciSpace",
+      "phase": "Fase 3 — Especialização (2020–2024)",
+      "doi": "https://doi.org/10.1109/iemtronics55184.2022.9795777",
+      "abstract": "One of the most popular languages of graphic modeling is Unified Modeling Language (UML). This abstr…"
+    },
+    {
+      "title": "Practices and perceptions of UML use in open source projects",
+      "year": 2017,
+      "type": "Proceedings Article",
+      "venue": "International Conference on Software Engineering",
+      "authors": "Truong Ho-Quang; Regina Hebig; Gregorio Robles et al.",
+      "source": "SciSpace",
+      "phase": "Fase 2 — Expansão MDE (2015–2019)",
+      "doi": "https://doi.org/10.1109/ICSE-SEIP.2017.28",
+      "abstract": "Context: Open Source is getting more and more collaborative with industry. At the same time, modelin…"
+    },
+    {
+      "title": "VR-UML: The Unified Modeling Language in Virtual Reality – An Immersive Modeling Experience",
+      "year": 2021,
+      "type": "Book Chapter",
+      "venue": "Business Modeling and Software Design",
+      "authors": "Roy Oberhauser",
+      "source": "SciSpace",
+      "phase": "Fase 3 — Especialização (2020–2024)",
+      "doi": "https://doi.org/10.1007/978-3-030-79976-2_3",
+      "abstract": "Software models in the Unified Modeling Language (UML) can been created or automatically reverse-eng…"
+    },
+    {
+      "title": "Towards Seamless Hybrid Graphical–Textual Modelling for UML and Profiles",
+      "year": 2017,
+      "type": "Book Chapter",
+      "venue": "European Conference on Modelling Foundations and Applications",
+      "authors": "Lorenzo Addazi; Federico Ciccozzi; Philip Langer et al.",
+      "source": "SciSpace",
+      "phase": "Fase 2 — Expansão MDE (2015–2019)",
+      "doi": "https://doi.org/10.1007/978-3-319-61482-3_2",
+      "abstract": "Domain-specific modelling languages, in particular those described in terms of UML profiles, use gra…"
+    },
+    {
+      "title": "A UML-based Approach to Design Parallel and Distributed Applications.",
+      "year": 2013,
+      "type": "Posted Content",
+      "venue": "arXiv: Software Engineering",
+      "authors": "Yasset Perez-Riverol; Roberto Vera Alvarez",
+      "source": "SciSpace Full-Text",
+      "phase": "Fase 1 — Consolidação (2010–2014)",
+      "doi": "",
+      "abstract": "Parallel and distributed application design is a major area of interest in the domain of high perfor…"
+    },
+    {
+      "title": "On the automated translational execution of the action language for foundational UML.",
+      "year": 2018,
+      "type": "Journal Article",
+      "venue": "Software and systems modeling",
+      "authors": "Ciccozzi",
+      "source": "PubMed",
+      "phase": "Fase 2 — Expansão MDE (2015–2019)",
+      "doi": "https://doi.org/10.1007/s10270-016-0556-7",
+      "abstract": "To manage the rapidly growing complexity of software development, abstraction and automation have be…"
+    },
+    {
+      "title": "How LLMs Aid in UML Modeling: An Exploratory Study with Novice Analysts",
+      "year": 2024,
+      "type": "Journal Article",
+      "venue": "",
+      "authors": "Beian Wang; Chong Wang; Peng Liang et al.",
+      "source": "SciSpace",
+      "phase": "Fase 3 — Especialização (2020–2024)",
+      "doi": "https://doi.org/10.1109/sse62657.2024.00046",
+      "abstract": "Since the emergence of GPT-3, Large Language Models (LLMs) have caught the eyes of researchers, prac…"
+    },
+    {
+      "title": "Incremental UML for agile development: embedding UML class models in source code",
+      "year": 2017,
+      "type": "Proceedings Article",
+      "venue": "International Conference on Software Engineering",
+      "authors": "Eric J. Braude",
+      "source": "SciSpace",
+      "phase": "Fase 2 — Expansão MDE (2015–2019)",
+      "doi": "https://doi.org/10.5555/3105398.3105405",
+      "abstract": "Agile methods favor \"working software over comprehensive documentation.\" The latter presumably inclu…"
+    },
+    {
+      "title": "Formal verification of software-based medical devices considering medical guidelines.",
+      "year": 2014,
+      "type": "Journal Article",
+      "venue": "International journal of computer assisted radiology and surgery",
+      "authors": "Daw; Cleaveland; Vetter",
+      "source": "PubMed",
+      "phase": "Fase 1 — Consolidação (2010–2014)",
+      "doi": "https://doi.org/10.1007/s11548-013-0919-2",
+      "abstract": "Software-based devices have increasingly become an important part of several clinical scenarios. Due…"
+    },
+    {
+      "title": "Modeling of a Component-Based Software Through UML Using Object-Oriented Approach",
+      "year": 2011,
+      "type": "Posted Content",
+      "venue": "Social Science Research Network",
+      "authors": "Gufran Ahmad Ansari; Samir A. Elsagheer Mohamed; Master Prince",
+      "source": "SciSpace",
+      "phase": "Fase 1 — Consolidação (2010–2014)",
+      "doi": "",
+      "abstract": "Component-Based Software Development (CBSD) process is broadly being adopted by the academicians and…"
+    },
+    {
+      "title": "Optimizing UML Class Diagrams",
+      "year": 2018,
+      "type": "Journal Article",
+      "venue": "",
+      "authors": "Maxim Sergievskiy; Ksenia Kirpichnikova",
+      "source": "SciSpace",
+      "phase": "Fase 2 — Expansão MDE (2015–2019)",
+      "doi": "https://doi.org/10.1051/ITMCONF/20181803003",
+      "abstract": "Most of object-oriented development technologies rely on the use of the universal modeling language …"
+    },
+    {
+      "title": "A outra face dos modelos: técnicas de visualização para explorar modelos",
+      "year": 2013,
+      "type": "Dissertation",
+      "venue": "",
+      "authors": "Juan Manuel Jardim Mendes",
+      "source": "SciSpace Full-Text",
+      "phase": "Fase 1 — Consolidação (2010–2014)",
+      "doi": "",
+      "abstract": "Resumo. Os modelos sao tradicionalmente utilizados na engenharia de software para documentar aspecto…"
+    },
+    {
+      "title": "Analysis of Open-Source CASE Tools for Supporting Software Modeling Process with UML",
+      "year": 2018,
+      "type": "Proceedings Article",
+      "venue": "",
+      "authors": "Emmanuel Sávio Silva Freire; Gabriel Cavalcante Oliveira; Maria Eurizene de Sousa Gomes",
+      "source": "SciSpace",
+      "phase": "Fase 2 — Expansão MDE (2015–2019)",
+      "doi": "https://doi.org/10.1145/3275245.3275251",
+      "abstract": "Good modeling practices or guidelines guide the construction of UML diagrams allowing higher quality…"
+    },
+    {
+      "title": "Patterns of Software Modeling",
+      "year": 2014,
+      "type": "Book Chapter",
+      "venue": "",
+      "authors": "Wolfgang Raschke; Massimiliano Zilli; Johannes Loinig et al.",
+      "source": "SciSpace",
+      "phase": "Fase 1 — Consolidação (2010–2014)",
+      "doi": "https://doi.org/10.1007/978-3-662-45550-0_43",
+      "abstract": "Software systems start small and grow in complexity and size. The larger a software system is, the m…"
+    },
+    {
+      "title": "Use Cases and Scenarios Engineering in Smart Software Application Development Services",
+      "year": 2024,
+      "type": "Journal Article",
+      "venue": "",
+      "authors": "El Mahi Bouziane; Lahbib Naimi; Charaf Ouaddi et al.",
+      "source": "SciSpace",
+      "phase": "Fase 3 — Especialização (2020–2024)",
+      "doi": "https://doi.org/10.1109/commnet63022.2024.10793324",
+      "abstract": "Unified Modeling Language (UML) is a versatile tool for specifying, visualizing, and documenting sof…"
+    },
+    {
+      "title": "On the Usage of UML: Initial Results of Analyzing Open UML Models.",
+      "year": 2014,
+      "type": "Unknown",
+      "venue": "",
+      "authors": "Philip Langer; Tanja Mayerhofer; Manuel Wimmer et al.",
+      "source": "SciSpace",
+      "phase": "Fase 1 — Consolidação (2010–2014)",
+      "doi": "",
+      "abstract": "While UML is recognized as the de-facto standard in modeling software systems, it is at the same tim…"
+    },
+    {
+      "title": "App de Vendas: Aplicação em Frameworks para Melhorar o Sistema de Controle de Pedidos Utilizando Flutter e API",
+      "year": 2023,
+      "type": "Book Chapter",
+      "venue": "",
+      "authors": "",
+      "source": "SciSpace Full-Text",
+      "phase": "Fase 3 — Especialização (2020–2024)",
+      "doi": "https://doi.org/10.29327/5192626.1-8",
+      "abstract": "Este artigo aborda um desenvolvimento móbile, que tem como foco principal o estudo do flutter e as a…"
+    },
+    {
+      "title": "What Are the Used UML Diagram Constructs? A Document and Tool Analysis Study Covering Activity and Use Case Diagrams",
+      "year": 2014,
+      "type": "Book Chapter",
+      "venue": "International Conference on Model-Driven Engineering and Software Development",
+      "authors": "Gianna Reggio; Maurizio Leotta; Filippo Ricca et al.",
+      "source": "SciSpace Full-Text",
+      "phase": "Fase 1 — Consolidação (2010–2014)",
+      "doi": "https://doi.org/10.1007/978-3-319-25156-1_5",
+      "abstract": "UML offers a very large set of constructs for each of its diagram types, however many of them seem s…"
+    },
+    {
+      "title": "Desenvolvimento de um aplicativo para pacientes em UTIs: API REST utilizando Spring boot e um Front End desenvolvido em Flutter",
+      "year": 2023,
+      "type": "Book Chapter",
+      "venue": "",
+      "authors": "",
+      "source": "SciSpace Full-Text",
+      "phase": "Fase 3 — Especialização (2020–2024)",
+      "doi": "https://doi.org/10.29327/5192626.1-3",
+      "abstract": "Pacientes que se encontram nas Unidades de Terapia Intensiva (UTI), necessitam de acompanhamento per…"
+    },
+    {
+      "title": "Dependability modeling and analysis of software systems specified with UML",
+      "year": 2012,
+      "type": "Journal Article",
+      "venue": "ACM Computing Surveys",
+      "authors": "Simona Bernardi; José Merseguer; Dorina C. Petriu",
+      "source": "Google Scholar",
+      "phase": "Fase 1 — Consolidação (2010–2014)",
+      "doi": "https://doi.org/10.1145/2379776.2379778",
+      "abstract": "The goal is to survey dependability modeling and analysis of software and systems specified with UML…"
+    },
+    {
+      "title": "Gerçek Zamanlı Gömülü Sistemlerin Durum Diyagramları ile Modellenmesi",
+      "year": 2021,
+      "type": "Journal Article",
+      "venue": "",
+      "authors": "Sonay Duman; Abdullah Elewi; Firat Duman",
+      "source": "SciSpace Full-Text",
+      "phase": "Fase 3 — Especialização (2020–2024)",
+      "doi": "https://doi.org/10.31590/EJOSAT.884420",
+      "abstract": "Embedded real-time systems are one of the most successful application areas of Unified Modeling Lang…"
+    },
+    {
+      "title": "Modeling of Inventory Application of Goods Islamic University of Kuantan Singingi: Modeling of Inventory Application of Goods Islamic University of Kuantan Singingi",
+      "year": 2020,
+      "type": "Unknown",
+      "venue": "",
+      "authors": "Febri Haswan",
+      "source": "SciSpace Full-Text",
+      "phase": "Fase 3 — Especialização (2020–2024)",
+      "doi": "",
+      "abstract": "Kuantan Singingi Islamic University is located in Riau Province, Kuantan Singingi Regency, where cur…"
+    },
+    {
+      "title": "UML modeling tools: Assessment in perspective of users",
+      "year": 2017,
+      "type": "Proceedings Article",
+      "venue": "Iberian Conference on Information Systems and Technologies",
+      "authors": "Ivanila Silva; Bráulio Alturas; Alberto Carneiro",
+      "source": "SciSpace Full-Text",
+      "phase": "Fase 2 — Expansão MDE (2015–2019)",
+      "doi": "https://doi.org/10.23919/CISTI.2017.7975818",
+      "abstract": "Modeling tools serve to guide and discipline the software development process during the design proc…"
+    },
+    {
+      "title": "Model Driven Engineering Using UML. A Pragmatic Approach",
+      "year": 2013,
+      "type": "Unknown",
+      "venue": "",
+      "authors": "Liviu Gabriel Cretu",
+      "source": "SciSpace",
+      "phase": "Fase 1 — Consolidação (2010–2014)",
+      "doi": "",
+      "abstract": "In the pursuit of systematic integration of Model Driven Engineering (MDE) principles within the usu…"
+    },
+    {
+      "title": "Exploration of UML diagrams based code generation methods",
+      "year": 2016,
+      "type": "Proceedings Article",
+      "venue": "International Conference on Inventive Computation Technologies",
+      "authors": "Noorpratap Singh Bhullar; Bharti Chhabra; Amit Verma",
+      "source": "SciSpace",
+      "phase": "Fase 2 — Expansão MDE (2015–2019)",
+      "doi": "https://doi.org/10.1109/INVENTIVE.2016.7824877",
+      "abstract": "Unified Modelling Language is a widely accepted in software development environment. Elder programs …"
+    },
+    {
+      "title": "Object-Oriented Software Methodologies: Roadmap to the Future",
+      "year": 2011,
+      "type": "Unknown",
+      "venue": "",
+      "authors": "Usman Ali Khan; Ibrahim Albidewi; Kunal Gupta",
+      "source": "SciSpace Full-Text",
+      "phase": "Fase 1 — Consolidação (2010–2014)",
+      "doi": "",
+      "abstract": "Software Development Methodologies have survived a never ending evolving era, ever since it first ca…"
+    },
+    {
+      "title": "Systems analysis and design: An object-oriented approach with UML",
+      "year": 2016,
+      "type": "Book",
+      "venue": "",
+      "authors": "Alan R. Dennis; Barbara H. Wixom; David Tegarden",
+      "source": "Google Scholar",
+      "phase": "Fase 2 — Expansão MDE (2015–2019)",
+      "doi": "",
+      "abstract": "Systems Analysis and Design: An Object-Oriented Approach with UML, 5th Edition by Dennis, Wixom, and…"
+    },
+    {
+      "title": "Dependencies among Architectural Views Got from Software Requirements Based on a Formal Model",
+      "year": 2014,
+      "type": "Journal Article",
+      "venue": "Applied Computer Systems",
+      "authors": "Janis Osis; Erika Asnina; Uldis Donins et al.",
+      "source": "SciSpace Full-Text",
+      "phase": "Fase 1 — Consolidação (2010–2014)",
+      "doi": "https://doi.org/10.1515/ACSS-2014-0007",
+      "abstract": "A system architect has software requirements and some unspecified knowledge about a problem domain e…"
+    },
+    {
+      "title": "Analisis Perancangan Sistem Berorientasi Objek dengan UML (Unified Modeling Language)",
+      "year": 2018,
+      "type": "Unknown",
+      "venue": "",
+      "authors": "Munawar",
+      "source": "SciSpace",
+      "phase": "Fase 2 — Expansão MDE (2015–2019)",
+      "doi": "",
+      "abstract": "UML (Unified Modelling Language) merupakan peralatan yang dapat digunakan atau dipilih oleh analis u…"
+    },
+    {
+      "title": "UML Visual Modeling Technology and Application",
+      "year": 2011,
+      "type": "Proceedings Article",
+      "venue": "International Conference on Future Computer Science and Education",
+      "authors": "Jie Cheng; Xin Yue",
+      "source": "SciSpace",
+      "phase": "Fase 1 — Consolidação (2010–2014)",
+      "doi": "https://doi.org/10.1109/ICFCSE.2011.130",
+      "abstract": "Unified Modeling Language is a kind of language which can be applied to describing, visualizing, fra…"
+    },
+    {
+      "title": "Modeling with UML",
+      "year": 2013,
+      "type": "Book Chapter",
+      "venue": "",
+      "authors": "Roger Y. Lee",
+      "source": "Google Scholar",
+      "phase": "Fase 1 — Consolidação (2010–2014)",
+      "doi": "https://doi.org/10.2991/978-94-6239-006-5_3",
+      "abstract": "The demand for software has risen tremendously since the early days of software engineering; and, as…"
+    },
+    {
+      "title": "UML Diagrams in Software Engineering Research: A Systematic Literature Review",
+      "year": 2021,
+      "type": "Journal Article",
+      "venue": "",
+      "authors": "Hatice Koç; Ali Mert Erdoğan; Yousef Barjakly et al.",
+      "source": "SciSpace",
+      "phase": "Fase 3 — Especialização (2020–2024)",
+      "doi": "https://doi.org/10.3390/PROCEEDINGS2021074013",
+      "abstract": "Software engineering is a discipline utilizing Unified Modelling Language (UML) diagrams, which are …"
+    },
+    {
+      "title": "Preliminary Findings from a Survey on the MD State of the Practice",
+      "year": 2011,
+      "type": "Proceedings Article",
+      "venue": "Empirical Software Engineering and Measurement",
+      "authors": "Marco Torchiano; Federico Tomassetti; Filippo Ricca et al.",
+      "source": "SciSpace",
+      "phase": "Fase 1 — Consolidação (2010–2014)",
+      "doi": "https://doi.org/10.1109/ESEM.2011.51",
+      "abstract": "In the context of an Italian research project, this paper reports on an on-line survey, performed wi…"
+    },
+    {
+      "title": "On the impact of UML analysis models on source-code comprehensibility and modifiability",
+      "year": 2014,
+      "type": "Journal Article",
+      "venue": "ACM Transactions on Software Engineering and Methodology",
+      "authors": "Giuseppe Scanniello; Carmine Gravino; Marcela Genero et al.",
+      "source": "SciSpace Full-Text",
+      "phase": "Fase 1 — Consolidação (2010–2014)",
+      "doi": "https://doi.org/10.1145/2491912",
+      "abstract": "We carried out a family of experiments to investigate whether the use of UML models produced in the …"
+    },
+    {
+      "title": "Object-Oriented Analysis of a Modern Scalable and Secure Banking System Using UML",
+      "year": 2024,
+      "type": "Journal Article",
+      "venue": "International Journal For Science Technology And Engineering",
+      "authors": "Retical Sravanthi",
+      "source": "SciSpace",
+      "phase": "Fase 3 — Especialização (2020–2024)",
+      "doi": "https://doi.org/10.22214/ijraset.2024.66162",
+      "abstract": "This study explores UML (Unified Modelling Language) and Object-Oriented Analysis and Design (OOAD) …"
+    },
+    {
+      "title": "UML Usage in Open Source Software Development : A Field Study.",
+      "year": 2013,
+      "type": "Unknown",
+      "venue": "",
+      "authors": "Mohd Hafeez Osman; Michel R. V. Chaudron",
+      "source": "SciSpace",
+      "phase": "Fase 1 — Consolidação (2010–2014)",
+      "doi": "",
+      "abstract": "UML is the de facto standard for modeling software designs and is commonly used in commercial softwa…"
+    },
+    {
+      "title": "Software engineering with uml",
+      "year": 2017,
+      "type": "Book",
+      "venue": "",
+      "authors": "Bhuvan Unhelkar",
+      "source": "Google Scholar",
+      "phase": "Fase 2 — Expansão MDE (2015–2019)",
+      "doi": "",
+      "abstract": "This book presents the analysis, design, documentation, and quality of software solutions based on t…"
+    },
+    {
+      "title": "A Survey of UML Tools",
+      "year": 2015,
+      "type": "Book Chapter",
+      "venue": "",
+      "authors": "Weng Jie Thong; Mohamed Ariff Ameedeen",
+      "source": "SciSpace",
+      "phase": "Fase 2 — Expansão MDE (2015–2019)",
+      "doi": "https://doi.org/10.1007/978-981-13-1799-6_7",
+      "abstract": "Unified Modeling Language (UML) is a modeling language widely used in the field of software engineer…"
+    },
+    {
+      "title": "Aplicação da UML no contexto das metodologias ágeis",
+      "year": 2019,
+      "type": "Proceedings Article",
+      "venue": "",
+      "authors": "Alan Xavier; Fábio Martins; Ricardo Pimentel et al.",
+      "source": "SciSpace Full-Text",
+      "phase": "Fase 2 — Expansão MDE (2015–2019)",
+      "doi": "https://doi.org/10.5753/ENCOMPIF.2019.6353",
+      "abstract": "A UML é um modelo de documentação bastante estudado nos cursos superiores da área de computação, mas…"
+    },
+    {
+      "title": "Diversity in UML Modeling Explained: Observations, Classifications and Theorizations",
+      "year": 2018,
+      "type": "Book Chapter",
+      "venue": "Conference on Current Trends in Theory and Practice of Informatics",
+      "authors": "Michel R. V. Chaudron; Ana Fernandes-Saez; Regina Hebig et al.",
+      "source": "SciSpace",
+      "phase": "Fase 2 — Expansão MDE (2015–2019)",
+      "doi": "https://doi.org/10.1007/978-3-319-73117-9_4",
+      "abstract": "Modeling is a common part of modern day software engineering practice. Little evidence exists about …"
+    },
+    {
+      "title": "Unified Modeling Language (UML) for Database Systems and Computer Applications",
+      "year": 2012,
+      "type": "Journal Article",
+      "venue": "International journal of database theory and application",
+      "authors": "Sunguk Lee",
+      "source": "SciSpace",
+      "phase": "Fase 1 — Consolidação (2010–2014)",
+      "doi": "",
+      "abstract": "This paper presents the concepts of database systems as well as the overview of the use of Unified M…"
+    },
+    {
+      "title": "Model of information object for digital library and its verification",
+      "year": 2020,
+      "type": "Journal Article",
+      "venue": "",
+      "authors": "A.V. Novitsky; V.A. Reznichenko",
+      "source": "SciSpace Full-Text",
+      "phase": "Fase 3 — Especialização (2020–2024)",
+      "doi": "https://doi.org/10.15407/PP2020.02-03.031",
+      "abstract": "An approach for formal verification of UML 2.0 using mapping OWL-DL in UML 2.0 is proposed. As a res…"
+    },
+    {
+      "title": "Software Architecture modeling framework using UML",
+      "year": 2013,
+      "type": "Unknown",
+      "venue": "",
+      "authors": "S. Srinivasan",
+      "source": "SciSpace",
+      "phase": "Fase 1 — Consolidação (2010–2014)",
+      "doi": "",
+      "abstract": "The software architecture’s are built using some specific languages while developing a project. Arch…"
+    },
+    {
+      "title": "INVESTIGATING THE ROLE OF UML IN THE SOFTWARE MODELING AND MAINTENANCE - A Preliminary Industrial Survey",
+      "year": 2010,
+      "type": "Proceedings Article",
+      "venue": "International Conference on Enterprise Information Systems",
+      "authors": "Giuseppe Scanniello; Carmine Gravino; Genny Tortora",
+      "source": "SciSpace",
+      "phase": "Fase 1 — Consolidação (2010–2014)",
+      "doi": "",
+      "abstract": "In the paper we present the results of an industrial survey conducted with the Italian software comp…"
+    },
+    {
+      "title": "UML – a survey on technical university students in Lublin",
+      "year": 2019,
+      "type": "Journal Article",
+      "venue": "",
+      "authors": "Kamil Żyła; Adam Ulidowski; Jan Wrzos et al.",
+      "source": "SciSpace",
+      "phase": "Fase 2 — Expansão MDE (2015–2019)",
+      "doi": "https://doi.org/10.35784/JCSI.825",
+      "abstract": "Unified Modeling Language (UML) is a commonly known OMG (Object Management Group) standard for desig…"
+    },
+    {
+      "title": "UML in software engineering practice: Does the experience level matter?",
+      "year": 2011,
+      "type": "Proceedings Article",
+      "venue": "International Conference on Advances in ICT for Emerging Regions",
+      "authors": "Genoveffa Tortora",
+      "source": "SciSpace",
+      "phase": "Fase 1 — Consolidação (2010–2014)",
+      "doi": "https://doi.org/10.1109/ICTER.2011.6075015",
+      "abstract": "The Unified Modeling Language (UML) has been created on the basis of expert opinions and has now bec…"
+    },
+    {
+      "title": "Flexible Views for View-based Model-driven Development",
+      "year": 2020,
+      "type": "Book",
+      "venue": "",
+      "authors": "Erik Burger",
+      "source": "SciSpace Full-Text",
+      "phase": "Fase 3 — Especialização (2020–2024)",
+      "doi": "",
+      "abstract": "Model-driven development processes suffer from growing complexity, which leads to information spread…"
+    },
+    {
+      "title": "Curso de engenharia de software nas escolas do brasil",
+      "year": 2022,
+      "type": "Journal Article",
+      "venue": "Revista Científica Semana Acadêmica",
+      "authors": "Stela Pinto dos Santos Freitas Bastos",
+      "source": "SciSpace Full-Text",
+      "phase": "Fase 3 — Especialização (2020–2024)",
+      "doi": "https://doi.org/10.35265/2236-6717-221-12026",
+      "abstract": "This is to show the importance of our state and the basic education of our country's public network,…"
+    },
+    {
+      "title": "Analysis of the Evolution of the UML Metamodel.",
+      "year": 2018,
+      "type": "Proceedings Article",
+      "venue": "International Conference on Model-Driven Engineering and Software Development",
+      "authors": "Zhiyi Ma; Huihong He; Jinyang Liu et al.",
+      "source": "SciSpace",
+      "phase": "Fase 2 — Expansão MDE (2015–2019)",
+      "doi": "https://doi.org/10.5220/0006571303560363",
+      "abstract": "UML has been widely used for modeling applications and it changes continuously. In this situation, i…"
+    },
+    {
+      "title": "How effective is UML modeling",
+      "year": 2012,
+      "type": "Journal Article",
+      "venue": "Software and Systems Modeling",
+      "authors": "Michel R. V. Chaudron; Werner Heijstek; Ariadi Nugroho",
+      "source": "SciSpace",
+      "phase": "Fase 1 — Consolidação (2010–2014)",
+      "doi": "https://doi.org/10.1007/S10270-012-0278-4",
+      "abstract": "Modeling has become a common practice in modern software engineering. Since the mid 1990s the Unifie…"
+    },
+    {
+      "title": "Una propuesta de evaluación de herramientas CASE para la enseñanza",
+      "year": 2017,
+      "type": "Unknown",
+      "venue": "",
+      "authors": "Nicolás Battaglia; Roxana Martínez; Carlos Neil et al.",
+      "source": "SciSpace Full-Text",
+      "phase": "Fase 2 — Expansão MDE (2015–2019)",
+      "doi": "",
+      "abstract": "Este trabajo presenta un marco teórico de las Herramientas CASE y UML en base al sustento de análisi…"
+    },
+    {
+      "title": "Unified Modeling Language (UML)",
+      "year": 2012,
+      "type": "Book Chapter",
+      "venue": "",
+      "authors": "Iris Vieweg; Christian Werner; Klaus-P. Wagner et al.",
+      "source": "SciSpace",
+      "phase": "Fase 1 — Consolidação (2010–2014)",
+      "doi": "https://doi.org/10.1007/978-3-8349-6856-2_6",
+      "abstract": "Modellierungstechniken und Werkzeuge bilden als Methoden der Softwareentwicklung eine wesentliche Gr…"
+    },
+    {
+      "title": "Unified Modelling Language",
+      "year": 2022,
+      "type": "Book Chapter",
+      "venue": "",
+      "authors": "Mark Schroeder",
+      "source": "SciSpace",
+      "phase": "Fase 3 — Especialização (2020–2024)",
+      "doi": "https://doi.org/10.1007/978-3-031-07816-3_18",
+      "abstract": "AbstractThis chapter presents the Unified Modelling Language (UML), which is a visual modelling lang…"
+    },
+    {
+      "title": "The research and application of object-oriented requirements modeling based on UML",
+      "year": 2011,
+      "type": "Proceedings Article",
+      "venue": "Electronic and Mechanical Engineering and Information Technology",
+      "authors": "Aimei Dong; Ruilian Hou",
+      "source": "SciSpace",
+      "phase": "Fase 1 — Consolidação (2010–2014)",
+      "doi": "https://doi.org/10.1109/EMEIT.2011.6023945",
+      "abstract": "This paper provides a research of Object-Oriented requirements modeling. The proposed Object-Oriente…"
+    },
+    {
+      "title": "The Past, Present, and Future of UML",
+      "year": 2018,
+      "type": "Book Chapter",
+      "venue": "Encyclopedia of Information Science and Technology",
+      "authors": "Rebecca Platt; Nik Thompson",
+      "source": "SciSpace",
+      "phase": "Fase 2 — Expansão MDE (2015–2019)",
+      "doi": "https://doi.org/10.4018/978-1-5225-2255-3.CH651",
+      "abstract": "Since its inception, the unified modeling language (UML) has risen to relative ubiquity in the IT co…"
+    },
+    {
+      "title": "BrainTool v2.0 for Software Modeling in UML",
+      "year": 2014,
+      "type": "Journal Article",
+      "venue": "Applied Computer Systems",
+      "authors": "Oksana Nikiforova; Ludmila Kozacenko; Dainis Ungurs et al.",
+      "source": "SciSpace",
+      "phase": "Fase 1 — Consolidação (2010–2014)",
+      "doi": "https://doi.org/10.1515/ACSS-2014-0011",
+      "abstract": "It is a modern trend to develop a CASE tool for system modeling with an ability to transform models …"
+    },
+    {
+      "title": "The caBIG® Life Science Business Architecture Model.",
+      "year": 2011,
+      "type": "Journal Article",
+      "venue": "Bioinformatics (Oxford, England)",
+      "authors": "Boyd; Hunicke-Smith; Stafford et al.",
+      "source": "PubMed",
+      "phase": "Fase 1 — Consolidação (2010–2014)",
+      "doi": "https://doi.org/10.1093/bioinformatics/btr141",
+      "abstract": "Business Architecture Models (BAMs) describe what a business does, who performs the activities, wher…"
+    },
+    {
+      "title": "Implementação de uma API REST usando Node.js e Prisma para um site de apresentação de um Coworking",
+      "year": 2023,
+      "type": "Book Chapter",
+      "venue": "",
+      "authors": "",
+      "source": "SciSpace Full-Text",
+      "phase": "Fase 3 — Especialização (2020–2024)",
+      "doi": "https://doi.org/10.29327/5192626.1-4",
+      "abstract": "Para demonstrar a iniciativa do coworking de uma instituição fez–se necessário criação de um site, e…"
+    },
+    {
+      "title": "Unified Modeling Language",
+      "year": 2010,
+      "type": "Book Chapter",
+      "venue": "",
+      "authors": "Mourad Debbabi; Fawzi Hassaïne; Yosr Jarraya et al.",
+      "source": "SciSpace",
+      "phase": "Fase 1 — Consolidação (2010–2014)",
+      "doi": "https://doi.org/10.1007/978-3-642-15228-3_3",
+      "abstract": "The unified modeling language (UML) [185, 186] is a standardized general-purpose modeling language t…"
+    },
+    {
+      "title": "Lenguaje de modelamiento unificado (UML) para modelamiento de embotelladora",
+      "year": 2016,
+      "type": "Journal Article",
+      "venue": "",
+      "authors": "Luis Alejandro Arias Barragan",
+      "source": "SciSpace Full-Text",
+      "phase": "Fase 2 — Expansão MDE (2015–2019)",
+      "doi": "https://doi.org/10.22517/23447214.8541",
+      "abstract": "This Paper  describes the modeling of a loop Bottling plant processes, the case study corresponds to…"
+    },
+    {
+      "title": "The Evolution and Ecosystem of the Unified Modeling Language",
+      "year": 2017,
+      "type": "Book Chapter",
+      "venue": "",
+      "authors": "Claude R. Baudoin",
+      "source": "SciSpace",
+      "phase": "Fase 2 — Expansão MDE (2015–2019)",
+      "doi": "https://doi.org/10.1007/978-3-319-67425-4_3",
+      "abstract": "This short chapter is intended as a briefing on the “state of the practice” of the Unified Modeling …"
+    },
+    {
+      "title": "using uml in software development",
+      "year": 2021,
+      "type": "Journal Article",
+      "venue": "International Journal of Advance Research and Innovative Ideas in Education",
+      "authors": "Issa H. Manita; Osama E. Abufanas; Aisha E. Neibu",
+      "source": "SciSpace",
+      "phase": "Fase 3 — Especialização (2020–2024)",
+      "doi": "",
+      "abstract": "This paper talks about UML and its use as a modeling language for the specification of a system at d…"
+    },
+    {
+      "title": "Research of Object-Oriented Design Process Based on UML",
+      "year": 2012,
+      "type": "Journal Article",
+      "venue": "Advanced Materials Research",
+      "authors": "Ai Mei Dong",
+      "source": "SciSpace",
+      "phase": "Fase 1 — Consolidação (2010–2014)",
+      "doi": "https://doi.org/10.4028/WWW.SCIENTIFIC.NET/AMR.546-547.1556",
+      "abstract": "System analysis is the most important Part of the software life cycle. A successful software system …"
+    },
+    {
+      "title": "Software Development Process Modeling with Patterns",
+      "year": 2020,
+      "type": "Proceedings Article",
+      "venue": "World Symposium Software Engineering",
+      "authors": "Asma Hachemi",
+      "source": "SciSpace",
+      "phase": "Fase 3 — Especialização (2020–2024)",
+      "doi": "https://doi.org/10.1145/3425329.3425339",
+      "abstract": "Software developement process modeling with patterns allows to benefit from the advantages of these …"
+    },
+    {
+      "title": "Modelo de gestión de redes de distribución mediante UML y BPL",
+      "year": 2013,
+      "type": "Journal Article",
+      "venue": "Tecnura",
+      "authors": "Luis Alejandro Arias Barragán; Diego F. García; Edwin Rivas Trujillo",
+      "source": "SciSpace Full-Text",
+      "phase": "Fase 1 — Consolidação (2010–2014)",
+      "doi": "https://doi.org/10.14483/UDISTRITAL.JOUR.TECNURA.2013.3.A10",
+      "abstract": "En este articulo se propone un modelo de gestion del proceso de despacho en sistemas alimentados por…"
+    },
+    {
+      "title": "Comparison of selected modeling notations for process, decision and system modeling",
+      "year": 2017,
+      "type": "Proceedings Article",
+      "venue": "Federated Conference on Computer Science and Information Systems",
+      "authors": "Krzysztof Kluza; Piotr Wisniewski; Krystian Jobczyk et al.",
+      "source": "SciSpace Full-Text",
+      "phase": "Fase 2 — Expansão MDE (2015–2019)",
+      "doi": "https://doi.org/10.15439/2017F454",
+      "abstract": "System specifications can be modeled using various types of notations and diagrams regarding applica…"
+    },
+    {
+      "title": "Modelando com UML: Unified Modeling Language",
+      "year": 2015,
+      "type": "Unknown",
+      "venue": "",
+      "authors": "Ahmed Ali Abdalla Esmin",
+      "source": "SciSpace",
+      "phase": "Fase 2 — Expansão MDE (2015–2019)",
+      "doi": "",
+      "abstract": "Este artigo apresentada uma introducao sobre UML “Unified Modeling Language” que e a padronizacao da…"
+    },
+    {
+      "title": "BRIDG: a domain information model for translational and clinical protocol-driven research.",
+      "year": 2017,
+      "type": "Journal Article",
+      "venue": "Journal of the American Medical Informatics Association : JAMIA",
+      "authors": "Becnel; Hastak; Ver Hoef et al.",
+      "source": "PubMed",
+      "phase": "Fase 2 — Expansão MDE (2015–2019)",
+      "doi": "https://doi.org/10.1093/jamia/ocx004",
+      "abstract": "It is critical to integrate and analyze data from biological, translational, and clinical studies wi…"
+    },
+    {
+      "title": "Management model of distribution networks through UML and BPL",
+      "year": 2013,
+      "type": "Journal Article",
+      "venue": "Tecnura",
+      "authors": "Luis Alejandro Arias Barragán; Diego F. García; Edwin Rivas Trujillo",
+      "source": "SciSpace Full-Text",
+      "phase": "Fase 1 — Consolidação (2010–2014)",
+      "doi": "",
+      "abstract": "This paper proposes a model of the clearance pro- cess management in systems powered by conven- tion…"
+    },
+    {
+      "title": "Aplicación web para el desarrollo y difusión de realidad aumentada utilizando tecnologías libres",
+      "year": 2013,
+      "type": "Dissertation",
+      "venue": "",
+      "authors": "Lopera Ospina; Manuel Alejandro",
+      "source": "SciSpace Full-Text",
+      "phase": "Fase 1 — Consolidação (2010–2014)",
+      "doi": "",
+      "abstract": "Ubicacion en Biblioteca USB Medellin (San Benito): CD-2791t.-- Grupo de Investigacion: Modelamiento …"
+    },
+    {
+      "title": "Från modell till modell : Transformering av information från ett modellspråk till ett annat",
+      "year": 2011,
+      "type": "Unknown",
+      "venue": "",
+      "authors": "Johan Bjurén",
+      "source": "SciSpace Full-Text",
+      "phase": "Fase 1 — Consolidação (2010–2014)",
+      "doi": "",
+      "abstract": "Detta arbete undersoker mojligheterna att ta fram riktlinjer for en transformation fran modelltypern…"
+    },
+    {
+      "title": "Schema Integration : How to Integrate Static and Dynamic Database Schemata",
+      "year": 2010,
+      "type": "Unknown",
+      "venue": "",
+      "authors": "Peter Bellström",
+      "source": "SciSpace Full-Text",
+      "phase": "Fase 1 — Consolidação (2010–2014)",
+      "doi": "",
+      "abstract": "Schema integration is the task of integrating several local schemata into one global database schema…"
+    },
+    {
+      "title": "Remote Monitoring of Colorectal Cancer Survivors Using a Smartphone App and Internet of Things-Based Device: Development and Usability Study.",
+      "year": 2023,
+      "type": "Journal Article",
+      "venue": "JMIR cancer",
+      "authors": "Ayyoubzadeh; Baniasadi; Shirkhoda et al.",
+      "source": "PubMed",
+      "phase": "Fase 3 — Especialização (2020–2024)",
+      "doi": "https://doi.org/10.2196/42250",
+      "abstract": "Patients with colorectal cancer who undergo surgery face many postoperative problems. These problems…"
+    },
+    {
+      "title": "Módulo de filtrado y segmentación de imágenes médicas digitales para el proyecto Vismedic",
+      "year": 2016,
+      "type": "Unknown",
+      "venue": "",
+      "authors": "Adrián Peña-Peñate; Luis Guillermo Silva Rojas; Rubén Alcolea Núñez",
+      "source": "SciSpace Full-Text",
+      "phase": "Fase 2 — Expansão MDE (2015–2019)",
+      "doi": "",
+      "abstract": "Technological advancem ent devices for obtaining radiological examination of digital medical images …"
+    },
+    {
+      "title": "The essence of software engineering: the SEMAT kernel",
+      "year": 2012,
+      "type": "Journal Article",
+      "venue": "Communications of The ACM",
+      "authors": "Ivar Jacobson; Pan-Wei Ng; Paul E. McMahon et al.",
+      "source": "SciSpace Full-Text",
+      "phase": "Fase 1 — Consolidação (2010–2014)",
+      "doi": "https://doi.org/10.1145/2380656.2380670",
+      "abstract": "A thinking framework in the form of an actionable kernel."
+    },
+    {
+      "title": "Über Ordnungsmechanismen im wissensbasierten Entwurf von SCR-Systemen",
+      "year": 2016,
+      "type": "Dissertation",
+      "venue": "",
+      "authors": "Samuel Vogel",
+      "source": "SciSpace Full-Text",
+      "phase": "Fase 2 — Expansão MDE (2015–2019)",
+      "doi": "https://doi.org/10.18419/OPUS-8829",
+      "abstract": "xi"
+    },
+    {
+      "title": "A survey on modeling and model-driven engineering practices in the embedded software industry",
+      "year": 2018,
+      "type": "Journal Article",
+      "venue": "Journal of Systems Architecture",
+      "authors": "Deniz Akdur; Vahid Garousi; Onur Demirörs et al.",
+      "source": "SciSpace Full-Text",
+      "phase": "Fase 2 — Expansão MDE (2015–2019)",
+      "doi": "https://doi.org/10.1016/J.SYSARC.2018.09.007",
+      "abstract": ""
+    },
+    {
+      "title": "Smart Building Block Toys using Internet of Things Technology",
+      "year": 2016,
+      "type": "Journal Article",
+      "venue": "The International Journal of Advanced Culture Technology",
+      "authors": "Sung Hee Jang; Ki Won Nam; Yong Gyu Jung",
+      "source": "SciSpace Full-Text",
+      "phase": "Fase 2 — Expansão MDE (2015–2019)",
+      "doi": "https://doi.org/10.17703/IJACT.2016.4.2.34",
+      "abstract": ""
+    },
+    {
+      "title": "Federating Cyber and Physical Models for Event-Driven Situational Awareness",
+      "year": 2015,
+      "type": "Report",
+      "venue": "",
+      "authors": "Eric G. Stephan; Ronald A. Pawlowski; Siddharth Sridhar et al.",
+      "source": "SciSpace Full-Text",
+      "phase": "Fase 2 — Expansão MDE (2015–2019)",
+      "doi": "https://doi.org/10.2172/1439715",
+      "abstract": ""
+    },
+    {
+      "title": "Balanced Scorecard in ArchiMate",
+      "year": 2017,
+      "type": "Dissertation",
+      "venue": "",
+      "authors": "Rita Maria Amado dos Santos",
+      "source": "SciSpace Full-Text",
+      "phase": "Fase 2 — Expansão MDE (2015–2019)",
+      "doi": "",
+      "abstract": ""
+    },
+    {
+      "title": "Relevance, benefits, and problems of software modelling and model driven techniques-A survey in the Italian industry",
+      "year": 2013,
+      "type": "Journal Article",
+      "venue": "Journal of Systems and Software",
+      "authors": "Marco Torchiano; Federico Tomassetti; Filippo Ricca et al.",
+      "source": "SciSpace Full-Text",
+      "phase": "Fase 1 — Consolidação (2010–2014)",
+      "doi": "https://doi.org/10.1016/J.JSS.2013.03.084",
+      "abstract": ""
+    },
+    {
+      "title": "Desarrollo de un sistema basado en ASTERISK que permita investigar situaciones anómalas (bypass) en el Ecuador para la SUPERTEL",
+      "year": 2012,
+      "type": "Dissertation",
+      "venue": "",
+      "authors": "Béjar Albán; José Gonzalo",
+      "source": "SciSpace Full-Text",
+      "phase": "Fase 1 — Consolidação (2010–2014)",
+      "doi": "",
+      "abstract": ""
+    },
+    {
+      "title": "Specification, Verification and Optimisation of Business Processes: A Unified Framework",
+      "year": 2014,
+      "type": "Unknown",
+      "venue": "",
+      "authors": "Luke Thomas Herbert; Robin Sharp; Michael R. Hansen",
+      "source": "SciSpace Full-Text",
+      "phase": "Fase 1 — Consolidação (2010–2014)",
+      "doi": "",
+      "abstract": ""
+    },
+    {
+      "title": "Elaboration de processus de développements logiciels spécifiques et orientés modèles - Application aux systèmes à événements discrets",
+      "year": 2010,
+      "type": "Unknown",
+      "venue": "",
+      "authors": "École Doctorale; Jean-Henri Lambert",
+      "source": "SciSpace Full-Text",
+      "phase": "Fase 1 — Consolidação (2010–2014)",
+      "doi": "",
+      "abstract": ""
+    },
+    {
+      "title": "Analysis of coexisting graphical and textual representations of requirements based on activity diagrams and structured text",
+      "year": 2019,
+      "type": "Dissertation",
+      "venue": "",
+      "authors": "Martin Beckmann",
+      "source": "SciSpace Full-Text",
+      "phase": "Fase 2 — Expansão MDE (2015–2019)",
+      "doi": "https://doi.org/10.14279/DEPOSITONCE-7546",
+      "abstract": ""
+    },
+    {
+      "title": "Characteristic and comparison of UML, BPMN and EPC based on process models of a training company",
+      "year": 2021,
+      "type": "Proceedings Article",
+      "venue": "",
+      "authors": "Marcin Nizioł; Piotr Wiśniewski; Krzysztof Kluza et al.",
+      "source": "SciSpace Full-Text",
+      "phase": "Fase 3 — Especialização (2020–2024)",
+      "doi": "https://doi.org/10.15439/2021F139",
+      "abstract": ""
+    },
+    {
+      "title": "Solution for Traffic Congestion to Prevent Accidents in Vehicular Ad-Hoc Network",
+      "year": 2021,
+      "type": "Journal Article",
+      "venue": "International journal of engineering research and technology",
+      "authors": "Sree Sai Priya",
+      "source": "SciSpace Full-Text",
+      "phase": "Fase 3 — Especialização (2020–2024)",
+      "doi": "",
+      "abstract": ""
+    },
+    {
+      "title": "Position Paper: Towards a Minimalistic Modeling Paradigm",
+      "year": 2014,
+      "type": "Journal Article",
+      "venue": "International Journal of Modeling and Optimization",
+      "authors": "Gábor Kövesdán; Márk Asztalos; László Lengyel",
+      "source": "SciSpace Full-Text",
+      "phase": "Fase 1 — Consolidação (2010–2014)",
+      "doi": "https://doi.org/10.7763/IJMO.2014.V4.356",
+      "abstract": ""
+    },
+    {
+      "title": "Extracting reusable design decisions for UML-based domain-specific languages",
+      "year": 2016,
+      "type": "Journal Article",
+      "venue": "Journal of Systems and Software",
+      "authors": "Stefan Sobernig; Bernhard Hoisl; Mark Strembeck",
+      "source": "SciSpace Full-Text",
+      "phase": "Fase 2 — Expansão MDE (2015–2019)",
+      "doi": "https://doi.org/10.1016/J.JSS.2015.11.037",
+      "abstract": ""
+    },
+    {
+      "title": "Uma ferramenta geradora de código Bluespec SystemVerilog a partir de máquina de estados finitos descrita em UML e C",
+      "year": 2012,
+      "type": "Dissertation",
+      "venue": "",
+      "authors": "Sergio Henrique Moraes Durand",
+      "source": "SciSpace Full-Text",
+      "phase": "Fase 1 — Consolidação (2010–2014)",
+      "doi": "https://doi.org/10.11606/D.55.2012.TDE-15042013-102159",
+      "abstract": ""
+    },
+    {
+      "title": "Universidad de Pinar del Río",
+      "year": 2011,
+      "type": "Unknown",
+      "venue": "",
+      "authors": "Facultad de Ciencia Técnicas",
+      "source": "SciSpace Full-Text",
+      "phase": "Fase 1 — Consolidação (2010–2014)",
+      "doi": "",
+      "abstract": ""
+    },
+    {
+      "title": "The Essence of Software Engineering",
+      "year": 2018,
+      "type": "Book",
+      "venue": "",
+      "authors": "Volker Gruhn; Rüdiger Striemer",
+      "source": "SciSpace Full-Text",
+      "phase": "Fase 2 — Expansão MDE (2015–2019)",
+      "doi": "https://doi.org/10.1007/978-3-319-73897-0",
+      "abstract": ""
+    },
+    {
+      "title": "Diagramy wdrożeniowe w modelowaniu systemów informatycznych",
+      "year": 2014,
+      "type": "Unknown",
+      "venue": "",
+      "authors": "Stanislaw Wrycza; Bartosz Marcinkowski; Jacek Maślankowski",
+      "source": "SciSpace Full-Text",
+      "phase": "Fase 1 — Consolidação (2010–2014)",
+      "doi": "",
+      "abstract": ""
+    },
+    {
+      "title": "A Brazilian survey on UML and model-driven practices for embedded software development",
+      "year": 2013,
+      "type": "Journal Article",
+      "venue": "Journal of Systems and Software",
+      "authors": "Luciane Telinski Wiedermann Agner; Inali Wisniewski Soares; Paulo Cézar Stadzisz et al.",
+      "source": "Google Scholar",
+      "phase": "Fase 1 — Consolidação (2010–2014)",
+      "doi": "https://doi.org/10.1016/J.JSS.2012.11.023",
+      "abstract": ""
+    },
+    {
+      "title": "Information systems modelling and analysis",
+      "year": 2011,
+      "type": "Unknown",
+      "venue": "",
+      "authors": "Zbigniew Huzar",
+      "source": "SciSpace Full-Text",
+      "phase": "Fase 1 — Consolidação (2010–2014)",
+      "doi": "",
+      "abstract": ""
+    }
+  ]
+}
