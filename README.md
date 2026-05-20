@@ -12,7 +12,7 @@
 
 Este repositório contém os **artefatos digitais** do TCC2: três dashboards HTML interativos com os resultados da análise bibliométrica e o pipeline Python que os gerou. O objetivo é dar à banca avaliadora acesso direto às visualizações e, ao mesmo tempo, oferecer transparência metodológica completa, sendo que todo o código de processamento e o corpus de 207 artigos estão versionados aqui.
 
-O documento textual do TCC (PDF/DOCX) foi entregue pelo canal oficial da UNOESC, mas também está duplicado aqui.
+O documento textual do TCC (DOCX) foi entregue pelo canal oficial da UNOESC, mas também está duplicado aqui, nomeado TCC2_MARCOS_STINGHER.docx.
 
 ## Como visualizar
 
